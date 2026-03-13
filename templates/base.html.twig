@@ -1,31 +1,63 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
-        
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        <nav>
-            <a href="{{ path('app_home') }}">SchoolPrepar</a>
-            <a href="{{ path('app_home') }}">Accueil</a>
-            <a href="{{ path('app_course') }}">Filières</a>
-            <a href="#">Conseillers</a>
-            <a href="#">Événements</a>
-        </nav>
+<html data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}SchoolPrepa{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body>
 
-        <main>
-            {% block body %}{% endblock %}
-        </main>
+<div class="navbar bg-blue-700 shadow-lg px-4">
+    <div class="navbar-start">
+        <a href="{{ path('home.index') }}" class="flex items-center gap-2 text-white font-bold text-xl">
+            <div class="w-8 h-8 rounded-lg bg-white flex items-center justify-center">
+                <span class="text-blue-700 font-black text-sm">SP</span>
+            </div>
+            SchoolPrepar
+        </a>
+    </div>
 
-        <footer>
-            <p>© 2026 k2 SchoolPrepar</p>
-        </footer>
-    </body>
+    <div class="navbar-center hidden md:flex">
+        <ul class="menu menu-horizontal px-1 gap-1">
+            <li><a href="{{ path('home.index') }}" class="text-white hover:bg-blue-600 rounded-lg font-medium">Accueil</a></li>
+            <li><a href="{{ path('course.index') }}" class="text-white hover:bg-blue-600 rounded-lg font-medium">Filières</a></li>
+            <li><a href="#" class="text-white hover:bg-blue-600 rounded-lg font-medium">Conseillers</a></li>
+            <li><a href="#" class="text-white hover:bg-blue-600 rounded-lg font-medium">Événements</a></li>
+        </ul>
+    </div>
+
+    <div class="navbar-end gap-2">
+        <a href="#" class="btn btn-sm bg-white text-blue-700 border-none hover:bg-blue-50 font-semibold hidden md:flex">
+            Se connecter
+        </a>
+        <!-- Menu mobile -->
+        <div class="dropdown dropdown-end md:hidden">
+            <button tabindex="0" class="btn btn-ghost text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+            <ul tabindex="0" class="menu menu-sm dropdown-content bg-blue-800 rounded-box mt-3 w-52 p-2 shadow z-10">
+                <li><a href="{{ path('home.index') }}" class="text-white hover:bg-blue-600">Accueil</a></li>
+                <li><a href="{{ path('course.index') }}" class="text-white hover:bg-blue-600">Filières</a></li>
+                <li><a href="#" class="text-white hover:bg-blue-600">Conseillers</a></li>
+                <li><a href="#" class="text-white hover:bg-blue-600">Événements</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<main>{% block body %}{% endblock %}</main>
+
+<footer class="footer footer-center bg-blue-900 text-white p-4">
+    <p class="text-blue-200 text-sm">© 2026 k2 SchoolPrepar</p>
+</footer>
+
+</body>
 </html>

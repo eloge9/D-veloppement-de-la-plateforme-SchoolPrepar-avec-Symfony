@@ -7,6 +7,7 @@ Plateforme d’orientation scolaire développée avec Symfony.
 1. Cloner le projet
 2. Installer les dépendances :
    composer install
+   symfony serve
 3. Lancer le serveur :
    symfony server:start
 
