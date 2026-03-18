@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}SchoolPrepar{% endblock %}</title>
+
+    <!-- Tailwind + DaisyUI CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet">
+
+    <!-- CSS/JS Symfony (Webpack Encore si utilisé) -->
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body class="bg-base-100 text-base-content">
+
+<!-- Navigation -->
+{% include 'front/partials/nav.html.twig' %}
+
+<!-- Contenu principal -->
+<main class="container mx-auto p-4">
+    {% block body %}{% endblock %}
+</main>
+
+<!-- Footer -->
+{% include 'front/partials/footer.html.twig' %}
+
+</body>
+</html>
