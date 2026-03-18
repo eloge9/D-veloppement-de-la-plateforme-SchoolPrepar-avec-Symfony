@@ -1,11 +1,92 @@
 # yaml-language-server: $schema=../vendor/symfony/routing/Loader/schema/routing.schema.json
 
 # This file is the entry point to configure the routes of your app.
-# Methods with the #[Route] attribute are automatically imported.
+# Methods with #[Route] attribute are automatically imported.
 # See also https://symfony.com/doc/current/routing.html
 
 # To list all registered routes, run the following command:
 #   bin/console debug:router
 
-controllers:
-    resource: routing.controllers
+# Front-Office Routes
+app_home:
+    path: /
+    controller: App\Controller\HomeController::index
+
+app_filieres:
+    path: /filieres
+    controller: App\Controller\FiliereController::index
+
+app_filiere_show:
+    path: /filieres/{id}
+    controller: App\Controller\FiliereController::show
+    requirements:
+        id: '\d+'
+
+app_etablissements:
+    path: /etablissements
+    controller: App\Controller\EtablissementController::index
+
+app_etablissement_show:
+    path: /etablissements/{id}
+    controller: App\Controller\EtablissementController::show
+    requirements:
+        id: '\d+'
+
+# Back-Office Routes
+admin_dashboard:
+    path: /admin
+    controller: App\Controller\AdminDashboardController::index
+
+admin_filiere_index:
+    path: /admin/filieres
+    controller: App\Controller\AdminFiliereController::index
+
+admin_filiere_new:
+    path: /admin/filieres/new
+    controller: App\Controller\AdminFiliereController::new
+
+admin_filiere_edit:
+    path: /admin/filieres/{id}/edit
+    controller: App\Controller\AdminFiliereController::edit
+    requirements:
+        id: '\d+'
+
+admin_filiere_show:
+    path: /admin/filieres/{id}
+    controller: App\Controller\AdminFiliereController::show
+    requirements:
+        id: '\d+'
+
+admin_filiere_delete:
+    path: /admin/filieres/{id}/delete
+    controller: App\Controller\AdminFiliereController::delete
+    requirements:
+        id: '\d+'
+    methods: [POST]
+
+admin_etablissement_index:
+    path: /admin/etablissements
+    controller: App\Controller\AdminEtablissementController::index
+
+admin_etablissement_new:
+    path: /admin/etablissements/new
+    controller: App\Controller\AdminEtablissementController::new
+
+admin_etablissement_edit:
+    path: /admin/etablissements/{id}/edit
+    controller: App\Controller\AdminEtablissementController::edit
+    requirements:
+        id: '\d+'
+
+admin_etablissement_show:
+    path: /admin/etablissements/{id}
+    controller: App\Controller\AdminEtablissementController::show
+    requirements:
+        id: '\d+'
+
+admin_etablissement_delete:
+    path: /admin/etablissements/{id}/delete
+    controller: App\Controller\AdminEtablissementController::delete
+    requirements:
+        id: '\d+'
+    methods: [POST]

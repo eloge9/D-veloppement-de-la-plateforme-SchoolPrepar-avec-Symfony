@@ -1,0 +1,80 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Filieres - SchoolPrepar{% endblock %}
+
+{% block content %}
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4" style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}')">
+    <div class="container">
+        <div class="row align-items-end">
+            <div class="col-lg-7">
+                <h2 class="mb-0">Nos Filieres</h2>
+                <p>Découvrez toutes nos filières d'études</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="custom-breadcrumns border-bottom">
+    <div class="container">
+        <a href="{{ path('app_home') }}">Home</a>
+        <span class="mx-3 icon-keyboard_arrow_right"></span>
+        <span class="current">Filieres</span>
+    </div>
+</div>
+
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <div class="row">
+                    {% for filiere in filieres %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="course-1-item">
+                            <figure class="thumnail">
+                                <a href="{{ path('app_filiere_show', {'id': filiere.id}) }}">
+                                    <img src="{{ asset('assets/images/course_' ~ random(1, 6) ~ '.jpg') }}" alt="{{ filiere.nom }}" class="img-fluid">
+                                </a>
+                                <div class="category"><h3>{{ filiere.nom }}</h3></div>
+                            </figure>
+                            <div class="course-1-content pb-4">
+                                <h2>{{ filiere.nom }}</h2>
+                                <div class="rating text-center mb-3">
+                                    <span class="icon-star2 text-warning"></span>
+                                    <span class="icon-star2 text-warning"></span>
+                                    <span class="icon-star2 text-warning"></span>
+                                    <span class="icon-star2 text-warning"></span>
+                                    <span class="icon-star2 text-warning"></span>
+                                </div>
+                                <p class="desc mb-4">{{ filiere.description|slice(0, 150) }}...</p>
+                                <p><a href="{{ path('app_filiere_show', {'id': filiere.id}) }}" class="btn btn-primary rounded-0 px-4">Voir les détails</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="col-12">
+                        <div class="alert alert-info text-center">
+                            <h4>Aucune filière disponible</h4>
+                            <p>Il n'y a actuellement aucune filière enregistrée dans notre système.</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="site-section ftco-subscribe-1" style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}')">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <h2>Besoin d'aide pour choisir ?</h2>
+                <p>Contactez notre équipe d'orientation pour vous aider dans votre choix de filière.</p>
+            </div>
+            <div class="col-lg-5">
+                <a href="#" class="btn btn-primary rounded py-3 px-4 btn-block">Nous contacter</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

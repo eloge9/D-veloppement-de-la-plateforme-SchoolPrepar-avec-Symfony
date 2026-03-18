@@ -1,26 +1,29 @@
 <div class="mr-auto">
     <nav class="site-navigation position-relative text-right" role="navigation">
         <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-            <li class="active">
-                <a href="index.html" class="nav-link text-left">Home</a>
+            <li class="{% if app.request.attributes.get('_route') == 'app_home' %}active{% endif %}">
+                <a href="{{ path('app_home') }}" class="nav-link text-left">Home</a>
             </li>
-            <li class="has-children">
-                <a href="about.html" class="nav-link text-left">About Us</a>
+            <li class="has-children {% if app.request.attributes.get('_route') starts with 'app_about' %}active{% endif %}">
+                <a href="#" class="nav-link text-left">About Us</a>
                 <ul class="dropdown">
-                    <li><a href="teachers.html">Our Teachers</a></li>
-                    <li><a href="about.html">Our School</a></li>
+                    <li><a href="#">Our Teachers</a></li>
+                    <li><a href="#">Our School</a></li>
                 </ul>
             </li>
-            <li>
-                <a href="admissions.html" class="nav-link text-left">Admissions</a>
+            <li class="{% if app.request.attributes.get('_route') == 'app_admissions' %}active{% endif %}">
+                <a href="#" class="nav-link text-left">Admissions</a>
             </li>
-            <li>
-                <a href="courses.html" class="nav-link text-left">Courses</a>
+            <li class="{% if app.request.attributes.get('_route') == 'app_filieres' %}active{% endif %}">
+                <a href="{{ path('app_filieres') }}" class="nav-link text-left">Filieres</a>
             </li>
-            <li>
-                <a href="contact.html" class="nav-link text-left">Contact</a>
+            <li class="{% if app.request.attributes.get('_route') == 'app_etablissements' %}active{% endif %}">
+                <a href="{{ path('app_etablissements') }}" class="nav-link text-left">Etablissements</a>
             </li>
-        </ul>                                                                                                                                                                                                                                                                                          </ul>
+            <li class="{% if app.request.attributes.get('_route') == 'app_contact' %}active{% endif %}">
+                <a href="#" class="nav-link text-left">Contact</a>
+            </li>
+        </ul>
     </nav>
 
 </div>
