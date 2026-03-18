@@ -10,83 +10,83 @@
 # Front-Office Routes
 app_home:
     path: /
-    controller: App\Controller\HomeController::index
+    controller: App\Controller\Front\HomeController::index
 
 app_filieres:
     path: /filieres
-    controller: App\Controller\FiliereController::index
+    controller: App\Controller\Front\FiliereController::index
 
 app_filiere_show:
     path: /filieres/{id}
-    controller: App\Controller\FiliereController::show
+    controller: App\Controller\Front\FiliereController::show
     requirements:
         id: '\d+'
 
 app_etablissements:
     path: /etablissements
-    controller: App\Controller\EtablissementController::index
+    controller: App\Controller\Front\EtablissementController::index
 
 app_etablissement_show:
     path: /etablissements/{id}
-    controller: App\Controller\EtablissementController::show
+    controller: App\Controller\Front\EtablissementController::show
     requirements:
         id: '\d+'
 
 # Back-Office Routes
 admin_dashboard:
     path: /admin
-    controller: App\Controller\AdminDashboardController::index
+    controller: App\Controller\Admin\AdminDashboardController::index
 
 admin_filiere_index:
     path: /admin/filieres
-    controller: App\Controller\AdminFiliereController::index
+    controller: App\Controller\Admin\AdminFiliereController::index
 
 admin_filiere_new:
     path: /admin/filieres/new
-    controller: App\Controller\AdminFiliereController::new
+    controller: App\Controller\Admin\AdminFiliereController::new
 
 admin_filiere_edit:
     path: /admin/filieres/{id}/edit
-    controller: App\Controller\AdminFiliereController::edit
+    controller: App\Controller\Admin\AdminFiliereController::edit
     requirements:
         id: '\d+'
 
 admin_filiere_show:
     path: /admin/filieres/{id}
-    controller: App\Controller\AdminFiliereController::show
+    controller: App\Controller\Admin\AdminFiliereController::show
     requirements:
         id: '\d+'
 
 admin_filiere_delete:
     path: /admin/filieres/{id}/delete
-    controller: App\Controller\AdminFiliereController::delete
+    controller: App\Controller\Admin\AdminFiliereController::delete
     requirements:
         id: '\d+'
     methods: [POST]
 
 admin_etablissement_index:
     path: /admin/etablissements
-    controller: App\Controller\AdminEtablissementController::index
+    controller: App\Controller\Admin\AdminEtablissementController::index
 
 admin_etablissement_new:
     path: /admin/etablissements/new
-    controller: App\Controller\AdminEtablissementController::new
+    controller: App\Controller\Admin\AdminEtablissementController::new
 
 admin_etablissement_edit:
     path: /admin/etablissements/{id}/edit
-    controller: App\Controller\AdminEtablissementController::edit
+    controller: App\Controller\Admin\AdminEtablissementController::edit
     requirements:
         id: '\d+'
 
 admin_etablissement_show:
     path: /admin/etablissements/{id}
-    controller: App\Controller\AdminEtablissementController::show
+    controller: App\Controller\Admin\AdminEtablissementController::show
     requirements:
         id: '\d+'
 
 admin_etablissement_delete:
     path: /admin/etablissements/{id}/delete
-    controller: App\Controller\AdminEtablissementController::delete
+    controller: App\Controller\Admin\AdminEtablissementController::delete
     requirements:
         id: '\d+'
     methods: [POST]
