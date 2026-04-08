@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<title>Filiere</title>
+
+{% block body %}
+    <h1>Filiere</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ filiere.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ filiere.nom }}</td>
+            </tr>
+            <tr>
+                <th>Domaine</th>
+                <td>{{ filiere.domaine }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ filiere.description }}</td>
+            </tr>
+            <tr>
+                <th>Condition_admission</th>
+                <td>{{ filiere.conditionAdmission }}</td>
+            </tr>
+            <tr>
+                <th>Debouches</th>
+                <td>{{ filiere.debouches }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_filiere_index') }}">back to list</a>
+
+    <a href="{{ path('app_filiere_edit', {'id': filiere.id}) }}">edit</a>
+
+    {{ include('filiere/_delete_form.html.twig') }}
+{% endblock %}

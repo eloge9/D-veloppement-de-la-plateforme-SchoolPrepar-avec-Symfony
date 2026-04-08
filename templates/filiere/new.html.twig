@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<title>New Filiere</title>
+
+{% block body %}
+    <h1>Create new Filiere</h1>
+
+    {{ include('filiere/_form.html.twig') }}
+
+    <a href="{{ path('app_filiere_index') }}">back to list</a>
+{% endblock %}
