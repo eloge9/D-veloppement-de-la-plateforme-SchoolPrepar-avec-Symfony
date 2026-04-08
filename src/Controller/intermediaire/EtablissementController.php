@@ -1,6 +1,5 @@
 <?php
 
-namespace App\Controller;
 
 use App\Entity\Etablissement;
 use App\Form\EtablissementType;
@@ -71,7 +70,7 @@ final class EtablissementController extends AbstractController
     #[Route('/{id}', name: 'app_etablissement_delete', methods: ['POST'])]
     public function delete(Request $request, Etablissement $etablissement, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$etablissement->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $etablissement->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($etablissement);
             $entityManager->flush();
         }

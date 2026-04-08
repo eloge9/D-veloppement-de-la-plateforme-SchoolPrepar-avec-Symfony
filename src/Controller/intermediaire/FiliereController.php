@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+
 
 use App\Entity\Filiere;
 use App\Form\FiliereType;
@@ -71,7 +71,7 @@ final class FiliereController extends AbstractController
     #[Route('/{id}', name: 'app_filiere_delete', methods: ['POST'])]
     public function delete(Request $request, Filiere $filiere, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$filiere->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $filiere->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($filiere);
             $entityManager->flush();
         }

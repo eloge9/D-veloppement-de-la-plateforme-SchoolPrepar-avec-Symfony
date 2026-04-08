@@ -24,14 +24,13 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>#</th>
                             <th>Nom</th>
-                            <th>Adresse</th>
-                            <th>Téléphone</th>
-                            <th>Email</th>
-                            <th>Site Web</th>
-                            <th>Statut</th>
-                            <th>Actions</th>
+                            <th>Addresse</th>
+                            <th>Contact</th>
+                            <th>Ville</th>
+                            <th>Site_web</th>
+                            <th>actions</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -49,11 +48,11 @@
                     <tbody>
                         {% for etablissement in etablissements %}
                         <tr>
-                            <td>{{ etablissement.id }}</td>
+                            <td>{{ loop.index }}</td>
                             <td>{{ etablissement.nom }}</td>
-                            <td>{{ etablissement.adresse|default('Non spécifiée') }}</td>
-                            <td>{{ etablissement.telephone|default('Non spécifié') }}</td>
-                            <td>{{ etablissement.email|default('Non spécifié') }}</td>
+                            <td>{{ etablissement.addresse|default('Non spécifiée') }}</td>
+                            <td>{{ etablissement.contact|default('Non spécifié') }}</td>
+                            <td>{{ etablissement.ville|default('Non spécifié') }}</td>
                             <td>
                                 {% if etablissement.siteWeb %}
                                 <a href="{{ etablissement.siteWeb }}" target="_blank" class="btn btn-sm btn-outline-info">
@@ -64,22 +63,18 @@
                                 {% endif %}
                             </td>
                             <td>
-                                {% if etablissement.active %}
-                                    <span class="badge badge-success">Actif</span>
-                                {% else %}
-                                    <span class="badge badge-secondary">Inactif</span>
-                                {% endif %}
-                            </td>
-                            <td>
                                 <a href="{{ path('admin_etablissement_show', {'id': etablissement.id}) }}" class="btn btn-info btn-sm">
                                     <i class="fas fa-eye"></i>
                                 </a>
                                 <a href="{{ path('admin_etablissement_edit', {'id': etablissement.id}) }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <button class="btn btn-danger btn-sm" onclick="confirmDelete({{ etablissement.id }})">
-                                    <i class="fas fa-trash"></i>
-                                </button>
+                                <form method="post" action="{{ path('admin_etablissement_delete', {'id': etablissement.id}) }}" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer cet établissement ?');">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ etablissement.id) }}">
+                                    <button class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         {% endfor %}
