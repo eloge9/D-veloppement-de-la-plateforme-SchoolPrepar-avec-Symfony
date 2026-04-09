@@ -1,0 +1,58 @@
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        {{ form_label(form.nom, 'Nom de la filière', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control' ~ (form.nom.vars.errors|length ? ' is-invalid' : '')}}) }}
+        {{ form_errors(form.nom, {'attr': {'class': 'invalid-feedback'}}) }}
+    </div>
+    
+    <div class="col-md-6 mb-3">
+        {{ form_label(form.domaine, 'Domaine', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.domaine, {'attr': {'class': 'form-control' ~ (form.domaine.vars.errors|length ? ' is-invalid' : '')}}) }}
+        {{ form_errors(form.domaine, {'attr': {'class': 'invalid-feedback'}}) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        {{ form_label(form.etablissement, 'Établissement', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.etablissement, {'attr': {'class': 'form-control' ~ (form.etablissement.vars.errors|length ? ' is-invalid' : '')}}) }}
+        {{ form_errors(form.etablissement, {'attr': {'class': 'invalid-feedback'}}) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 mb-3">
+        {{ form_label(form.description, 'Description', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control' ~ (form.description.vars.errors|length ? ' is-invalid' : ''), 'rows': 4}}) }}
+        {{ form_errors(form.description, {'attr': {'class': 'invalid-feedback'}}) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 mb-3">
+        {{ form_label(form.condition_admission, 'Conditions d\'admission', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.condition_admission, {'attr': {'class': 'form-control' ~ (form.condition_admission.vars.errors|length ? ' is-invalid' : ''), 'rows': 4}}) }}
+        {{ form_errors(form.condition_admission, {'attr': {'class': 'invalid-feedback'}}) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 mb-3">
+        {{ form_label(form.debouches, 'Débouchés', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.debouches, {'attr': {'class': 'form-control' ~ (form.debouches.vars.errors|length ? ' is-invalid' : ''), 'rows': 4}}) }}
+        {{ form_errors(form.debouches, {'attr': {'class': 'invalid-feedback'}}) }}
+    </div>
+</div>
+
+<div class="d-flex justify-content-between">
+    <a href="{{ path('admin_filiere_index') }}" class="btn btn-secondary">
+        <i class="fas fa-times"></i> Annuler
+    </a>
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-save"></i> {{ button_label|default('Enregistrer') }}
+    </button>
+</div>
+
+{{ form_end(form) }}

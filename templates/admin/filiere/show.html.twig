@@ -1,0 +1,76 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Détails Filière - SchoolPrepar Admin{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Détails de la Filière</h1>
+        <div>
+            <a href="{{ path('admin_filiere_edit', {'id': filiere.id}) }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+                <i class="fas fa-edit fa-sm text-white-50"></i> Modifier
+            </a>
+            <a href="{{ path('admin_filiere_index') }}" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
+                <i class="fas fa-arrow-left fa-sm text-white-50"></i> Retour à la liste
+            </a>
+        </div>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Informations de la filière</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 150px;">ID</th>
+                            <td>{{ filiere.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ filiere.nom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Domaine</th>
+                            <td>{{ filiere.domaine }}</td>
+                        </tr>
+                        <tr>
+                            <th>Établissement</th>
+                            <td>
+                                {% if filiere.etablissement %}
+                                    <a href="{{ path('admin_etablissement_show', {'id': filiere.etablissement.id}) }}" class="btn btn-sm btn-outline-info">
+                                        {{ filiere.etablissement.nom }}
+                                    </a>
+                                {% else %}
+                                    <span class="text-muted">Non spécifié</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 150px;">Description</th>
+                            <td>{{ filiere.description|default('Non spécifiée')|nl2br }}</td>
+                        </tr>
+                        <tr>
+                            <th>Conditions d'admission</th>
+                            <td>{{ filiere.conditionAdmission|nl2br }}</td>
+                        </tr>
+                        <tr>
+                            <th>Débouchés</th>
+                            <td>{{ filiere.debouches|default('Non spécifiés')|nl2br }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -32,7 +32,8 @@ class AdminFiliereController extends AbstractController
             $entityManager->persist($filiere);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_filiere_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Filière créée avec succès.');
+            return $this->redirectToRoute('admin_filiere_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/filiere/new.html.twig', [
@@ -50,7 +51,8 @@ class AdminFiliereController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_filiere_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Filière modifiée avec succès.');
+            return $this->redirectToRoute('admin_filiere_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/filiere/edit.html.twig', [
