@@ -90,3 +90,35 @@ admin_etablissement_delete:
     requirements:
         id: '\d+'
     methods: [POST]
+
+# Utilisateurs
+admin_utilisateur_index:
+    path: /admin/utilisateurs
+    controller: App\Controller\Admin\AdminUserController::index
+
+admin_utilisateur_by_role:
+    path: /admin/utilisateurs/role/{role}
+    controller: App\Controller\Admin\AdminUserController::indexByRole
+
+admin_utilisateur_new:
+    path: /admin/utilisateurs/new
+    controller: App\Controller\Admin\AdminUserController::new
+
+admin_utilisateur_show:
+    path: /admin/utilisateurs/{id}
+    controller: App\Controller\Admin\AdminUserController::show
+    requirements:
+        id: '\d+'
+
+admin_utilisateur_edit:
+    path: /admin/utilisateurs/{id}/edit
+    controller: App\Controller\Admin\AdminUserController::edit
+    requirements:
+        id: '\d+'
+
+admin_utilisateur_delete:
+    path: /admin/utilisateurs/{id}/delete
+    controller: App\Controller\Admin\AdminUserController::delete
+    requirements:
+        id: '\d+'
+    methods: [POST]

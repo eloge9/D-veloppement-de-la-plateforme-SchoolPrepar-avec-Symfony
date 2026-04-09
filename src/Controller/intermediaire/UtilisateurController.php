@@ -1,6 +1,6 @@
 <?php
 
-
+namespace App\Controller\intermediaire;
 
 use App\Entity\Utilisateur;
 use App\Form\UtilisateurType;

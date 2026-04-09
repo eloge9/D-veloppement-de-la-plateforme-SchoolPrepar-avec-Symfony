@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-
 class AdminEtablissementController extends AbstractController
 {
     #[Route('/admin/etablissements', name: 'admin_etablissement_index', methods: ['GET'])]
@@ -65,7 +64,6 @@ class AdminEtablissementController extends AbstractController
     #[Route('/admin/etablissements/{id}', name: 'admin_etablissement_show', requirements: ['id' => '\d+'], methods: ['GET'])]
     public function show(Etablissement $etablissement): Response
     {
-        // Page de détail d'un établissement
         return $this->render('admin/etablissement/show.html.twig', [
             'etablissement' => $etablissement,
         ]);
@@ -77,8 +75,9 @@ class AdminEtablissementController extends AbstractController
         if ($this->isCsrfTokenValid('delete' . $etablissement->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($etablissement);
             $entityManager->flush();
-            $this->addFlash('success', 'Établissement supprimé avec succès.');
         }
+
+        $this->addFlash('success', 'Établissement supprimé avec succès.');
 
         return $this->redirectToRoute('admin_etablissement_index', [], Response::HTTP_SEE_OTHER);
     }

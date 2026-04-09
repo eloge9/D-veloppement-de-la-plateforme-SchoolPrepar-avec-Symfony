@@ -1,46 +1,78 @@
-<!DOCTYPE html>
+{% extends 'admin/base.html.twig' %}
 
-<title>Utilisateur</title>
+{% block title %}Détails Utilisateur - SchoolPrepar Admin{% endblock %}
 
-{% block body %}
-    <h1>Utilisateur</h1>
+{% block content %}
+<div class="container-fluid">
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ utilisateur.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ utilisateur.nom }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ utilisateur.email }}</td>
-            </tr>
-            <tr>
-                <th>Mot_de_passe</th>
-                <td>{{ utilisateur.motDePasse }}</td>
-            </tr>
-            <tr>
-                <th>Role</th>
-                <td>{{ utilisateur.role }}</td>
-            </tr>
-            <tr>
-                <th>Date_inscription</th>
-                <td>{{ utilisateur.dateInscription ? utilisateur.dateInscription|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Date_modification</th>
-                <td>{{ utilisateur.dateModification ? utilisateur.dateModification|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Détails de l'Utilisateur</h1>
+        <div>
+            <a href="{{ path('admin_utilisateur_edit', {'id': utilisateur.id}) }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">
+                <i class="fas fa-edit fa-sm text-white-50"></i> Modifier
+            </a>
+            <a href="{{ path('admin_utilisateur_index') }}" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
+                <i class="fas fa-arrow-left fa-sm text-white-50"></i> Retour à la liste
+            </a>
+        </div>
+    </div>
 
-    <a href="{{ path('app_utilisateur_index') }}">back to list</a>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Informations de l'utilisateur</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 150px;">ID</th>
+                            <td>{{ utilisateur.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom complet</th>
+                            <td>{{ utilisateur.nom }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>
+                                <a href="mailto:{{ utilisateur.email }}" class="btn btn-sm btn-outline-info">
+                                    <i class="fas fa-envelope"></i> {{ utilisateur.email }}
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Rôle</th>
+                            <td>
+                                <span class="badge badge-{{ utilisateur.role == 'admin' ? 'danger' : (utilisateur.role == 'conseiller' ? 'warning' : 'info') }}">
+                                    {{ utilisateur.role == 'conseiller' ? 'CONSEILLER' : (utilisateur.role == 'eleve' ? 'ÉLÈVE' : 'ADMIN') }}
+                                </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th style="width: 150px;">Date d'inscription</th>
+                            <td>{{ utilisateur.dateInscription ? utilisateur.dateInscription|date('d/m/Y H:i') : 'N/A' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date de modification</th>
+                            <td>{{ utilisateur.dateModification ? utilisateur.dateModification|date('d/m/Y H:i') : 'Non modifié' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Mot de passe</th>
+                            <td>
+                                <span class="text-muted">******** (protégé)</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('app_utilisateur_edit', {'id': utilisateur.id}) }}">edit</a>
-
-    {{ include('utilisateur/_delete_form.html.twig') }}
+</div>
 {% endblock %}

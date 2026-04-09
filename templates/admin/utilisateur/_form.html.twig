@@ -1,4 +1,40 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        {{ form_label(form.nom, 'Nom complet', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control' ~ (form.nom.vars.errors|length ? ' is-invalid' : '')}}) }}
+        {{ form_errors(form.nom, {'attr': {'class': 'invalid-feedback'}}) }}
+    </div>
+    
+    <div class="col-md-6 mb-3">
+        {{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.email, {'attr': {'class': 'form-control' ~ (form.email.vars.errors|length ? ' is-invalid' : '')}}) }}
+        {{ form_errors(form.email, {'attr': {'class': 'invalid-feedback'}}) }}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        {{ form_label(form.mot_de_passe, 'Mot de passe', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.mot_de_passe, {'attr': {'class': 'form-control' ~ (form.mot_de_passe.vars.errors|length ? ' is-invalid' : '')}}) }}
+        {{ form_errors(form.mot_de_passe, {'attr': {'class': 'invalid-feedback'}}) }}
+    </div>
+    
+    <div class="col-md-6 mb-3">
+        {{ form_label(form.role, 'Rôle', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.role, {'attr': {'class': 'form-control' ~ (form.role.vars.errors|length ? ' is-invalid' : '')}}) }}
+        {{ form_errors(form.role, {'attr': {'class': 'invalid-feedback'}}) }}
+    </div>
+</div>
+
+<div class="d-flex justify-content-between">
+    <a href="{{ path('admin_utilisateur_index') }}" class="btn btn-secondary">
+        <i class="fas fa-times"></i> Annuler
+    </a>
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-save"></i> {{ button_label|default('Enregistrer') }}
+    </button>
+</div>
+
 {{ form_end(form) }}

@@ -1,13 +1,26 @@
-<!DOCTYPE html>
+{% extends 'admin/base.html.twig' %}
 
-<title>Edit Utilisateur</title>
+{% block title %}Modifier Utilisateur - SchoolPrepar Admin{% endblock %}
 
-{% block body %}
-    <h1>Edit Utilisateur</h1>
+{% block content %}
+<div class="container-fluid">
 
-    {{ include('utilisateur/_form.html.twig', {'button_label': 'Update'}) }}
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Modifier Utilisateur</h1>
+        <a href="{{ path('admin_utilisateur_index') }}" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
+            <i class="fas fa-arrow-left fa-sm text-white-50"></i> Retour à la liste
+        </a>
+    </div>
 
-    <a href="{{ path('app_utilisateur_index') }}">back to list</a>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Modifier les informations de l'utilisateur</h6>
+        </div>
+        <div class="card-body">
+            {{ include('admin/utilisateur/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        </div>
+    </div>
 
-    {{ include('utilisateur/_delete_form.html.twig') }}
+</div>
 {% endblock %}
