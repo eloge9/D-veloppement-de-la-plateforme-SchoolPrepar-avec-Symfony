@@ -35,6 +35,18 @@
 
                 {% include 'admin/partials/nav.html.twig' %}
 
+                <!-- Flash Messages -->
+                {% for type, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ type == 'success' ? 'success' : 'danger' }} alert-dismissible fade show m-3" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+
                 {% block content %}{% endblock %}
 
             </div>

@@ -33,7 +33,8 @@ class AdminEtablissementController extends AbstractController
             $entityManager->persist($etablissement);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_etablissement_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Établissement créé avec succès.');
+            return $this->redirectToRoute('admin_etablissement_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/etablissement/new.html.twig', [
@@ -51,7 +52,8 @@ class AdminEtablissementController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_etablissement_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Établissement modifié avec succès.');
+            return $this->redirectToRoute('admin_etablissement_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('admin/etablissement/edit.html.twig', [
@@ -75,6 +77,7 @@ class AdminEtablissementController extends AbstractController
         if ($this->isCsrfTokenValid('delete' . $etablissement->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($etablissement);
             $entityManager->flush();
+            $this->addFlash('success', 'Établissement supprimé avec succès.');
         }
 
         return $this->redirectToRoute('admin_etablissement_index', [], Response::HTTP_SEE_OTHER);

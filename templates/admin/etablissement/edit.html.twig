@@ -1,13 +1,13 @@
 {% extends 'admin/base.html.twig' %}
 
-{% block title %}Nouvel Établissement - SchoolPrepar Admin{% endblock %}
+{% block title %}Modifier Établissement - SchoolPrepar Admin{% endblock %}
 
 {% block content %}
 <div class="container-fluid">
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Nouvel Établissement</h1>
+        <h1 class="h3 mb-0 text-gray-800">Modifier Établissement</h1>
         <a href="{{ path('admin_etablissement_index') }}" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm">
             <i class="fas fa-arrow-left fa-sm text-white-50"></i> Retour à la liste
         </a>
@@ -15,10 +15,10 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Informations de l'établissement</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Modifier les informations de l'établissement</h6>
         </div>
         <div class="card-body">
-            {{ include('admin/etablissement/_form.html.twig') }}
+            {{ include('admin/etablissement/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
         </div>
     </div>
 

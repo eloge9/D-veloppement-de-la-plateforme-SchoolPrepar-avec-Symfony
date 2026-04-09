@@ -24,13 +24,13 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>ID</th>
                             <th>Nom</th>
-                            <th>Addresse</th>
-                            <th>Contact</th>
+                            <th>Adresse</th>
                             <th>Ville</th>
-                            <th>Site_web</th>
-                            <th>actions</th>
+                            <th>Contact</th>
+                            <th>Site Web</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -38,17 +38,16 @@
                             <th>ID</th>
                             <th>Nom</th>
                             <th>Adresse</th>
-                            <th>Téléphone</th>
-                            <th>Email</th>
+                            <th>Ville</th>
+                            <th>Contact</th>
                             <th>Site Web</th>
-                            <th>Statut</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         {% for etablissement in etablissements %}
                         <tr>
-                            <td>{{ loop.index }}</td>
+                            <td>{{ etablissement.id }}</td>
                             <td>{{ etablissement.nom }}</td>
                             <td>{{ etablissement.addresse|default('Non spécifiée') }}</td>
                             <td>{{ etablissement.contact|default('Non spécifié') }}</td>
