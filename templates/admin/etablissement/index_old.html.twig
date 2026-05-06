@@ -25,7 +25,6 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Image</th>
                             <th>Nom</th>
                             <th>Adresse</th>
                             <th>Ville</th>
@@ -37,7 +36,6 @@
                     <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Image</th>
                             <th>Nom</th>
                             <th>Adresse</th>
                             <th>Ville</th>
@@ -50,24 +48,17 @@
                         {% for etablissement in etablissements %}
                         <tr>
                             <td>{{ etablissement.id }}</td>
-                            <td>
-                                {% if etablissement.image %}
-                                    <img src="{{ asset('uploads/etablissements/' ~ etablissement.image) }}" alt="{{ etablissement.nom }}" class="img-thumbnail" style="max-height: 50px;">
-                                {% else %}
-                                    <span class="text-muted">Pas d'image</span>
-                                {% endif %}
-                            </td>
                             <td>{{ etablissement.nom }}</td>
-                            <td>{{ etablissement.addresse }}</td>
-                            <td>{{ etablissement.ville }}</td>
-                            <td>{{ etablissement.contact }}</td>
+                            <td>{{ etablissement.addresse|default('Non spécifiée') }}</td>
+                            <td>{{ etablissement.contact|default('Non spécifié') }}</td>
+                            <td>{{ etablissement.ville|default('Non spécifié') }}</td>
                             <td>
                                 {% if etablissement.siteWeb %}
-                                    <a href="{{ etablissement.siteWeb }}" target="_blank" class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-external-link-alt"></i> Site
-                                    </a>
+                                <a href="{{ etablissement.siteWeb }}" target="_blank" class="btn btn-sm btn-outline-info">
+                                    <i class="fas fa-external-link-alt"></i> Site
+                                </a>
                                 {% else %}
-                                    <span class="text-muted">Non spécifié</span>
+                                <span class="text-muted">Non spécifié</span>
                                 {% endif %}
                             </td>
                             <td>
@@ -77,9 +68,9 @@
                                 <a href="{{ path('admin_etablissement_edit', {'id': etablissement.id}) }}" class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form method="post" action="{{ path('admin_etablissement_delete', {'id': etablissement.id}) }}" style="display: inline;">
+                                <form method="post" action="{{ path('admin_etablissement_delete', {'id': etablissement.id}) }}" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer cet établissement ?');">
                                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ etablissement.id) }}">
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet établissement ?')">
+                                    <button class="btn btn-danger btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
@@ -102,4 +93,54 @@
     </div>
 
 </div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirmation de suppression</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Êtes-vous sûr de vouloir supprimer cet établissement ? Cette action est irréversible.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                <button class="btn btn-danger" id="confirmDeleteBtn">Supprimer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+<!-- Page level plugins -->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+$(document).ready(function() {
+    $('#dataTable').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+        },
+        "pageLength": 25,
+        "responsive": true
+    });
+});
+
+function confirmDelete(id) {
+    $('#deleteModal').modal('show');
+    $('#confirmDeleteBtn').data('id', id);
+}
+
+$('#confirmDeleteBtn').click(function() {
+    var id = $(this).data('id');
+    window.location.href = '/admin/etablissement/delete/' + id;
+});
+</script>
 {% endblock %}
