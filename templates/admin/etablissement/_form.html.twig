@@ -34,6 +34,21 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-12 mb-3">
+        {{ form_label(form.imageFile, 'Image', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.imageFile, {'attr': {'class': 'form-control' ~ (form.imageFile.vars.errors|length ? ' is-invalid' : '')}}) }}
+        {{ form_errors(form.imageFile, {'attr': {'class': 'invalid-feedback'}}) }}
+        <small class="form-text text-muted">Formats acceptés : JPG, PNG. Taille maximale : 2Mo.</small>
+        {% if etablissement.image %}
+            <div class="mt-2">
+                <small class="text-muted">Image actuelle :</small><br>
+                <img src="{{ asset('uploads/etablissements/' ~ etablissement.image) }}" alt="{{ etablissement.nom }}" class="img-thumbnail" style="max-height: 100px;">
+            </div>
+        {% endif %}
+    </div>
+</div>
+
 <div class="d-flex justify-content-between">
     <a href="{{ path('admin_etablissement_index') }}" class="btn btn-secondary">
         <i class="fas fa-times"></i> Annuler

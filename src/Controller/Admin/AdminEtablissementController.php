@@ -7,9 +7,11 @@ use App\Form\EtablissementType;
 use App\Repository\EtablissementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AdminEtablissementController extends AbstractController
 {
@@ -22,13 +24,32 @@ class AdminEtablissementController extends AbstractController
     }
 
     #[Route('/admin/etablissements/new', name: 'admin_etablissement_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $etablissement = new Etablissement();
         $form = $this->createForm(EtablissementType::class, $etablissement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Gestion de l'upload d'image
+            $imageFile = $form->get('imageFile')->getData();
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('uploads_directory').'/etablissements',
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // Gérer l'erreur si nécessaire
+                }
+
+                $etablissement->setImage($newFilename);
+            }
+
             $entityManager->persist($etablissement);
             $entityManager->flush();
 
@@ -43,12 +64,31 @@ class AdminEtablissementController extends AbstractController
     }
 
     #[Route('/admin/etablissements/{id}/edit', name: 'admin_etablissement_edit', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
-    public function edit(Request $request, Etablissement $etablissement, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Etablissement $etablissement, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(EtablissementType::class, $etablissement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Gestion de l'upload d'image
+            $imageFile = $form->get('imageFile')->getData();
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
+
+                try {
+                    $imageFile->move(
+                        $this->getParameter('uploads_directory').'/etablissements',
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // Gérer l'erreur si nécessaire
+                }
+
+                $etablissement->setImage($newFilename);
+            }
+
             $entityManager->flush();
 
             $this->addFlash('success', 'Établissement modifié avec succès.');

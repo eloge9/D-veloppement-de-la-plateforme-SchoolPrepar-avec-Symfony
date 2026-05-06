@@ -30,6 +30,9 @@ class Etablissement
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $site_web = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
     /**
      * @var Collection<int, Filiere>
      */
@@ -102,6 +105,18 @@ class Etablissement
     public function setSiteWeb(?string $site_web): static
     {
         $this->site_web = $site_web;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

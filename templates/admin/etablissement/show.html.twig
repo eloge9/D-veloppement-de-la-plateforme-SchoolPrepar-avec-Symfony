@@ -24,7 +24,15 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-md-6">
+                {% if etablissement.image %}
+                <div class="col-md-4">
+                    <div class="text-center">
+                        <h6 class="mb-3">Image</h6>
+                        <img src="{{ asset('uploads/etablissements/' ~ etablissement.image) }}" alt="{{ etablissement.nom }}" class="img-fluid rounded shadow" style="max-height: 200px;">
+                    </div>
+                </div>
+                {% endif %}
+                <div class="col-md-{{ etablissement.image ? '8' : '12' }}">
                     <table class="table table-bordered">
                         <tr>
                             <th style="width: 150px;">ID</th>

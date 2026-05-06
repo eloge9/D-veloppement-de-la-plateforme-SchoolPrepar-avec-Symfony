@@ -29,6 +29,9 @@ class Filiere
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $debouches = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
     #[ORM\ManyToOne(inversedBy: 'filieres')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Etablissement $etablissement = null;
@@ -94,6 +97,18 @@ class Filiere
     public function setDebouches(?string $debouches): static
     {
         $this->debouches = $debouches;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }
