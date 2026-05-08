@@ -9,7 +9,9 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
-                    <h1>SchoolPrepar University</h1>
+                    <h1>SchoolPrepar - Votre Orientation Réussie</h1>
+                    <p class="lead text-white mt-3">Trouvez votre voie avec l'accompagnement personnalisé des meilleurs
+                        conseillers d'orientation</p>
                 </div>
             </div>
         </div>
@@ -19,7 +21,9 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
-                    <h1>You Can Learn Anything</h1>
+                    <h1>Découvrez Votre Future Carrière</h1>
+                    <p class="lead text-white mt-3">Explorez les filières, les établissements et construisez votre
+                        projet professionnel avec confiance</p>
                 </div>
             </div>
         </div>
@@ -34,7 +38,7 @@
         <div class="row mb-5 justify-content-center text-center">
             <div class="col-lg-4 mb-5">
                 <h2 class="section-title-underline mb-5">
-                    <span>Why SchoolPrepar Works</span>
+                    <span>Nos Services d'Orientation</span>
                 </h2>
             </div>
         </div>
@@ -46,9 +50,10 @@
                         <span class="flaticon-mortarboard text-white"></span>
                     </div>
                     <div class="feature-1-content">
-                        <h2>Personalize Learning</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit morbi hendrerit elit</p>
-                        <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
+                        <h2>Orientation Personnalisée</h2>
+                        <p>Un accompagnement sur mesure avec nos conseillers d'orientation experts pour trouver la
+                            filière qui vous correspond</p>
+                        <p><a href="#" class="btn btn-primary px-4 rounded-0">Découvrir</a></p>
                     </div>
                 </div>
             </div>
@@ -58,9 +63,10 @@
                         <span class="flaticon-school-material text-white"></span>
                     </div>
                     <div class="feature-1-content">
-                        <h2>Trusted Courses</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit morbi hendrerit elit</p>
-                        <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
+                        <h2>Tests d'Orientation</h2>
+                        <p>Évaluez vos compétences et vos centres d'intérêt avec nos tests psychotechniques validés par
+                            des professionnels</p>
+                        <p><a href="#" class="btn btn-primary px-4 rounded-0">Commencer</a></p>
                     </div>
                 </div>
             </div>
@@ -70,9 +76,10 @@
                         <span class="flaticon-library text-white"></span>
                     </div>
                     <div class="feature-1-content">
-                        <h2>Tools for Students</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit morbi hendrerit elit</p>
-                        <p><a href="#" class="btn btn-primary px-4 rounded-0">Learn More</a></p>
+                        <h2>Mentorat Éducatif</h2>
+                        <p>Bénéficiez de l'expérience de professionnels et d'étudiants qui partagent leur parcours et
+                            leurs conseils</p>
+                        <p><a href="#" class="btn btn-primary px-4 rounded-0">En savoir plus</a></p>
                     </div>
                 </div>
             </div>
@@ -88,9 +95,10 @@
         <div class="row mb-5 justify-content-center text-center">
             <div class="col-lg-6 mb-5">
                 <h2 class="section-title-underline mb-3">
-                    <span>Popular Filieres</span>
+                    <span>Filières Populaires</span>
                 </h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, id?</p>
+                <p>Découvrez les filières les plus recherchées par nos étudiants et trouvez celle qui correspond à vos
+                    aspirations</p>
             </div>
         </div>
 
@@ -101,9 +109,12 @@
                     <div class="course-1-item">
                         <figure class="thumnail">
                             <a href="{{ path('app_filiere_show', {'id': filiere.id}) }}">
-                                <img src="{{ asset('assets/images/course_' ~ random(1, 6) ~ '.jpg') }}" alt="{{ filiere.nom }}" class="img-fluid">
+                                <img src="{{ asset('assets/images/course_' ~ random(1, 6) ~ '.jpg') }}"
+                                    alt="{{ filiere.nom }}" class="img-fluid">
                             </a>
-                            <div class="category"><h3>{{ filiere.nom }}</h3></div>
+                            <div class="category">
+                                <h3>{{ filiere.nom }}</h3>
+                            </div>
                         </figure>
                         <div class="course-1-content pb-4">
                             <h2>{{ filiere.description }}</h2>
@@ -115,7 +126,8 @@
                                 <span class="icon-star2 text-warning"></span>
                             </div>
                             <p class="desc mb-4">{{ filiere.description|slice(0, 100) }}...</p>
-                            <p><a href="{{ path('app_filiere_show', {'id': filiere.id}) }}" class="btn btn-primary rounded-0 px-4">Voir la filière</a></p>
+                            <p><a href="{{ path('app_filiere_show', {'id': filiere.id}) }}"
+                                    class="btn btn-primary rounded-0 px-4">Voir la filière</a></p>
                         </div>
                     </div>
                     {% else %}
@@ -139,13 +151,20 @@
         <div class="row">
             <div class="col-lg-4">
                 <h2 class="section-title-underline style-2">
-                    <span>About Our University</span>
+                    <span>À Propos de SchoolPrepar</span>
                 </h2>
             </div>
             <div class="col-lg-8">
-                <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem nesciunt quaerat ad reiciendis perferendis voluptate fugiat sunt fuga error totam.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus assumenda omnis tempora ullam alias amet eveniet voluptas, incidunt quasi aut officiis porro ad, expedita saepe necessitatibus rem debitis architecto dolore? Nam omnis sapiente placeat blanditiis voluptas dignissimos, itaque fugit a laudantium adipisci dolorem enim ipsum cum molestias? Quod quae molestias modi fugiat quisquam. Eligendi recusandae officiis debitis quas beatae aliquam?</p>
-                <p><a href="#">Read more</a></p>
+                <p class="lead">SchoolPrepar est la plateforme leader de l'orientation scolaire et professionnelle en
+                    France, accompagnant chaque année des milliers d'étudiants vers leur voie de réussite.</p>
+                <p>Née de la conviction que chaque jeune mérite un accompagnement personnalisé pour faire les bons choix
+                    d'orientation, SchoolPrepar met en relation les étudiants avec des conseillers d'orientation
+                    expérimentés, des mentors professionnels et des ressources éducatives de qualité. Notre approche
+                    innovante combine technologies modernes et expertise humaine pour offrir une expérience unique.</p>
+                <p>Grâce à notre réseau de partenaires éducatifs et professionnels, nous proposons un accès direct aux
+                    informations sur les filières, les établissements et les débouchés professionnels. Notre mission :
+                    vous donner les clés pour construire votre avenir avec confiance et sérénité.</p>
+                <p><a href="#">En savoir plus sur notre mission</a></p>
             </div>
         </div>
     </div>
@@ -157,7 +176,7 @@
         <div class="row mb-5">
             <div class="col-lg-4">
                 <h2 class="section-title-underline">
-                    <span>Testimonials</span>
+                    <span>Témoignages</span>
                 </h2>
             </div>
         </div>
@@ -169,12 +188,14 @@
                 <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
                     <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image" class="img-fluid mr-3">
                     <div>
-                        <h3>Allison Holmes</h3>
-                        <span>Designer</span>
+                        <h3>Marie Dubois</h3>
+                        <span>Étudiante en Informatique</span>
                     </div>
                 </div>
                 <div>
-                    <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
+                    <p>&ldquo;SchoolPrepar m'a aidée à trouver ma voie. Grâce aux tests d'orientation et aux conseils
+                        personnalisés, j'ai découvert la filière informatique qui me passionne aujourd'hui. Je
+                        recommande vivement !&rdquo;</p>
                 </div>
             </div>
 
@@ -182,12 +203,13 @@
                 <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
                     <img src="{{ asset('assets/images/person_2.jpg') }}" alt="Image" class="img-fluid mr-3">
                     <div>
-                        <h3>Allison Holmes</h3>
-                        <span>Designer</span>
+                        <h3>Thomas Martin</h3>
+                        <span>Parent d'élève</span>
                     </div>
                 </div>
                 <div>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
+                    <p>En tant que parent, je cherchais un accompagnement sérieux pour mon fils. SchoolPrepar a dépassé
+                        nos attentes avec des conseillers compétents et un suivi régulier.</p>
                 </div>
             </div>
 
@@ -195,12 +217,13 @@
                 <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
                     <img src="{{ asset('assets/images/person_4.jpg') }}" alt="Image" class="img-fluid mr-3">
                     <div>
-                        <h3>Allison Holmes</h3>
-                        <span>Designer</span>
+                        <h3>Sophie Bernard</h3>
+                        <span>Conseillère d'orientation</span>
                     </div>
                 </div>
                 <div>
-                    <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
+                    <p>&ldquo;Travailler avec SchoolPrepar me permet d'accompagner efficacement les jeunes dans leurs
+                        choix. La plateforme offre des outils modernes et une approche personnalisée.&rdquo;</p>
                 </div>
             </div>
 
@@ -208,12 +231,13 @@
                 <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
                     <img src="{{ asset('assets/images/person_3.jpg') }}" alt="Image" class="img-fluid mr-3">
                     <div>
-                        <h3>Allison Holmes</h3>
-                        <span>Designer</span>
+                        <h3>Lucas Petit</h3>
+                        <span>Étudiant en Médecine</span>
                     </div>
                 </div>
                 <div>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
+                    <p>Le mentorat proposé par SchoolPrepar a été décisif dans mon parcours. Échanger avec des
+                        professionnels du secteur médical m'a permis de confirmer mon choix.</p>
                 </div>
             </div>
 
@@ -221,12 +245,13 @@
                 <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
                     <img src="{{ asset('assets/images/person_2.jpg') }}" alt="Image" class="img-fluid mr-3">
                     <div>
-                        <h3>Allison Holmes</h3>
-                        <span>Designer</span>
+                        <h3>Emma Leroy</h3>
+                        <span>Ancienne élève</span>
                     </div>
                 </div>
                 <div>
-                    <p>&ldquo;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!&rdquo;</p>
+                    <p>&ldquo;Aujourd'hui ingénieure, je remercie SchoolPrepar de m'avoir guidée vers cette voie. Le
+                        programme d'orientation est complet et les résultats sont là.&rdquo;</p>
                 </div>
             </div>
 
@@ -234,12 +259,13 @@
                 <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
                     <img src="{{ asset('assets/images/person_4.jpg') }}" alt="Image" class="img-fluid mr-3">
                     <div>
-                        <h3>Allison Holmes</h3>
-                        <span>Designer</span>
+                        <h3>Nicolas Rousseau</h3>
+                        <span>Professionnel du secteur</span>
                     </div>
                 </div>
                 <div>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, mollitia. Possimus mollitia nobis libero quidem aut tempore dolore iure maiores, perferendis, provident numquam illum nisi amet necessitatibus. A, provident aperiam!</p>
+                    <p>Je collabore avec SchoolPrepar comme mentor. C'est gratifiant de partager mon expérience et
+                        d'aider les jeunes à construire leur avenir professionnel.</p>
                 </div>
             </div>
 
@@ -255,119 +281,130 @@
             <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
                 <span class="icon flaticon-mortarboard"></span>
                 <h3>Our Philosphy</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea? Dolore, amet reprehenderit.</p>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis
+                    delectus ea? Dolore, amet reprehenderit.</p>
             </div>
             <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
                 <span class="icon flaticon-school-material"></span>
                 <h3>Academics Principle</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis
+                    delectus ea?
                     Dolore, amet reprehenderit.</p>
             </div>
             <div class="col-lg-4 col-md-6 mb-5 mb-lg-0">
                 <span class="icon flaticon-library"></span>
                 <h3>Key of Success</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis delectus ea?
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis recusandae, iure repellat quis
+                    delectus ea?
                     Dolore, amet reprehenderit.</p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="news-updates">
-    <div class="container">
+<div class="container">
 
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="section-heading">
-                    <h2 class="text-black">News &amp; Updates</h2>
-                    <a href="#">Read All News</a>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="post-entry-big">
-                            <a href="#" class="img-link"><img src="{{ asset('assets/images/blog_large_1.jpg') }}" alt="Image" class="img-fluid"></a>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <a href="#">June 6, 2019</a>
-                                    <span class="mx-1">/</span>
-                                    <a href="#">Admission</a>, <a href="#">Updates</a>
-                                </div>
-                                <h3 class="post-heading"><a href="news-single.html">Campus Camping and Learning Session</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="post-entry-big horizontal d-flex mb-4">
-                            <a href="#" class="img-link mr-4"><img src="{{ asset('assets/images/blog_1.jpg') }}" alt="Image" class="img-fluid"></a>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <a href="#">June 6, 2019</a>
-                                    <span class="mx-1">/</span>
-                                    <a href="#">Admission</a>, <a href="#">Updates</a>
-                                </div>
-                                <h3 class="post-heading"><a href="news-single.html">Campus Camping and Learning Session</a></h3>
-                            </div>
-                        </div>
-
-                        <div class="post-entry-big horizontal d-flex mb-4">
-                            <a href="#" class="img-link mr-4"><img src="{{ asset('assets/images/blog_2.jpg') }}" alt="Image" class="img-fluid"></a>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <a href="#">June 6, 2019</a>
-                                    <span class="mx-1">/</span>
-                                    <a href="#">Admission</a>, <a href="#">Updates</a>
-                                </div>
-                                <h3 class="post-heading"><a href="news-single.html">Campus Camping and Learning Session</a></h3>
-                            </div>
-                        </div>
-
-                        <div class="post-entry-big horizontal d-flex mb-4">
-                            <a href="#" class="img-link mr-4"><img src="{{ asset('assets/images/blog_1.jpg') }}" alt="Image" class="img-fluid"></a>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <a href="#">June 6, 2019</a>
-                                    <span class="mx-1">/</span>
-                                    <a href="#">Admission</a>, <a href="#">Updates</a>
-                                </div>
-                                <h3 class="post-heading"><a href="news-single.html">Campus Camping and Learning Session</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="section-heading">
+                <h2 class="text-black">Actualités Éducatives</h2>
+                <a href="#">Voir toutes les actualités</a>
             </div>
-            <div class="col-lg-3">
-                <div class="section-heading">
-                    <h2 class="text-black">Campus Videos</h2>
-                    <a href="#">View All Videos</a>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="post-entry-big">
+                        <a href="#" class="img-link"><img src="{{ asset('assets/images/blog_large_1.jpg') }}"
+                                alt="Image" class="img-fluid"></a>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <a href="#">Juin 15, 2022</a>
+                                <span class="mx-1">/</span>
+                                <a href="#">Éducation</a>, <a href="#">Actualités</a>
+                            </div>
+                            <h3 class="post-heading"><a href="news-single.html">Le gouvernement annonce une réforme du
+                                    système éducatif</a></h3>
+                        </div>
+                    </div>
                 </div>
-                <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
-              <span class="play">
-                <span class="icon-play"></span>
-              </span>
-                    <img src="{{ asset('assets/images/course_5.jpg') }}" alt="Image" class="img-fluid">
-                </a>
-                <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
-                <span class="play">
-                  <span class="icon-play"></span>
-                </span>
-                    <img src="{{ asset('assets/images/course_5.jpg') }}" alt="Image" class="img-fluid">
-                </a>
+                <div class="col-lg-6">
+                    <div class="post-entry-big horizontal d-flex mb-4">
+                        <a href="#" class="img-link mr-4"><img src="{{ asset('assets/images/blog_1.jpg') }}" alt="Image"
+                                class="img-fluid"></a>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <a href="#">Mai 20, 2022</a>
+                                <span class="mx-1">/</span>
+                                <a href="#">Université</a>, <a href="#">Recherche</a>
+                            </div>
+                            <h3 class="post-heading"><a href="news-single.html">Les universités françaises figurent
+                                    parmi les meilleures au monde</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="post-entry-big horizontal d-flex mb-4">
+                        <a href="#" class="img-link mr-4"><img src="{{ asset('assets/images/blog_2.jpg') }}" alt="Image"
+                                class="img-fluid"></a>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <a href="#">Avril 10, 2022</a>
+                                <span class="mx-1">/</span>
+                                <a href="#">École</a>, <a href="#">Pédagogie</a>
+                            </div>
+                            <h3 class="post-heading"><a href="news-single.html">De nouvelles méthodes pédagogiques pour
+                                    améliorer la réussite scolaire</a></h3>
+                        </div>
+                    </div>
+
+                    <div class="post-entry-big horizontal d-flex mb-4">
+                        <a href="#" class="img-link mr-4"><img src="{{ asset('assets/images/blog_1.jpg') }}" alt="Image"
+                                class="img-fluid"></a>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <a href="#">Mars 25, 2022</a>
+                                <span class="mx-1">/</span>
+                                <a href="#">Formation</a>, <a href="#">Emploi</a>
+                            </div>
+                            <h3 class="post-heading"><a href="news-single.html">Les métiers de demain : quels sont les
+                                    secteurs les plus prometteurs ?</a></h3>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="col-lg-3">
+            <div class="section-heading">
+                <h2 class="text-black">Vidéos Éducatives</h2>
+                <a href="#">Voir toutes les vidéos</a>
+            </div>
+            <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
+                <span class="play">
+                    <span class="icon-play"></span>
+                </span>
+                <img src="{{ asset('assets/images/course_5.jpg') }}" alt="Image" class="img-fluid">
+            </a>
+            <a href="https://vimeo.com/45830194" class="video-1 mb-4" data-fancybox="" data-ratio="2">
+                <span class="play">
+                    <span class="icon-play"></span>
+                </span>
+                <img src="{{ asset('assets/images/course_5.jpg') }}" alt="Image" class="img-fluid">
+            </a>
+        </div>
     </div>
+</div>
 </div>
 
 <div class="site-section ftco-subscribe-1" style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}')">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-7">
-                <h2>Subscribe to us!</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,</p>
+                <h2>Abonnez-vous à notre newsletter !</h2>
+                <p>Recevez chaque semaine des conseils d'orientation, des actualités éducatives et des opportunités de
+                    carrière directement dans votre boîte mail.</p>
             </div>
             <div class="col-lg-5">
                 <form action="" class="d-flex">
-                    <input type="text" class="rounded form-control mr-2 py-3" placeholder="Enter your email">
-                    <button class="btn btn-primary rounded py-3 px-4" type="submit">Send</button>
+                    <input type="email" class="rounded form-control mr-2 py-3" placeholder="Votre adresse email">
+                    <button class="btn btn-primary rounded py-3 px-4" type="submit">S'abonner</button>
                 </form>
             </div>
         </div>
