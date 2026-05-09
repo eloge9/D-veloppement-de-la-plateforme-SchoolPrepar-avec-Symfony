@@ -1,5 +1,6 @@
 <?php
 
+namespace App\Controller\intermediaire;
 
 use App\Entity\Etablissement;
 use App\Form\EtablissementType;

@@ -8,7 +8,8 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Gestion des Établissements</h1>
-        <a href="{{ path('admin_etablissement_new') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+        <a href="{{ path('admin_etablissement_new') }}"
+            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
             <i class="fas fa-plus fa-sm text-white-50"></i> Nouvel Établissement
         </a>
     </div>
@@ -25,24 +26,20 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Image</th>
                             <th>Nom</th>
-                            <th>Adresse</th>
-                            <th>Ville</th>
-                            <th>Contact</th>
-                            <th>Site Web</th>
+                            <th>Email</th>
+                            <th>Rôle</th>
+                            <th>Date d'inscription</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Image</th>
                             <th>Nom</th>
-                            <th>Adresse</th>
-                            <th>Ville</th>
-                            <th>Contact</th>
-                            <th>Site Web</th>
+                            <th>Email</th>
+                            <th>Rôle</th>
+                            <th>Date d'inscription</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
@@ -50,36 +47,35 @@
                         {% for etablissement in etablissements %}
                         <tr>
                             <td>{{ etablissement.id }}</td>
-                            <td>
-                                {% if etablissement.image %}
-                                    <img src="{{ asset('uploads/etablissements/' ~ etablissement.image) }}" alt="{{ etablissement.nom }}" class="img-thumbnail" style="max-height: 50px;">
-                                {% else %}
-                                    <span class="text-muted">Pas d'image</span>
-                                {% endif %}
-                            </td>
                             <td>{{ etablissement.nom }}</td>
-                            <td>{{ etablissement.addresse }}</td>
-                            <td>{{ etablissement.ville }}</td>
-                            <td>{{ etablissement.contact }}</td>
                             <td>
-                                {% if etablissement.siteWeb %}
-                                    <a href="{{ etablissement.siteWeb }}" target="_blank" class="btn btn-sm btn-outline-primary">
-                                        <i class="fas fa-external-link-alt"></i> Site
-                                    </a>
-                                {% else %}
-                                    <span class="text-muted">Non spécifié</span>
-                                {% endif %}
+                                <a href="mailto:{{ etablissement.email }}" class="text-decoration-none">
+                                    {{ etablissement.email }}
+                                </a>
                             </td>
                             <td>
-                                <a href="{{ path('admin_etablissement_show', {'id': etablissement.id}) }}" class="btn btn-info btn-sm">
+                                <span class="badge badge-secondary">
+                                    ÉTABLISSEMENT
+                                </span>
+                            </td>
+                            <td>{{ etablissement.dateInscription ? etablissement.dateInscription|date('d/m/Y H:i') :
+                                'N/A' }}</td>
+                            <td>
+                                <a href="{{ path('admin_etablissement_show', {'id': etablissement.id}) }}"
+                                    class="btn btn-info btn-sm">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="{{ path('admin_etablissement_edit', {'id': etablissement.id}) }}" class="btn btn-warning btn-sm">
+                                <a href="{{ path('admin_etablissement_edit', {'id': etablissement.id}) }}"
+                                    class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form method="post" action="{{ path('admin_etablissement_delete', {'id': etablissement.id}) }}" style="display: inline;">
-                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ etablissement.id) }}">
-                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet établissement ?')">
+                                <form method="post"
+                                    action="{{ path('admin_etablissement_delete', {'id': etablissement.id}) }}"
+                                    style="display: inline;">
+                                    <input type="hidden" name="_token"
+                                        value="{{ csrf_token('delete' ~ etablissement.id) }}">
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet établissement ?')">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>

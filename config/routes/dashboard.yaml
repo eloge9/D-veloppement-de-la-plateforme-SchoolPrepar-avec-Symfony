@@ -1,0 +1,14 @@
+app_dashboard:
+    path: /dashboard
+    controller: App\Controller\DashboardController::dashboard
+    methods: [GET]
+
+app_conseiller:
+    path: /conseiller
+    controller: App\Controller\DashboardController::conseiller
+    methods: [GET]
+
+app_admin_dashboard:
+    path: /admin/dashboard
+    controller: App\Controller\DashboardController::admin
+    methods: [GET]

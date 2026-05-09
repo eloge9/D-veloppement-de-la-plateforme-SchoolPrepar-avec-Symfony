@@ -2,50 +2,36 @@
 
 <div class="row">
     <div class="col-md-6 mb-3">
-        {{ form_label(form.nom, 'Nom de l\'établissement', {'label_attr': {'class': 'form-label'}}) }}
-        {{ form_widget(form.nom, {'attr': {'class': 'form-control' ~ (form.nom.vars.errors|length ? ' is-invalid' : '')}}) }}
+        {{ form_label(form.nom, 'Nom de l\'utilisateur', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.nom, {'attr': {'class': 'form-control' ~ (form.nom.vars.errors|length ? ' is-invalid' :
+        '')}}) }}
         {{ form_errors(form.nom, {'attr': {'class': 'invalid-feedback'}}) }}
     </div>
-    
+
     <div class="col-md-6 mb-3">
-        {{ form_label(form.addresse, 'Adresse', {'label_attr': {'class': 'form-label'}}) }}
-        {{ form_widget(form.addresse, {'attr': {'class': 'form-control' ~ (form.addresse.vars.errors|length ? ' is-invalid' : '')}}) }}
-        {{ form_errors(form.addresse, {'attr': {'class': 'invalid-feedback'}}) }}
+        {{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.email, {'attr': {'class': 'form-control' ~ (form.email.vars.errors|length ? ' is-invalid' :
+        '')}}) }}
+        {{ form_errors(form.email, {'attr': {'class': 'invalid-feedback'}}) }}
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-4 mb-3">
-        {{ form_label(form.ville, 'Ville', {'label_attr': {'class': 'form-label'}}) }}
-        {{ form_widget(form.ville, {'attr': {'class': 'form-control' ~ (form.ville.vars.errors|length ? ' is-invalid' : '')}}) }}
-        {{ form_errors(form.ville, {'attr': {'class': 'invalid-feedback'}}) }}
+    <div class="col-md-6 mb-3">
+        {{ form_label(form.mot_de_passe, 'Mot de passe', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.mot_de_passe, {'attr': {'class': 'form-control' ~ (form.mot_de_passe.vars.errors|length ? '
+        is-invalid' : '')}}) }}
+        {{ form_errors(form.mot_de_passe, {'attr': {'class': 'invalid-feedback'}}) }}
+        <small class="form-text text-muted">Laissez vide pour conserver le mot de passe actuel lors de la
+            modification.</small>
     </div>
-    
-    <div class="col-md-4 mb-3">
-        {{ form_label(form.contact, 'Contact', {'label_attr': {'class': 'form-label'}}) }}
-        {{ form_widget(form.contact, {'attr': {'class': 'form-control' ~ (form.contact.vars.errors|length ? ' is-invalid' : '')}}) }}
-        {{ form_errors(form.contact, {'attr': {'class': 'invalid-feedback'}}) }}
-    </div>
-    
-    <div class="col-md-4 mb-3">
-        {{ form_label(form.site_web, 'Site web', {'label_attr': {'class': 'form-label'}}) }}
-        {{ form_widget(form.site_web, {'attr': {'class': 'form-control' ~ (form.site_web.vars.errors|length ? ' is-invalid' : '')}}) }}
-        {{ form_errors(form.site_web, {'attr': {'class': 'invalid-feedback'}}) }}
-    </div>
-</div>
 
-<div class="row">
-    <div class="col-12 mb-3">
-        {{ form_label(form.imageFile, 'Image', {'label_attr': {'class': 'form-label'}}) }}
-        {{ form_widget(form.imageFile, {'attr': {'class': 'form-control' ~ (form.imageFile.vars.errors|length ? ' is-invalid' : '')}}) }}
-        {{ form_errors(form.imageFile, {'attr': {'class': 'invalid-feedback'}}) }}
-        <small class="form-text text-muted">Formats acceptés : JPG, PNG. Taille maximale : 2Mo.</small>
-        {% if etablissement.image %}
-            <div class="mt-2">
-                <small class="text-muted">Image actuelle :</small><br>
-                <img src="{{ asset('uploads/etablissements/' ~ etablissement.image) }}" alt="{{ etablissement.nom }}" class="img-thumbnail" style="max-height: 100px;">
-            </div>
-        {% endif %}
+    <div class="col-md-6 mb-3">
+        {{ form_label(form.role, 'Rôle', {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.role, {'attr': {'class': 'form-control' ~ (form.role.vars.errors|length ? ' is-invalid' :
+        '')}}) }}
+        {{ form_errors(form.role, {'attr': {'class': 'invalid-feedback'}}) }}
+        <small class="form-text text-muted">Ce compte sera automatiquement créé avec le rôle Établissement.</small>
     </div>
 </div>
 

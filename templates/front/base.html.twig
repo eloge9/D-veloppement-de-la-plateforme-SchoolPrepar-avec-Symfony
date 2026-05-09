@@ -71,11 +71,54 @@
                         <!-- Navigation -->
                         {% include 'front/partials/nav.html.twig' %}
 
-                        <!-- Boutons Connexion/Inscription -->
+                        <!-- Boutons Connexion/Inscription ou Utilisateur connecté -->
                         <div class="ml-auto">
-                            <a href="#" class="small mr-3"><span class="icon-unlock-alt mr-2"></span>Connexion</a>
-                            <a href="#" class="small btn btn-primary px-4 py-2 rounded-0"><span
+                            {% if app.user %}
+                            <div class="d-flex align-items-center">
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle small mr-3" href="#" role="button" id="userDropdown"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="icon-user mr-2"></i>{{ app.user.nom }}
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                        <li><a class="dropdown-item" href="#">
+                                                <i class="icon-user mr-2"></i>Mon Profil
+                                            </a></li>
+                                        {% if app.user.role == 'ROLE_ADMIN' %}
+                                        <li><a class="dropdown-item" href="/admin">
+                                                <i class="icon-settings mr-2"></i>Administration
+                                            </a></li>
+                                        {% endif %}
+                                        {% if app.user.role == 'ROLE_CONSEILLER' %}
+                                        <li><a class="dropdown-item" href="/conseiller">
+                                                <i class="icon-briefcase mr-2"></i>Espace Conseiller
+                                            </a></li>
+                                        {% endif %}
+                                        {% if app.user.role == 'ROLE_USER' %}
+                                        <li><a class="dropdown-item" href="/dashboard">
+                                                <i class="icon-graduation-cap mr-2"></i>Mon Espace
+                                            </a></li>
+                                        {% endif %}
+                                        {% if app.user.role == 'ROLE_ETABLISSEMENT' %}
+                                        <li><a class="dropdown-item" href="/etablissement">
+                                                <i class="icon-building mr-2"></i>Espace Établissement
+                                            </a></li>
+                                        {% endif %}
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="{{ path('app_logout') }}">
+                                                <i class="icon-power-off mr-2"></i>Déconnexion
+                                            </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {% else %}
+                            <a href="{{ path('app_login') }}" class="small mr-3"><span
+                                    class="icon-unlock-alt mr-2"></span>Connexion</a>
+                            <a href="{{ path('app_register') }}" class="small btn btn-primary px-4 py-2 rounded-0"><span
                                     class="icon-users mr-2"></span>Inscription</a>
+                            {% endif %}
                         </div>
 
                     </div>

@@ -35,7 +35,8 @@
     </li>
 
     <!-- Nav Item - Etablissements -->
-    <li class="nav-item {% if app.request.attributes.get('_route') starts with 'admin_etablissement' %}active{% endif %}">
+    <li
+        class="nav-item {% if app.request.attributes.get('_route') starts with 'admin_etablissement' %}active{% endif %}">
         <a class="nav-link" href="{{ path('admin_etablissement_index') }}">
             <i class="fas fa-fw fa-building"></i>
             <span>Établissements</span></a>
@@ -43,34 +44,39 @@
 
     <!-- Nav Item - Utilisateurs -->
     <li class="nav-item {% if app.request.attributes.get('_route') starts with 'admin_utilisateur' %}active{% endif %}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
-            aria-expanded="true" aria-controls="collapseUsers">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="true"
+            aria-controls="collapseUsers">
             <i class="fas fa-fw fa-users"></i>
             <span>Utilisateurs</span>
         </a>
-        <div id="collapseUsers" class="collapse {% if app.request.attributes.get('_route') starts with 'admin_utilisateur' %}show{% endif %}" aria-labelledby="headingUsers"
-            data-parent="#accordionSidebar">
+        <div id="collapseUsers"
+            class="collapse {% if app.request.attributes.get('_route') starts with 'admin_utilisateur' %}show{% endif %}"
+            aria-labelledby="headingUsers" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Par rôle :</h6>
-                <a class="collapse-item {% if app.request.attributes.get('_route') == 'admin_utilisateur_index' and app.request.attributes.get('role') is empty %}active{% endif %}" 
-                   href="{{ path('admin_utilisateur_index') }}">
-                     Tous les utilisateurs
+                <a class="collapse-item {% if app.request.attributes.get('_route') == 'admin_utilisateur_index' and app.request.attributes.get('role') is empty %}active{% endif %}"
+                    href="{{ path('admin_utilisateur_index') }}">
+                    Tous les utilisateurs
                 </a>
-                <a class="collapse-item {% if app.request.attributes.get('_route') == 'admin_utilisateur_by_role' and app.request.pathInfo matches '#/admin/utilisateurs/role/admin#' %}active{% endif %}" 
-                   href="{{ path('admin_utilisateur_by_role', {'role': 'admin'}) }}">
-                     Administrateurs
+                <a class="collapse-item {% if app.request.attributes.get('_route') == 'admin_utilisateur_by_role' and app.request.pathInfo matches '#/admin/utilisateurs/role/admin#' %}active{% endif %}"
+                    href="{{ path('admin_utilisateur_by_role', {'role': 'admin'}) }}">
+                    Administrateurs
                 </a>
-                <a class="collapse-item {% if app.request.attributes.get('_route') == 'admin_utilisateur_by_role' and app.request.pathInfo matches '#/admin/utilisateurs/role/conseiller#' %}active{% endif %}" 
-                   href="{{ path('admin_utilisateur_by_role', {'role': 'conseiller'}) }}">
+                <a class="collapse-item {% if app.request.attributes.get('_route') == 'admin_utilisateur_by_role' and app.request.pathInfo matches '#/admin/utilisateurs/role/conseiller#' %}active{% endif %}"
+                    href="{{ path('admin_utilisateur_by_role', {'role': 'conseiller'}) }}">
                     Conseillers
                 </a>
-                <a class="collapse-item {% if app.request.attributes.get('_route') == 'admin_utilisateur_by_role' and app.request.pathInfo matches '#/admin/utilisateurs/role/eleve#' %}active{% endif %}" 
-                   href="{{ path('admin_utilisateur_by_role', {'role': 'eleve'}) }}">
-                     Élèves
+                <a class="collapse-item {% if app.request.attributes.get('_route') == 'admin_utilisateur_by_role' and app.request.pathInfo matches '#/admin/utilisateurs/role/eleve#' %}active{% endif %}"
+                    href="{{ path('admin_utilisateur_by_role', {'role': 'eleve'}) }}">
+                    Élèves
+                </a>
+                <a class="collapse-item {% if app.request.attributes.get('_route') == 'admin_utilisateur_by_role' and app.request.pathInfo matches '#/admin/utilisateurs/role/ROLE_ETABLISSEMENT#' %}active{% endif %}"
+                    href="{{ path('admin_utilisateur_by_role', {'role': 'ROLE_ETABLISSEMENT'}) }}">
+                    Établissements
                 </a>
                 <div class="collapse-divider"></div>
                 <a class="collapse-item" href="{{ path('admin_utilisateur_new') }}">
-                     Ajouter un utilisateur
+                    Ajouter un utilisateur
                 </a>
             </div>
         </div>
@@ -86,13 +92,12 @@
 
     <!-- Nav Item - Pages -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-            aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+            aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
             <span>Pages</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
-            data-parent="#accordionSidebar">
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Login Screens:</h6>
                 <a class="collapse-item" href="#">Login</a>

@@ -10,7 +10,8 @@
         <h1 class="h3 mb-0 text-gray-800">
             Gestion des Utilisateurs
             {% if current_role %}
-                <small class="text-muted">({{ current_role == 'conseiller' ? 'CONSEILLERS' : (current_role == 'eleve' ? 'ÉLÈVES' : 'ADMINISTRATEURS') }})</small>
+            <small class="text-muted">({{ current_role == 'conseiller' ? 'CONSEILLERS' : (current_role == 'eleve' ?
+                'ÉLÈVES' : 'ADMINISTRATEURS') }})</small>
             {% endif %}
         </h1>
         <a href="{{ path('admin_utilisateur_new') }}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
@@ -25,17 +26,25 @@
         </div>
         <div class="card-body">
             <div class="btn-group" role="group">
-                <a href="{{ path('admin_utilisateur_index') }}" class="btn {% if not current_role %}btn-primary{% else %}btn-outline-primary{% endif %}">
-                     Tous
+                <a href="{{ path('admin_utilisateur_index') }}"
+                    class="btn {% if not current_role %}btn-primary{% else %}btn-outline-primary{% endif %}">
+                    Tous
                 </a>
-                <a href="{{ path('admin_utilisateur_by_role', {'role': 'admin'}) }}" class="btn {% if current_role == 'admin' %}btn-danger{% else %}btn-outline-danger{% endif %}">
-                     Administrateurs
+                <a href="{{ path('admin_utilisateur_by_role', {'role': 'ROLE_ADMIN'}) }}"
+                    class="btn {% if current_role == 'ROLE_ADMIN' %}btn-danger{% else %}btn-outline-danger{% endif %}">
+                    Administrateurs
                 </a>
-                <a href="{{ path('admin_utilisateur_by_role', {'role': 'conseiller'}) }}" class="btn {% if current_role == 'conseiller' %}btn-warning{% else %}btn-outline-warning{% endif %}">
-                     Conseillers
+                <a href="{{ path('admin_utilisateur_by_role', {'role': 'conseiller'}) }}"
+                    class="btn {% if current_role == 'conseiller' %}btn-warning{% else %}btn-outline-warning{% endif %}">
+                    Conseillers
                 </a>
-                <a href="{{ path('admin_utilisateur_by_role', {'role': 'eleve'}) }}" class="btn {% if current_role == 'eleve' %}btn-info{% else %}btn-outline-info{% endif %}">
-                     Élèves
+                <a href="{{ path('admin_utilisateur_by_role', {'role': 'eleve'}) }}"
+                    class="btn {% if current_role == 'eleve' %}btn-info{% else %}btn-outline-info{% endif %}">
+                    Élèves
+                </a>
+                <a href="{{ path('admin_utilisateur_by_role', {'role': 'ROLE_ETABLISSEMENT'}) }}"
+                    class="btn {% if current_role == 'ROLE_ETABLISSEMENT' %}btn-secondary{% else %}btn-outline-secondary{% endif %}">
+                    Établissements
                 </a>
             </div>
         </div>
@@ -47,9 +56,12 @@
             <h6 class="m-0 font-weight-bold text-primary">
                 Liste des Utilisateurs
                 {% if current_role %}
-                    <span class="badge badge-{{ current_role == 'admin' ? 'danger' : (current_role == 'conseiller' ? 'warning' : 'info') }}">
-                        {{ utilisateurs|length }} {{ current_role == 'conseiller' ? 'conseiller(s)' : (current_role == 'eleve' ? 'élève(s)' : 'administrateur(s)') }}
-                    </span>
+                <span
+                    class="badge badge-{{ current_role == 'ROLE_ADMIN' ? 'danger' : (current_role == 'conseiller' ? 'warning' : (current_role == 'ROLE_ETABLISSEMENT' ? 'secondary' : 'info')) }}">
+                    {{ utilisateurs|length }} {{ current_role == 'conseiller' ? 'conseiller(s)' : (current_role ==
+                    'eleve' ? 'élève(s)' : (current_role == 'ROLE_ETABLISSEMENT' ? 'établissement(s)' :
+                    'administrateur(s)')) }}
+                </span>
                 {% endif %}
             </h6>
         </div>
@@ -88,20 +100,29 @@
                                 </a>
                             </td>
                             <td>
-                                <span class="badge badge-{{ utilisateur.role == 'admin' ? 'danger' : (utilisateur.role == 'conseiller' ? 'warning' : 'info') }}">
-                                    {{ utilisateur.role == 'conseiller' ? 'CONSEILLER' : (utilisateur.role == 'eleve' ? 'ÉLÈVE' : 'ADMIN') }}
+                                <span
+                                    class="badge badge-{{ utilisateur.role == 'ROLE_ADMIN' ? 'danger' : (utilisateur.role == 'conseiller' ? 'warning' : (utilisateur.role == 'ROLE_ETABLISSEMENT' ? 'secondary' : 'info')) }}">
+                                    {{ utilisateur.role == 'conseiller' ? 'CONSEILLER' : (utilisateur.role == 'eleve' ?
+                                    'ÉLÈVE' : (utilisateur.role == 'ROLE_ETABLISSEMENT' ? 'ÉTABLISSEMENT' : 'ADMIN')) }}
                                 </span>
                             </td>
-                            <td>{{ utilisateur.dateInscription ? utilisateur.dateInscription|date('d/m/Y H:i') : 'N/A' }}</td>
+                            <td>{{ utilisateur.dateInscription ? utilisateur.dateInscription|date('d/m/Y H:i') : 'N/A'
+                                }}</td>
                             <td>
-                                <a href="{{ path('admin_utilisateur_show', {'id': utilisateur.id}) }}" class="btn btn-info btn-sm">
+                                <a href="{{ path('admin_utilisateur_show', {'id': utilisateur.id}) }}"
+                                    class="btn btn-info btn-sm">
                                     <i class="fas fa-eye"></i>
                                 </a>
-                                <a href="{{ path('admin_utilisateur_edit', {'id': utilisateur.id}) }}" class="btn btn-warning btn-sm">
+                                <a href="{{ path('admin_utilisateur_edit', {'id': utilisateur.id}) }}"
+                                    class="btn btn-warning btn-sm">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form method="post" action="{{ path('admin_utilisateur_delete', {'id': utilisateur.id}) }}" style="display:inline;" onsubmit="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?');">
-                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ utilisateur.id) }}">
+                                <form method="post"
+                                    action="{{ path('admin_utilisateur_delete', {'id': utilisateur.id}) }}"
+                                    style="display:inline;"
+                                    onsubmit="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?');">
+                                    <input type="hidden" name="_token"
+                                        value="{{ csrf_token('delete' ~ utilisateur.id) }}">
                                     <button class="btn btn-danger btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </button>
@@ -117,9 +138,11 @@
                 <h4>Aucun utilisateur trouvé</h4>
                 <p>
                     {% if current_role %}
-                        Il n'y a actuellement aucun {{ current_role == 'conseiller' ? 'conseiller' : (current_role == 'eleve' ? 'élève' : 'administrateur') }} enregistré dans le système.
+                    Il n'y a actuellement aucun {{ current_role == 'conseiller' ? 'conseiller' : (current_role ==
+                    'eleve' ? 'élève' : (current_role == 'ROLE_ETABLISSEMENT' ? 'établissement' : 'administrateur')) }}
+                    enregistré dans le système.
                     {% else %}
-                        Il n'y a actuellement aucun utilisateur enregistré dans le système.
+                    Il n'y a actuellement aucun utilisateur enregistré dans le système.
                     {% endif %}
                 </p>
                 <a href="{{ path('admin_utilisateur_new') }}" class="btn btn-primary">
@@ -139,14 +162,14 @@
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 
 <script>
-$(document).ready(function() {
-    $('#dataTable').DataTable({
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
-        },
-        "pageLength": 25,
-        "responsive": true
+    $(document).ready(function () {
+        $('#dataTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+            },
+            "pageLength": 25,
+            "responsive": true
+        });
     });
-});
 </script>
 {% endblock %}

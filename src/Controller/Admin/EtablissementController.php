@@ -10,31 +10,25 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class AdminUserController extends AbstractController
+#[Route('/admin/etablissements')]
+#[IsGranted('ROLE_ADMIN')]
+class EtablissementController extends AbstractController
 {
-    #[Route('/admin/utilisateurs', name: 'admin_utilisateur_index', methods: ['GET'])]
+    #[Route('', name: 'admin_etablissement_index', methods: ['GET'])]
     public function index(UtilisateurRepository $utilisateurRepository): Response
     {
-        return $this->render('admin/utilisateur/index.html.twig', [
-            'utilisateurs' => $utilisateurRepository->findAll(),
-            'current_role' => null,
+        // Récupérer uniquement les utilisateurs avec le rôle ROLE_ETABLISSEMENT
+        $etablissements = $utilisateurRepository->findBy(['role' => 'ROLE_ETABLISSEMENT']);
+
+        return $this->render('admin/etablissement/index.html.twig', [
+            'etablissements' => $etablissements,
         ]);
     }
 
-    #[Route('/admin/utilisateurs/role/{role}', name: 'admin_utilisateur_by_role', methods: ['GET'])]
-    public function indexByRole(UtilisateurRepository $utilisateurRepository, string $role): Response
-    {
-        $utilisateurs = $utilisateurRepository->findBy(['role' => $role]);
-
-        return $this->render('admin/utilisateur/index.html.twig', [
-            'utilisateurs' => $utilisateurs,
-            'current_role' => $role,
-        ]);
-    }
-
-    #[Route('/admin/utilisateurs/new', name: 'admin_utilisateur_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'admin_etablissement_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
         $utilisateur = new Utilisateur();
@@ -42,6 +36,9 @@ class AdminUserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Forcer le rôle ROLE_ETABLISSEMENT
+            $utilisateur->setRole('ROLE_ETABLISSEMENT');
+            
             // Hasher le mot de passe avant de le sauvegarder
             $plainPassword = $utilisateur->getMotDePasse();
             $hashedPassword = $passwordHasher->hashPassword($utilisateur, $plainPassword);
@@ -52,27 +49,37 @@ class AdminUserController extends AbstractController
             $entityManager->persist($utilisateur);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Utilisateur créé avec succès.');
-            return $this->redirectToRoute('admin_utilisateur_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Établissement créé avec succès.');
+            return $this->redirectToRoute('admin_etablissement_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/utilisateur/new.html.twig', [
+        return $this->render('admin/etablissement/new.html.twig', [
             'utilisateur' => $utilisateur,
             'form' => $form,
         ]);
     }
 
-    #[Route('/admin/utilisateurs/{id}', name: 'admin_utilisateur_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'admin_etablissement_show', methods: ['GET'])]
     public function show(Utilisateur $utilisateur): Response
     {
-        return $this->render('admin/utilisateur/show.html.twig', [
+        // Vérifier que l'utilisateur a bien le rôle ROLE_ETABLISSEMENT
+        if ($utilisateur->getRole() !== 'ROLE_ETABLISSEMENT') {
+            throw $this->createAccessDeniedException('Cet utilisateur n\'est pas un établissement.');
+        }
+
+        return $this->render('admin/etablissement/show.html.twig', [
             'utilisateur' => $utilisateur,
         ]);
     }
 
-    #[Route('/admin/utilisateurs/{id}/edit', name: 'admin_utilisateur_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'admin_etablissement_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Utilisateur $utilisateur, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher): Response
     {
+        // Vérifier que l'utilisateur a bien le rôle ROLE_ETABLISSEMENT
+        if ($utilisateur->getRole() !== 'ROLE_ETABLISSEMENT') {
+            throw $this->createAccessDeniedException('Cet utilisateur n\'est pas un établissement.');
+        }
+
         $form = $this->createForm(UtilisateurType::class, $utilisateur);
         $form->handleRequest($request);
 
@@ -88,25 +95,30 @@ class AdminUserController extends AbstractController
             $utilisateur->setDateModification(new \DateTime());
             $entityManager->flush();
 
-            $this->addFlash('success', 'Utilisateur modifié avec succès.');
-            return $this->redirectToRoute('admin_utilisateur_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Établissement modifié avec succès.');
+            return $this->redirectToRoute('admin_etablissement_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('admin/utilisateur/edit.html.twig', [
+        return $this->render('admin/etablissement/edit.html.twig', [
             'utilisateur' => $utilisateur,
             'form' => $form,
         ]);
     }
 
-    #[Route('/admin/utilisateurs/{id}', name: 'admin_utilisateur_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'admin_etablissement_delete', methods: ['POST'])]
     public function delete(Request $request, Utilisateur $utilisateur, EntityManagerInterface $entityManager): Response
     {
+        // Vérifier que l'utilisateur a bien le rôle ROLE_ETABLISSEMENT
+        if ($utilisateur->getRole() !== 'ROLE_ETABLISSEMENT') {
+            throw $this->createAccessDeniedException('Cet utilisateur n\'est pas un établissement.');
+        }
+
         if ($this->isCsrfTokenValid('delete' . $utilisateur->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($utilisateur);
             $entityManager->flush();
-            $this->addFlash('success', 'Utilisateur supprimé avec succès.');
+            $this->addFlash('success', 'Établissement supprimé avec succès.');
         }
 
-        return $this->redirectToRoute('admin_utilisateur_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('admin_etablissement_index', [], Response::HTTP_SEE_OTHER);
     }
 }

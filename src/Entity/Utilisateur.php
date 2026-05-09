@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
-class Utilisateur
+class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -185,5 +185,44 @@ class Utilisateur
         }
 
         return $this;
+    }
+
+    // Méthodes requises par UserInterface
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    public function getRoles(): array
+    {
+        // Symfony attend toujours ROLE_USER dans les rôles
+        $roles = [];
+        
+        // Ajouter le rôle de base
+        $roles[] = 'ROLE_USER';
+        
+        // Ajouter le rôle spécifique s'il existe et n'est pas ROLE_USER
+        if ($this->role && $this->role !== 'ROLE_USER') {
+            $roles[] = $this->role;
+        }
+        
+        return $roles;
+    }
+
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    public function eraseCredentials(): void
+    {
+        // Si vous stockez des données temporaires sensibles sur l'utilisateur, effacez-les ici
+        // $this->plainPassword = null;
+    }
+
+    // Méthode requise par PasswordAuthenticatedUserInterface
+    public function getPassword(): string
+    {
+        return $this->mot_de_passe;
     }
 }

@@ -7,6 +7,7 @@ use App\Entity\Utilisateur;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,12 +18,18 @@ class UtilisateurType extends AbstractType
         $builder
             ->add('nom')
             ->add('email')
-            ->add('mot_de_passe')
+            ->add('mot_de_passe', PasswordType::class, [
+                'label' => 'Mot de passe',
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
             ->add('role', ChoiceType::class, [
                 'choices' => [
                     'Élève' => 'eleve',
                     'Conseiller / Mentor' => 'conseiller',
-                    'Administrateur' => 'admin',
+                    'Établissement' => 'ROLE_ETABLISSEMENT',
+                    'Administrateur' => 'ROLE_ADMIN',
                 ],
                 'label' => 'Rôle',
                 'attr' => [
