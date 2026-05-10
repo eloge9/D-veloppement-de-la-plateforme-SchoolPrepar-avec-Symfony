@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <ul class="list-unstyled">
-                                <li><strong>Adresse:</strong> {{ etablissement.addresse }}</li>
+                                <li><strong>Adresse:</strong> {{ etablissement.adresse }}</li>
                                 <li><strong>Ville:</strong> {{ etablissement.ville|default('Non spécifiée') }}</li>
                                 <li><strong>Contact:</strong> {{ etablissement.contact }}</li>
                             </ul>
@@ -70,7 +70,7 @@
                                     {% if filiere.description %}
                                     <p class="card-text">{{ filiere.description|slice(0, 100) }}...</p>
                                     {% endif %}
-                                    <a href="{{ path('app_vitrine_filiere_show', {'id': filiere.id}) }}"
+                                    <a href="{{ path('app_orientation_filiere_show', {'id': filiere.id}) }}"
                                         class="btn btn-primary btn-sm">Voir la filière</a>
                                 </div>
                             </div>

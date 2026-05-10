@@ -15,7 +15,7 @@ class FiliereController extends AbstractController
     {
         $filieres = $filiereRepository->findAll();
 
-        return $this->render('front/filiere/index.html.twig', [
+        return $this->render('vitrine/orientation/filieres.html.twig', [
             'filieres' => $filieres
         ]);
     }
@@ -23,7 +23,7 @@ class FiliereController extends AbstractController
     #[Route('/filieres/{id}', name: 'app_filiere_show', requirements: ['id' => '\d+'])]
     public function show(Filiere $filiere): Response
     {
-        return $this->render('front/filiere/show.html.twig', [
+        return $this->render('vitrine/orientation/filiere_show.html.twig', [
             'filiere' => $filiere
         ]);
     }

@@ -18,9 +18,18 @@ class HomeController extends AbstractController
         $filieres = $filiereRepository->findAll();
         $etablissements = $etablissementRepository->findAll();
 
-        return $this->render('front/home.html.twig', [
+        // Préparer les statistiques pour le template
+        $stats = [
+            'filieres' => count($filieres),
+            'etablissements' => count($etablissements),
+            'etudiants' => 1250, // Données statiques pour l'instant
+            'tauxReussite' => 95 // Données statiques pour l'instant
+        ];
+
+        return $this->render('vitrine/home.html.twig', [
             'filieres' => $filieres,
-            'etablissements' => $etablissements
+            'etablissements' => $etablissements,
+            'stats' => $stats
         ]);
     }
 }

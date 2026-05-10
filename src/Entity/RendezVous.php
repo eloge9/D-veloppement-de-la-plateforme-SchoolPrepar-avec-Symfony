@@ -25,7 +25,7 @@ class RendezVous
     #[ORM\ManyToOne(inversedBy: 'rendezVouses')]
     private ?Utilisateur $eleve = null;
 
-    #[ORM\ManyToOne(inversedBy: 'rendezVouses')]
+    #[ORM\ManyToOne(inversedBy: 'rendezVousConseiller')]
     private ?Utilisateur $conseiller = null;
 
     public function getId(): ?int

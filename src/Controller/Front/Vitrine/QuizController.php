@@ -10,28 +10,34 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class QuizController extends AbstractController
 {
+    #[Route('/tests-orientation', name: 'app_tests_orientation')]
+    public function testsOrientation(): Response
+    {
+        return $this->redirectToRoute('app_quiz_orientation');
+    }
+
     #[Route('/quiz', name: 'app_quiz')]
     public function index(): Response
     {
-        return $this->render('front/vitrine/quiz/index.html.twig');
+        return $this->render('vitrine/quiz/index.html.twig');
     }
 
     #[Route('/quiz/orientation', name: 'app_quiz_orientation')]
     public function orientation(): Response
     {
-        return $this->render('front/vitrine/quiz/orientation.html.twig');
+        return $this->render('vitrine/quiz/orientation.html.twig');
     }
 
     #[Route('/quiz/orientation/start', name: 'app_quiz_orientation_start')]
     public function startOrientation(): Response
     {
-        return $this->render('front/vitrine/quiz/orientation_start.html.twig');
+        return $this->render('vitrine/quiz/orientation_start.html.twig');
     }
 
     #[Route('/quiz/orientation/questions/{step}', name: 'app_quiz_orientation_questions', requirements: ['step' => '\d+'])]
     public function orientationQuestions(int $step): Response
     {
-        return $this->render('front/vitrine/quiz/orientation_questions.html.twig', [
+        return $this->render('vitrine/quiz/orientation_questions.html.twig', [
             'step' => $step
         ]);
     }
@@ -41,7 +47,7 @@ class QuizController extends AbstractController
     {
         $responses = $request->request->all();
         
-        return $this->render('front/vitrine/quiz/orientation_result.html.twig', [
+        return $this->render('vitrine/quiz/orientation_result.html.twig', [
             'responses' => $responses
         ]);
     }
@@ -49,13 +55,13 @@ class QuizController extends AbstractController
     #[Route('/quiz/personnalite', name: 'app_quiz_personnalite')]
     public function personnalite(): Response
     {
-        return $this->render('front/vitrine/quiz/personnalite.html.twig');
+        return $this->render('vitrine/quiz/personnalite.html.twig');
     }
 
     #[Route('/quiz/metiers', name: 'app_quiz_metiers')]
     public function metiers(): Response
     {
-        return $this->render('front/vitrine/quiz/metiers.html.twig');
+        return $this->render('vitrine/quiz/metiers.html.twig');
     }
 
     #[Route('/quiz/save', name: 'app_quiz_save')]

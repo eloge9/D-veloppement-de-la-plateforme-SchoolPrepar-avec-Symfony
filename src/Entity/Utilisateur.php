@@ -52,6 +52,12 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $rendezVouses;
 
     /**
+     * @var Collection<int, RendezVous>
+     */
+    #[ORM\OneToMany(targetEntity: RendezVous::class, mappedBy: 'conseiller')]
+    private Collection $rendezVousConseiller;
+
+    /**
      * @var Collection<int, Message>
      */
     #[ORM\OneToMany(targetEntity: Message::class, mappedBy: 'expediteur')]
@@ -72,7 +78,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, Filiere>
      */
-    #[ORM\ManyToMany(targetEntity: Filiere::class, mappedBy: 'interesses')]
+    // #[ORM\ManyToMany(targetEntity: Filiere::class, inversedBy: 'interesses')]
     private Collection $filieresInteret;
 
     /**
@@ -91,6 +97,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->evenements = new ArrayCollection();
         $this->rendezVouses = new ArrayCollection();
+        $this->rendezVousConseiller = new ArrayCollection();
         $this->messagesEnvoyes = new ArrayCollection();
         $this->messagesRecus = new ArrayCollection();
         $this->resultatQuizzes = new ArrayCollection();

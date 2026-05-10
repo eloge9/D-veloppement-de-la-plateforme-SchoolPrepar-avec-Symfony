@@ -34,7 +34,7 @@ class Evenement
     /**
      * @var Collection<int, Utilisateur>
      */
-    #[ORM\ManyToMany(targetEntity: Utilisateur::class, mappedBy: 'evenements')]
+    #[ORM\ManyToMany(targetEntity: Utilisateur::class, inversedBy: 'evenements')]
     private Collection $participants;
 
     public function __construct()
