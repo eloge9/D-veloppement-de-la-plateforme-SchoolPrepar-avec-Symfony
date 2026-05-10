@@ -36,6 +36,24 @@ class Filiere
     #[ORM\JoinColumn(nullable: false)]
     private ?Etablissement $etablissement = null;
 
+    /**
+     * @var Collection<int, Utilisateur>
+     */
+    #[ORM\ManyToMany(targetEntity: Utilisateur::class, inversedBy: 'filieresInteret')]
+    private Collection $interesses;
+
+    /**
+     * @var Collection<int, Avis>
+     */
+    #[ORM\OneToMany(targetEntity: Avis::class, mappedBy: 'filiere')]
+    private Collection $avis;
+
+    public function __construct()
+    {
+        $this->interesses = new ArrayCollection();
+        $this->avis = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,6 +139,60 @@ class Filiere
     public function setEtablissement(?Etablissement $etablissement): static
     {
         $this->etablissement = $etablissement;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Utilisateur>
+     */
+    public function getInteresses(): Collection
+    {
+        return $this->interesses;
+    }
+
+    public function addInteresse(Utilisateur $interesse): static
+    {
+        if (!$this->interesses->contains($interesse)) {
+            $this->interesses->add($interesse);
+        }
+
+        return $this;
+    }
+
+    public function removeInteresse(Utilisateur $interesse): static
+    {
+        $this->interesses->removeElement($interesse);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Avis>
+     */
+    public function getAvis(): Collection
+    {
+        return $this->avis;
+    }
+
+    public function addAvi(Avis $avi): static
+    {
+        if (!$this->avis->contains($avi)) {
+            $this->avis->add($avi);
+            $avi->setFiliere($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvi(Avis $avi): static
+    {
+        if ($this->avis->removeElement($avi)) {
+            // set the owning side to null (unless already changed)
+            if ($avi->getFiliere() === $this) {
+                $avi->setFiliere(null);
+            }
+        }
 
         return $this;
     }

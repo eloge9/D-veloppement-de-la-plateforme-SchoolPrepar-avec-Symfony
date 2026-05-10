@@ -1,0 +1,55 @@
+{% extends 'vitrine/base.html.twig' %}
+
+{% block title %}Prendre rendez-vous - SchoolPrepar{% endblock %}
+
+{% block body %}
+<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-3 bread">Prendre rendez-vous</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span><a href="{{ path('app_conseillers') }}">Conseillers</a></span> <span>Rendez-vous</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <h2 class="mb-4">Prendre rendez-vous</h2>
+                <p>Consultez un conseiller d'orientation</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <form method="post" action="{{ path('app_conseillers_rdv_submit') }}">
+                    <div class="form-group">
+                        <label for="nom">Nom complet</label>
+                        <input type="text" name="nom" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">Téléphone</label>
+                        <input type="tel" name="telephone" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date souhaitée</label>
+                        <input type="date" name="date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea name="message" class="form-control" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

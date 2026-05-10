@@ -19,25 +19,22 @@ class Evenement
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTime $date = null;
+    #[ORM\Column(length: 255)]
+    private ?string $type = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
-    private ?\DateTime $heur = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTime $dateDebut = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTime $dateFin = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column]
-    private ?\DateTime $date_creation = null;
-
-    #[ORM\Column]
-    private ?\DateTime $date_modification = null;
-
     /**
      * @var Collection<int, Utilisateur>
      */
-    #[ORM\ManyToMany(targetEntity: Utilisateur::class, inversedBy: 'evenements')]
+    #[ORM\ManyToMany(targetEntity: Utilisateur::class, mappedBy: 'evenements')]
     private Collection $participants;
 
     public function __construct()
@@ -62,26 +59,38 @@ class Evenement
         return $this;
     }
 
-    public function getDate(): ?\DateTime
+    public function getType(): ?string
     {
-        return $this->date;
+        return $this->type;
     }
 
-    public function setDate(\DateTime $date): static
+    public function setType(string $type): static
     {
-        $this->date = $date;
+        $this->type = $type;
 
         return $this;
     }
 
-    public function getHeur(): ?\DateTime
+    public function getDateDebut(): ?\DateTime
     {
-        return $this->heur;
+        return $this->dateDebut;
     }
 
-    public function setHeur(?\DateTime $heur): static
+    public function setDateDebut(\DateTime $dateDebut): static
     {
-        $this->heur = $heur;
+        $this->dateDebut = $dateDebut;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?\DateTime
+    {
+        return $this->dateFin;
+    }
+
+    public function setDateFin(\DateTime $dateFin): static
+    {
+        $this->dateFin = $dateFin;
 
         return $this;
     }
@@ -94,30 +103,6 @@ class Evenement
     public function setDescription(?string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getDateCreation(): ?\DateTime
-    {
-        return $this->date_creation;
-    }
-
-    public function setDateCreation(\DateTime $date_creation): static
-    {
-        $this->date_creation = $date_creation;
-
-        return $this;
-    }
-
-    public function getDateModification(): ?\DateTime
-    {
-        return $this->date_modification;
-    }
-
-    public function setDateModification(\DateTime $date_modification): static
-    {
-        $this->date_modification = $date_modification;
 
         return $this;
     }

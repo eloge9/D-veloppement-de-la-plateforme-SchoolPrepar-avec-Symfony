@@ -19,7 +19,7 @@ class Etablissement
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $addresse = null;
+    private ?string $adresse = null;
 
     #[ORM\Column(length: 255)]
     private ?string $ville = null;
@@ -61,14 +61,14 @@ class Etablissement
         return $this;
     }
 
-    public function getAddresse(): ?string
+    public function getAdresse(): ?string
     {
-        return $this->addresse;
+        return $this->adresse;
     }
 
-    public function setAddresse(string $addresse): static
+    public function setAdresse(string $adresse): static
     {
-        $this->addresse = $addresse;
+        $this->adresse = $adresse;
 
         return $this;
     }

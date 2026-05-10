@@ -1,0 +1,92 @@
+<div class="mr-auto">
+    <nav class="site-navigation position-relative text-right" role="navigation">
+
+        <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+
+            {# ACCUEIL #}
+            <li class="{% if app.request.attributes.get('_route') == 'app_home' %}active{% endif %}">
+                <a href="{{ path('app_home') }}" class="nav-link text-left">Accueil</a>
+            </li>
+
+            {# ORIENTATION #}
+            <li
+                class="has-children {% if app.request.attributes.get('_route') starts with 'app_filieres' or app.request.attributes.get('_route') starts with 'app_etablissements' or app.request.attributes.get('_route') starts with 'app_orientation' or app.request.attributes.get('_route') starts with 'app_quiz' or app.request.attributes.get('_route') starts with 'app_conseillers' %}active{% endif %}">
+                <a href="#" class="nav-link text-left">Orientation</a>
+
+                <ul class="dropdown">
+
+                    <li>
+                        <a href="{{ path('app_filieres') }}">Filières</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('app_etablissements') }}">Établissements</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('app_quiz_orientation') }}">Tests d'orientation</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('app_conseillers') }}">Conseillers</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            {# ACCOMPAGNEMENT (simplifié mais gardé) #}
+            <li
+                class="has-children {% if app.request.attributes.get('_route') starts with 'app_vitrine_accompagnement' %}active{% endif %}">
+                <a href="#" class="nav-link text-left">Accompagnement</a>
+
+                <ul class="dropdown">
+
+                    <li>
+                        <a href="{{ path('app_quiz_orientation') }}">Tests d'orientation</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Parcours personnalisé</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Webinaires</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            {# ÉVÉNEMENTS #}
+            <li class="{% if app.request.attributes.get('_route') == 'app_evenements' %}active{% endif %}">
+                <a href="{{ path('app_evenements') }}" class="nav-link text-left">
+                    Événements
+                </a>
+            </li>
+
+            {# RESSOURCES #}
+            <li
+                class="has-children {% if app.request.attributes.get('_route') starts with 'app_ressources' %}active{% endif %}">
+                <a href="#" class="nav-link text-left">Ressources</a>
+
+                <ul class="dropdown">
+
+                    <li><a href="{{ path('app_ressources_blog') }}">Blog</a></li>
+
+                    <li><a href="{{ path('app_ressources_guides') }}">Guides</a></li>
+
+                    <li><a href="{{ path('app_ressources_forum') }}">Forum</a></li>
+
+                </ul>
+            </li>
+
+            {# CONTACT #}
+            <li class="{% if app.request.attributes.get('_route') == 'app_contact' %}active{% endif %}">
+                <a href="{{ path('app_contact') }}" class="nav-link text-left">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+</div>

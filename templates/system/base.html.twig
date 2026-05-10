@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}SchoolPrepar - Système{% endblock %}</title>
+
+    <!-- Tailwind + DaisyUI CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet">
+
+    <!-- CSS/JS Symfony (Webpack Encore si utilisé) -->
+    {% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/icomoon/style.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/owl.theme.default.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery.fancybox.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/flaticon/font/flaticon.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/aos.css') }}">
+    <link href="{{ asset('assets/css/jquery.mb.YTPlayer.min.css') }}" media="all" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+</head>
+
+<body class="bg-base-100 text-base-content">
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+    <div class="site-wrap">
+
+        <div class="py-1">
+            <header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+
+                <div class="container">
+                    <div class="d-flex align-items-center">
+                        <div class="site-logo">
+                            <div class="sidebar-brand d-flex align-items-center justify-content-center">
+                                <div class="sidebar-brand-icon rotate-n-15">
+                                    <i class="fas fa-graduation-cap text-primary"></i>
+                                </div>
+                                <div class="sidebar-brand-text mx-3 text-success">SchoolPrepar</div>
+                                <span class="badge badge-info ml-2">Système</span>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Système -->
+                        <div class="ml-auto">
+                            {% if app.user %}
+                            <div class="d-flex align-items-center">
+                                <div class="dropdown">
+                                    <a class="dropdown-toggle small mr-3" href="#" role="button" id="userDropdown"
+                                        data-toggle="dropdown" aria-expanded="false">
+                                        <i class="icon-user mr-2"></i>{{ app.user.nom }}
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                        <li><a class="dropdown-item" href="#">
+                                                <i class="icon-user mr-2"></i>Mon Profil
+                                            </a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="{{ path('app_logout') }}">
+                                                <i class="icon-power-off mr-2"></i>Déconnexion
+                                            </a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+
+            </header>
+
+            <!-- Contenu principal -->
+            {% block content %}{% endblock %}
+
+            <!-- Footer -->
+            <footer class="site-footer bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <p class="mb-0">
+                                &copy; {{ "now"|date("Y") }} SchoolPrepar - Système Interne
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- loader -->
+            <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+                    <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+                    <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                        stroke="#51be78" />
+                </svg></div>
+
+            <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery-migrate-3.0.1.min.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery-ui.js') }}"></script>
+            <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+            <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.stellar.min.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
+            <script src="{{ asset('assets/js/bootstrap-datepicker.min.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.easing.1.3.js') }}"></script>
+            <script src="{{ asset('assets/js/aos.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.fancybox.min.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.sticky.js') }}"></script>
+            <script src="{{ asset('assets/js/jquery.mb.YTPlayer.min.js') }}"></script>
+            <script src="{{ asset('assets/js/main.js') }}"></script>
+        </div>
+</body>
+
+</html>

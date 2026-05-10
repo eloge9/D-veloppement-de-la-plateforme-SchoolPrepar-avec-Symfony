@@ -1,0 +1,28 @@
+{% extends 'vitrine/base.html.twig' %}
+
+{% block title %}Équipe des conseillers - SchoolPrepar{% endblock %}
+
+{% block body %}
+<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-3 bread">Équipe</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span><a href="{{ path('app_conseillers') }}">Conseillers</a></span> <span>Équipe</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <h2 class="mb-4">Notre équipe</h2>
+                <p>Rencontrez nos conseillers</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

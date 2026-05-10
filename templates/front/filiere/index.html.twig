@@ -32,7 +32,7 @@
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="course-1-item">
                             <figure class="thumnail">
-                                <a href="{{ path('app_filiere_show', {'id': filiere.id}) }}">
+                                <a href="{{ path('app_vitrine_filiere_show', {'id': filiere.id}) }}">
                                     {% if filiere.image %}
                                     <img src="{{ asset('uploads/filieres/' ~ filiere.image) }}" alt="{{ filiere.nom }}"
                                         class="img-fluid">
@@ -60,7 +60,7 @@
                                     <i class="icon-location"></i> {{ filiere.etablissement.nom }}
                                 </p>
                                 {% endif %}
-                                <p><a href="{{ path('app_filiere_show', {'id': filiere.id}) }}"
+                                <p><a href="{{ path('app_vitrine_filiere_show', {'id': filiere.id}) }}"
                                         class="btn btn-primary rounded-0 px-4">Voir les détails</a></p>
                             </div>
                         </div>

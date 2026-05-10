@@ -1,0 +1,32 @@
+{% extends 'vitrine/base.html.twig' %}
+
+{% block title %}Établissements - SchoolPrepar{% endblock %}
+
+{% block body %}
+<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-3 bread">Établissements</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span><a href="{{ path('app_orientation') }}">Orientation</a></span> <span>Établissements</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            {% for etablissement in etablissements %}
+            <div class="col-md-4">
+                <div class="services-wrap ftco-animate">
+                    <h3><a href="{{ path('app_etablissement_show', {'id': etablissement.id}) }}">{{ etablissement.nom }}</a></h3>
+                    <p>{{ etablissement.ville }} - {{ etablissement.type }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

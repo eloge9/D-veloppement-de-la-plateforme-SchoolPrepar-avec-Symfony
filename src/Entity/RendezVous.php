@@ -19,6 +19,9 @@ class RendezVous
     #[ORM\Column(length: 100)]
     private ?string $statut = null;
 
+    #[ORM\Column(length: 100)]
+    private ?string $type = null;
+
     #[ORM\ManyToOne(inversedBy: 'rendezVouses')]
     private ?Utilisateur $eleve = null;
 
@@ -50,6 +53,18 @@ class RendezVous
     public function setStatut(string $statut): static
     {
         $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): static
+    {
+        $this->type = $type;
 
         return $this;
     }

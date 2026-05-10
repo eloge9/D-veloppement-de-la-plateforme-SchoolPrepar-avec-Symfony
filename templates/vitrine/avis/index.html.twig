@@ -1,0 +1,48 @@
+{% extends 'vitrine/base.html.twig' %}
+
+{% block title %}Avis et témoignages - SchoolPrepar{% endblock %}
+
+{% block body %}
+<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-3 bread">Avis et témoignages</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span>Avis</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <h2 class="mb-4">Découvrez les témoignages</h2>
+                <p>Partagez vos expériences</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="services-wrap ftco-animate">
+                    <h3><a href="{{ path('app_avis_eleves') }}">Avis des élèves</a></h3>
+                    <p>Témoignages des étudiants</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="services-wrap ftco-animate">
+                    <h3><a href="{{ path('app_avis_conseillers') }}">Avis des conseillers</a></h3>
+                    <p>Retours des professionnels</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="services-wrap ftco-animate">
+                    <h3><a href="{{ path('app_avis_etablissements') }}">Avis des établissements</a></h3>
+                    <p>Présentations des écoles</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

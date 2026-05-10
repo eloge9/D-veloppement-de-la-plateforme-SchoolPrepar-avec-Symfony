@@ -1,0 +1,37 @@
+{% extends 'vitrine/base.html.twig' %}
+
+{% block title %}Résultats du test - SchoolPrepar{% endblock %}
+
+{% block body %}
+<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
+            <div class="col-md-9 ftco-animate text-center">
+                <h1 class="mb-3 bread">Résultats du test</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span><a href="{{ path('app_quiz') }}">Tests</a></span> <span><a href="{{ path('app_quiz_orientation') }}">Orientation</a></span> <span>Résultats</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <h2 class="mb-4">Vos résultats</h2>
+                <p>Voici les filières qui correspondent à votre profil</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success">
+                    <h4>Test terminé avec succès !</h4>
+                    <p>Vos réponses ont été analysées.</p>
+                </div>
+                <a href="{{ path('app_filieres') }}" class="btn btn-primary">Voir les filières recommandées</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

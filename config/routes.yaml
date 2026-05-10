@@ -7,30 +7,55 @@
 # To list all registered routes, run the following command:
 #   bin/console debug:router
 
-# Front-Office Routes
-app_home:
+# ═══════════════════════════════════════════════════════════════════════════════
+# MONDE VITRINE (PUBLIC) - Uniquement pour utilisateurs NON CONNECTÉS
+# ═══════════════════════════════════════════════════════════════════════════════
+app_vitrine_home:
     path: /
-    controller: App\Controller\Front\HomeController::index
+    controller: App\Controller\Vitrine\FrontController::home
 
-app_filieres:
+app_vitrine_filieres:
     path: /filieres
-    controller: App\Controller\Front\FiliereController::index
+    controller: App\Controller\Vitrine\FrontController::filieres
 
-app_filiere_show:
+app_vitrine_filiere_show:
     path: /filieres/{id}
-    controller: App\Controller\Front\FiliereController::show
+    controller: App\Controller\Vitrine\FrontController::filiereShow
     requirements:
         id: '\d+'
 
-app_etablissements:
+app_vitrine_etablissements:
     path: /etablissements
-    controller: App\Controller\Front\EtablissementController::index
+    controller: App\Controller\Vitrine\FrontController::etablissements
 
-app_etablissement_show:
+app_vitrine_etablissement_show:
     path: /etablissements/{id}
-    controller: App\Controller\Front\EtablissementController::show
+    controller: App\Controller\Vitrine\FrontController::etablissementShow
     requirements:
         id: '\d+'
+
+app_vitrine_tests:
+    path: /tests-orientation
+    controller: App\Controller\Vitrine\FrontController::tests
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# MONDE SYSTÈME (PRIVÉ) - Uniquement pour utilisateurs CONNECTÉS
+# ═══════════════════════════════════════════════════════════════════════════════
+app_system_eleve:
+    path: /eleve
+    controller: App\Controller\System\EleveController::dashboard
+
+app_system_conseiller:
+    path: /conseiller
+    controller: App\Controller\System\ConseillerController::dashboard
+
+app_system_etablissement:
+    path: /etablissement
+    controller: App\Controller\System\EtablissementController::dashboard
+
+app_system_admin:
+    path: /admin
+    controller: App\Controller\System\AdminController::dashboard
 
 # Back-Office Routes
 admin_dashboard:

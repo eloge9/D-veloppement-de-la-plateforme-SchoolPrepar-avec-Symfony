@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UtilisateurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -21,19 +22,22 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+    private ?string $prenom = null;
+
+    #[ORM\Column(length: 255, unique: true)]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $mot_de_passe = null;
+    private ?string $motDePasse = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $role = null;
+    #[ORM\Column(type: Types::JSON)]
+    private array $role = [];
 
     #[ORM\Column]
-    private ?\DateTime $date_inscription = null;
+    private ?\DateTime $dateInscription = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?\DateTime $date_modification = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photo = null;
 
     /**
      * @var Collection<int, Evenement>
@@ -47,10 +51,54 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: RendezVous::class, mappedBy: 'eleve')]
     private Collection $rendezVouses;
 
+    /**
+     * @var Collection<int, Message>
+     */
+    #[ORM\OneToMany(targetEntity: Message::class, mappedBy: 'expediteur')]
+    private Collection $messagesEnvoyes;
+
+    /**
+     * @var Collection<int, Message>
+     */
+    #[ORM\OneToMany(targetEntity: Message::class, mappedBy: 'destinataire')]
+    private Collection $messagesRecus;
+
+    /**
+     * @var Collection<int, ResultatQuiz>
+     */
+    #[ORM\OneToMany(targetEntity: ResultatQuiz::class, mappedBy: 'utilisateur')]
+    private Collection $resultatQuizzes;
+
+    /**
+     * @var Collection<int, Filiere>
+     */
+    #[ORM\ManyToMany(targetEntity: Filiere::class, mappedBy: 'interesses')]
+    private Collection $filieresInteret;
+
+    /**
+     * @var Collection<int, Avis>
+     */
+    #[ORM\OneToMany(targetEntity: Avis::class, mappedBy: 'utilisateur')]
+    private Collection $avis;
+
+    /**
+     * @var Collection<int, Orientation>
+     */
+    #[ORM\OneToMany(targetEntity: Orientation::class, mappedBy: 'utilisateur')]
+    private Collection $orientations;
+
     public function __construct()
     {
         $this->evenements = new ArrayCollection();
         $this->rendezVouses = new ArrayCollection();
+        $this->messagesEnvoyes = new ArrayCollection();
+        $this->messagesRecus = new ArrayCollection();
+        $this->resultatQuizzes = new ArrayCollection();
+        $this->filieresInteret = new ArrayCollection();
+        $this->avis = new ArrayCollection();
+        $this->orientations = new ArrayCollection();
+        $this->role = ['ROLE_USER'];
+        $this->dateInscription = new \DateTime();
     }
 
     public function getId(): ?int
@@ -70,6 +118,18 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): static
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
     public function getEmail(): ?string
     {
         return $this->email;
@@ -84,22 +144,22 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getMotDePasse(): ?string
     {
-        return $this->mot_de_passe;
+        return $this->motDePasse;
     }
 
-    public function setMotDePasse(string $mot_de_passe): static
+    public function setMotDePasse(string $motDePasse): static
     {
-        $this->mot_de_passe = $mot_de_passe;
+        $this->motDePasse = $motDePasse;
 
         return $this;
     }
 
-    public function getRole(): ?string
+    public function getRole(): array
     {
         return $this->role;
     }
 
-    public function setRole(string $role): static
+    public function setRole(array $role): static
     {
         $this->role = $role;
 
@@ -108,24 +168,24 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getDateInscription(): ?\DateTime
     {
-        return $this->date_inscription;
+        return $this->dateInscription;
     }
 
-    public function setDateInscription(\DateTime $date_inscription): static
+    public function setDateInscription(\DateTime $dateInscription): static
     {
-        $this->date_inscription = $date_inscription;
+        $this->dateInscription = $dateInscription;
 
         return $this;
     }
 
-    public function getDateModification(): ?string
+    public function getPhoto(): ?string
     {
-        return $this->date_modification;
+        return $this->photo;
     }
 
-    public function setDateModification(?string $date_modification): static
+    public function setPhoto(?string $photo): static
     {
-        $this->date_modification = $date_modification;
+        $this->photo = $photo;
 
         return $this;
     }
@@ -187,6 +247,183 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return Collection<int, Message>
+     */
+    public function getMessagesEnvoyes(): Collection
+    {
+        return $this->messagesEnvoyes;
+    }
+
+    public function addMessagesEnvoye(Message $messagesEnvoye): static
+    {
+        if (!$this->messagesEnvoyes->contains($messagesEnvoye)) {
+            $this->messagesEnvoyes->add($messagesEnvoye);
+            $messagesEnvoye->setExpediteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessagesEnvoye(Message $messagesEnvoye): static
+    {
+        if ($this->messagesEnvoyes->removeElement($messagesEnvoye)) {
+            // set the owning side to null (unless already changed)
+            if ($messagesEnvoye->getExpediteur() === $this) {
+                $messagesEnvoye->setExpediteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Message>
+     */
+    public function getMessagesRecus(): Collection
+    {
+        return $this->messagesRecus;
+    }
+
+    public function addMessagesRecu(Message $messagesRecu): static
+    {
+        if (!$this->messagesRecus->contains($messagesRecu)) {
+            $this->messagesRecus->add($messagesRecu);
+            $messagesRecu->setDestinataire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessagesRecu(Message $messagesRecu): static
+    {
+        if ($this->messagesRecus->removeElement($messagesRecu)) {
+            // set the owning side to null (unless already changed)
+            if ($messagesRecu->getDestinataire() === $this) {
+                $messagesRecu->setDestinataire(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ResultatQuiz>
+     */
+    public function getResultatQuizzes(): Collection
+    {
+        return $this->resultatQuizzes;
+    }
+
+    public function addResultatQuiz(ResultatQuiz $resultatQuiz): static
+    {
+        if (!$this->resultatQuizzes->contains($resultatQuiz)) {
+            $this->resultatQuizzes->add($resultatQuiz);
+            $resultatQuiz->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeResultatQuiz(ResultatQuiz $resultatQuiz): static
+    {
+        if ($this->resultatQuizzes->removeElement($resultatQuiz)) {
+            // set the owning side to null (unless already changed)
+            if ($resultatQuiz->getUtilisateur() === $this) {
+                $resultatQuiz->setUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Filiere>
+     */
+    public function getFilieresInteret(): Collection
+    {
+        return $this->filieresInteret;
+    }
+
+    public function addFilieresInteret(Filiere $filieresInteret): static
+    {
+        if (!$this->filieresInteret->contains($filieresInteret)) {
+            $this->filieresInteret->add($filieresInteret);
+            $filieresInteret->addInteresse($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFilieresInteret(Filiere $filieresInteret): static
+    {
+        if ($this->filieresInteret->removeElement($filieresInteret)) {
+            $filieresInteret->removeInteresse($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Avis>
+     */
+    public function getAvis(): Collection
+    {
+        return $this->avis;
+    }
+
+    public function addAvi(Avis $avi): static
+    {
+        if (!$this->avis->contains($avi)) {
+            $this->avis->add($avi);
+            $avi->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvi(Avis $avi): static
+    {
+        if ($this->avis->removeElement($avi)) {
+            // set the owning side to null (unless already changed)
+            if ($avi->getUtilisateur() === $this) {
+                $avi->setUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Orientation>
+     */
+    public function getOrientations(): Collection
+    {
+        return $this->orientations;
+    }
+
+    public function addOrientation(Orientation $orientation): static
+    {
+        if (!$this->orientations->contains($orientation)) {
+            $this->orientations->add($orientation);
+            $orientation->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrientation(Orientation $orientation): static
+    {
+        if ($this->orientations->removeElement($orientation)) {
+            // set the owning side to null (unless already changed)
+            if ($orientation->getUtilisateur() === $this) {
+                $orientation->setUtilisateur(null);
+            }
+        }
+
+        return $this;
+    }
+
     // Méthodes requises par UserInterface
     public function getUserIdentifier(): string
     {
@@ -195,18 +432,11 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getRoles(): array
     {
-        // Symfony attend toujours ROLE_USER dans les rôles
-        $roles = [];
-        
-        // Ajouter le rôle de base
+        $roles = $this->role;
+        // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
-        
-        // Ajouter le rôle spécifique s'il existe et n'est pas ROLE_USER
-        if ($this->role && $this->role !== 'ROLE_USER') {
-            $roles[] = $this->role;
-        }
-        
-        return $roles;
+
+        return array_unique($roles);
     }
 
     public function getSalt(): ?string
@@ -220,9 +450,8 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    // Méthode requise par PasswordAuthenticatedUserInterface
     public function getPassword(): string
     {
-        return $this->mot_de_passe;
+        return $this->motDePasse;
     }
 }

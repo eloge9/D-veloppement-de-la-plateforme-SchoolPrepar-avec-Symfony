@@ -1,0 +1,29 @@
+<header class="site-navbar py-4 js-sticky-header site-navbar-target" role="banner">
+    <div class="container">
+        <div class="d-flex align-items-center">
+            <!-- Logo -->
+            <div class="site-logo">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center"
+                    href="{{ path('app_vitrine_home') }}">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-graduation-cap text-primary"></i>
+                    </div>
+                    <div class="sidebar-brand-text mx-3 text-success">SchoolPrepar</div>
+                </a>
+            </div>
+
+            <!-- Navigation principale -->
+            {% include 'vitrine/partials/nav.html.twig' %}
+
+            <!-- Boutons Connexion/Inscription (Vitrine publique) -->
+            <div class="ml-auto">
+                <a href="{{ path('app_login') }}" class="small mr-3">
+                    <span class="icon-unlock-alt mr-2"></span>Connexion
+                </a>
+                <a href="{{ path('app_register') }}" class="small btn btn-primary px-4 py-2 rounded-0">
+                    <span class="icon-users mr-2"></span>Inscription
+                </a>
+            </div>
+        </div>
+    </div>
+</header>

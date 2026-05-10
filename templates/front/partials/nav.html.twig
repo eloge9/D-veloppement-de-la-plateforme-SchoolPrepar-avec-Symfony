@@ -1,15 +1,15 @@
 <div class="mr-auto">
     <nav class="site-navigation position-relative text-right" role="navigation">
         <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-            <li class="{% if app.request.attributes.get('_route') == 'app_home' %}active{% endif %}">
-                <a href="{{ path('app_home') }}" class="nav-link text-left">Accueil</a>
+            <li class="{% if app.request.attributes.get('_route') == 'app_vitrine_home' %}active{% endif %}">
+                <a href="{{ path('app_vitrine_home') }}" class="nav-link text-left">Accueil</a>
             </li>
             <li
                 class="has-children {% if app.request.attributes.get('_route') starts with 'app_orientation' %}active{% endif %}">
                 <a href="#" class="nav-link text-left">Orientation</a>
                 <ul class="dropdown">
-                    <li><a href="{{ path('app_filieres') }}">Filières</a></li>
-                    <li><a href="{{ path('app_etablissements') }}">Établissements</a></li>
+                    <li><a href="{{ path('app_vitrine_filieres') }}">Filières</a></li>
+                    <li><a href="{{ path('app_vitrine_etablissements') }}">Établissements</a></li>
                     <li><a href="#">Tests d'orientation</a></li>
                     <li><a href="#">Conseillers</a></li>
                 </ul>

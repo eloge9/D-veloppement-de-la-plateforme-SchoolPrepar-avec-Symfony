@@ -1,0 +1,355 @@
+{% extends 'vitrine/base.html.twig' %}
+
+{% block title %}SchoolPrepar - Votre Orientation Réussie{% endblock %}
+
+{% block content %}
+<!-- Hero Section Moderne -->
+<div class="hero-slide owl-carousel site-blocks-cover">
+    <div class="intro-section" style="background-image: url('{{ asset('assets/images/hero_1.jpg') }}');">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12 mx-auto text-center" data-aos="fade-up">
+                    <h1 class="display-4 font-weight-bold text-white mb-4">SchoolPrepar</h1>
+                    <h2 class="h3 text-white mb-4">Votre Orientation Réussie</h2>
+                    <p class="lead text-white mb-5">Trouvez votre voie avec l'accompagnement personnalisé des meilleurs
+                        conseillers d'orientation</p>
+                    <div class="hero-buttons">
+                        {% if app.user %}
+                        <a href="{{ path('app_system_eleve') }}"
+                            class="btn btn-primary btn-lg px-5 py-3 rounded-0 mr-3">
+                            <i class="icon-user mr-2"></i>Mon Espace
+                        </a>
+                        {% else %}
+                        <a href="{{ path('app_login') }}" class="btn btn-primary btn-lg px-5 py-3 rounded-0 mr-3">
+                            <i class="icon-sign-in mr-2"></i>Connexion
+                        </a>
+                        <a href="{{ path('app_register') }}" class="btn btn-outline-light btn-lg px-5 py-3 rounded-0">
+                            <i class="icon-user-plus mr-2"></i>Inscription
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section Statistiques -->
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <div class="icon-wrapper bg-primary rounded-circle mx-auto mb-3"
+                        style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <span class="flaticon-mortarboard text-white" style="font-size: 2rem;"></span>
+                    </div>
+                    <h3 class="counter font-weight-bold">{{ stats.filieres }}</h3>
+                    <p class="text-muted">Filières Disponibles</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <div class="icon-wrapper bg-success rounded-circle mx-auto mb-3"
+                        style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <span class="flaticon-library text-white" style="font-size: 2rem;"></span>
+                    </div>
+                    <h3 class="counter font-weight-bold">{{ stats.etablissements }}</h3>
+                    <p class="text-muted">Établissements Partenaires</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <div class="icon-wrapper bg-info rounded-circle mx-auto mb-3"
+                        style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <span class="flaticon-school-material text-white" style="font-size: 2rem;"></span>
+                    </div>
+                    <h3 class="counter font-weight-bold">{{ stats.etudiants }}</h3>
+                    <p class="text-muted">Étudiants Accompagnés</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="text-center">
+                    <div class="icon-wrapper bg-warning rounded-circle mx-auto mb-3"
+                        style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <span class="icon-star text-white" style="font-size: 2rem;"></span>
+                    </div>
+                    <h3 class="counter font-weight-bold">{{ stats.tauxReussite }}%</h3>
+                    <p class="text-muted">Taux de Réussite</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section Comment Ça Marche -->
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5 justify-content-center text-center">
+            <div class="col-lg-8 mb-5">
+                <h2 class="section-title-underline mb-3">
+                    <span>Comment Ça Marche ?</span>
+                </h2>
+                <p class="lead">En 3 étapes simples, trouvez votre voie et construisez votre avenir avec confiance</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-1 border text-center">
+                    <div class="icon-wrapper bg-primary mx-auto mb-3"
+                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                        <span class="flaticon-graduation-cap text-white" style="font-size: 1.5rem;"></span>
+                    </div>
+                    <div class="feature-1-content">
+                        <h3 class="mb-3">1. Test d'Orientation</h3>
+                        <p>Évaluez vos compétences et centres d'intérêt avec nos tests psychotechniques validés par des
+                            professionnels</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-1 border text-center">
+                    <div class="icon-wrapper bg-success mx-auto mb-3"
+                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                        <span class="flaticon-compass text-white" style="font-size: 1.5rem;"></span>
+                    </div>
+                    <div class="feature-1-content">
+                        <h3 class="mb-3">2. Orientation Personnalisée</h3>
+                        <p>Recevez des recommandations personnalisées et explorez les filières qui correspondent à votre
+                            profil</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="feature-1 border text-center">
+                    <div class="icon-wrapper bg-info mx-auto mb-3"
+                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                        <span class="flaticon-users text-white" style="font-size: 1.5rem;"></span>
+                    </div>
+                    <div class="feature-1-content">
+                        <h3 class="mb-3">3. Accompagnement Continu</h3>
+                        <p>Bénéficiez de l'accompagnement de conseillers experts et de mentors tout au long de votre
+                            parcours</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section Filières Populaires -->
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row mb-5 justify-content-center text-center">
+            <div class="col-lg-8 mb-5">
+                <h2 class="section-title-underline mb-3">
+                    <span>Filières Populaires</span>
+                </h2>
+                <p>Découvrez les filières les plus recherchées par nos étudiants</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="owl-slide-3 owl-carousel">
+                    {% for filiere in filieres %}
+                    <div class="course-1-item">
+                        <figure class="thumnail">
+                            <a href="{{ path('app_vitrine_filiere_show', {'id': filiere.id}) }}">
+                                {% if filiere.image %}
+                                <img src="{{ asset('uploads/filieres/' ~ filiere.image) }}" alt="{{ filiere.nom }}"
+                                    class="img-fluid">
+                                {% else %}
+                                <img src="{{ asset('assets/images/course_' ~ random(1, 6) ~ '.jpg') }}"
+                                    alt="{{ filiere.nom }}" class="img-fluid">
+                                {% endif %}
+                            </a>
+                            <div class="category">
+                                <h3>{{ filiere.nom }}</h3>
+                            </div>
+                        </figure>
+                        <div class="course-1-content pb-4">
+                            <h4>{{ filiere.description|slice(0, 50) }}...</h4>
+                            <div class="rating text-center mb-3">
+                                <span class="icon-star2 text-warning"></span>
+                                <span class="icon-star2 text-warning"></span>
+                                <span class="icon-star2 text-warning"></span>
+                                <span class="icon-star2 text-warning"></span>
+                                <span class="icon-star2 text-warning"></span>
+                            </div>
+                            <p class="desc mb-4">{{ filiere.description|slice(0, 100) }}...</p>
+                            <p><a href="{{ path('app_vitrine_filiere_show', {'id': filiere.id}) }}"
+                                    class="btn btn-primary rounded-0 px-4">Voir la filière</a></p>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p>Aucune filière disponible pour le moment.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="{{ path('app_vitrine_filieres') }}" class="btn btn-outline-primary btn-lg px-5 py-3 rounded-0">
+                <i class="icon-arrow-right mr-2"></i>Voir toutes les filières
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Section Établissements -->
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5 justify-content-center text-center">
+            <div class="col-lg-8 mb-5">
+                <h2 class="section-title-underline mb-3">
+                    <span>Établissements Partenaires</span>
+                </h2>
+                <p>Découvrez nos établissements partenaires et trouvez celui qui vous correspond</p>
+            </div>
+        </div>
+        <div class="row">
+            {% for etablissement in etablissements %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="border rounded p-4 h-100">
+                    <div class="text-center mb-3">
+                        {% if etablissement.image %}
+                        <img src="{{ asset('uploads/etablissements/' ~ etablissement.image) }}"
+                            alt="{{ etablissement.nom }}" class="img-fluid rounded" style="max-height: 150px;">
+                        {% else %}
+                        <img src="{{ asset('assets/images/school_' ~ random(1, 4) ~ '.jpg') }}"
+                            alt="{{ etablissement.nom }}" class="img-fluid rounded" style="max-height: 150px;">
+                        {% endif %}
+                    </div>
+                    <h4 class="text-center mb-3">{{ etablissement.nom }}</h4>
+                    <p class="text-muted text-center">Établissement situé à {{ etablissement.ville|default('France') }},
+                        spécialisé dans l'accompagnement vers l'excellence académique.</p>
+                    <div class="text-center">
+                        <a href="{{ path('app_vitrine_etablissement_show', {'id': etablissement.id}) }}"
+                            class="btn btn-primary rounded-0 px-4">
+                            Découvrir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <p>Aucun établissement disponible pour le moment.</p>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-5">
+            <a href="{{ path('app_vitrine_etablissements') }}"
+                class="btn btn-outline-primary btn-lg px-5 py-3 rounded-0">
+                <i class="icon-arrow-right mr-2"></i>Voir tous les établissements
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Section À Propos -->
+<div class="section-bg style-1" style="background-image: url('{{ asset('assets/images/about_1.jpg') }}');">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="section-title-underline style-2 mb-4">
+                    <span>À Propos de SchoolPrepar</span>
+                </h2>
+                <p class="lead text-white mb-4">La plateforme leader de l'orientation scolaire et professionnelle en
+                    France</p>
+                <p class="text-white mb-3">SchoolPrepar accompagne chaque année des milliers d'étudiants vers leur voie
+                    de réussite grâce à une approche innovante qui combine technologies modernes et expertise humaine.
+                </p>
+                <p class="text-white mb-4">Notre mission : vous donner les clés pour construire votre avenir avec
+                    confiance et sérénité.</p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="btn btn-primary px-4 rounded-0">En savoir plus</a>
+                    <a href="{{ path('app_vitrine_filieres') }}" class="btn btn-outline-light px-4 rounded-0">Explorer
+                        les filières</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section Témoignages -->
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5 justify-content-center text-center">
+            <div class="col-lg-8 mb-5">
+                <h2 class="section-title-underline mb-3">
+                    <span>Témoignages</span>
+                </h2>
+                <p>Ce que nos étudiants et partenaires disent de SchoolPrepar</p>
+            </div>
+        </div>
+        <div class="owl-slide owl-carousel">
+            <div class="ftco-testimonial-1">
+                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                    <img src="{{ asset('assets/images/person_1.jpg') }}" alt="Image" class="img-fluid mr-3">
+                    <div>
+                        <h3>Marie Dubois</h3>
+                        <span>Étudiante en Informatique</span>
+                    </div>
+                </div>
+                <div>
+                    <p>"SchoolPrepar m'a aidée à trouver ma voie. Grâce aux tests d'orientation et aux conseils
+                        personnalisés, j'ai découvert la filière informatique qui me passionne aujourd'hui. Je
+                        recommande vivement !"</p>
+                </div>
+            </div>
+            <div class="ftco-testimonial-1">
+                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                    <img src="{{ asset('assets/images/person_2.jpg') }}" alt="Image" class="img-fluid mr-3">
+                    <div>
+                        <h3>Thomas Martin</h3>
+                        <span>Parent d'élève</span>
+                    </div>
+                </div>
+                <div>
+                    <p>En tant que parent, je cherchais un accompagnement sérieux pour mon fils. SchoolPrepar a dépassé
+                        nos attentes avec des conseillers compétents et un suivi régulier.</p>
+                </div>
+            </div>
+            <div class="ftco-testimonial-1">
+                <div class="ftco-testimonial-vcard d-flex align-items-center mb-4">
+                    <img src="{{ asset('assets/images/person_3.jpg') }}" alt="Image" class="img-fluid mr-3">
+                    <div>
+                        <h3>Sophie Bernard</h3>
+                        <span>Conseillère d'orientation</span>
+                    </div>
+                </div>
+                <div>
+                    <p>"Travailler avec SchoolPrepar me permet d'accompagner efficacement les jeunes dans leurs choix.
+                        La plateforme offre des outils modernes et une approche personnalisée."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Section Appel à l'Action -->
+<div class="site-section ftco-subscribe-1" style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <h2 class="text-white mb-3">Prêt à Commencer Votre Parcours ?</h2>
+                <p class="text-white mb-4">Rejoignez des milliers d'étudiants qui ont déjà trouvé leur voie avec
+                    SchoolPrepar</p>
+                <div class="d-flex flex-wrap gap-3">
+                    {% if app.user %}
+                    <a href="{{ path('app_system_eleve') }}" class="btn btn-light btn-lg px-4 py-3 rounded-0">
+                        <i class="icon-user mr-2"></i>Accéder à mon espace
+                    </a>
+                    {% else %}
+                    <a href="{{ path('app_register') }}" class="btn btn-light btn-lg px-4 py-3 rounded-0">
+                        <i class="icon-user-plus mr-2"></i>S'inscrire gratuitement
+                    </a>
+                    <a href="{{ path('app_vitrine_filieres') }}"
+                        class="btn btn-outline-light btn-lg px-4 py-3 rounded-0">
+                        <i class="icon-search mr-2"></i>Explorer les filières
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

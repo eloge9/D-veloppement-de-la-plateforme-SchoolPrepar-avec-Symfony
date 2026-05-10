@@ -17,9 +17,9 @@
 
 <div class="custom-breadcrumns border-bottom">
     <div class="container">
-        <a href="{{ path('app_home') }}">Home</a>
+        <a href="{{ path('app_vitrine_home') }}">Home</a>
         <span class="mx-3 icon-keyboard_arrow_right"></span>
-        <a href="{{ path('app_etablissements') }}">Établissements</a>
+        <a href="{{ path('app_vitrine_etablissements') }}">Établissements</a>
         <span class="mx-3 icon-keyboard_arrow_right"></span>
         <span class="current">{{ etablissement.nom }}</span>
     </div>
@@ -79,7 +79,7 @@
                                     {% if filiere.description %}
                                     <p class="card-text">{{ filiere.description|slice(0, 100) }}...</p>
                                     {% endif %}
-                                    <a href="{{ path('app_filiere_show', {'id': filiere.id}) }}"
+                                    <a href="{{ path('app_vitrine_filiere_show', {'id': filiere.id}) }}"
                                         class="btn btn-primary btn-sm">Voir la filière</a>
                                 </div>
                             </div>

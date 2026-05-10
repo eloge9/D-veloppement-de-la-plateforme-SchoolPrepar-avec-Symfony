@@ -49,8 +49,12 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
         $roles = $user->getRoles();
         if (in_array('ROLE_ADMIN', $roles)) {
             return new RedirectResponse('/admin');
+        } elseif (in_array('ROLE_ETABLISSEMENT', $roles)) {
+            return new RedirectResponse('/etablissement');
         } elseif (in_array('ROLE_CONSEILLER', $roles)) {
             return new RedirectResponse('/conseiller');
+        } elseif (in_array('ROLE_ELEVE', $roles) || $user->getRole() === 'eleve') {
+            return new RedirectResponse('/eleve');
         } else {
             return new RedirectResponse('/dashboard');
         }
