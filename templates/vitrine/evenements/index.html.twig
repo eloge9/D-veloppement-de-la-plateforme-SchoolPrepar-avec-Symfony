@@ -2,37 +2,174 @@
 
 {% block title %}Événements - SchoolPrepar{% endblock %}
 
-{% block body %}
-<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
+{% block content %}
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4"
+    style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}')">
     <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-3 bread">Événements</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span>Événements</span></p>
+        <div class="row align-items-end">
+            <div class="col-lg-7">
+                <h2 class="mb-0">Nos Événements</h2>
+                <p>Participez à nos événements d'orientation pour mieux vous informer</p>
             </div>
         </div>
     </div>
 </div>
 
-<section class="ftco-section">
+<div class="site-section">
     <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center heading-section ftco-animate">
-                <h2 class="mb-4">Nos événements</h2>
-                <p>Participez à nos événements d'orientation</p>
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h2 class="mb-4">Calendrier des Événements</h2>
+                <p class="lead text-muted">Découvrez nos événements, webinaires et salons virtuels pour vous aider dans
+                    votre orientation.</p>
             </div>
         </div>
+
+        {% if evenements|length > 0 %}
         <div class="row">
             {% for evenement in evenements %}
-            <div class="col-md-4">
-                <div class="services-wrap ftco-animate">
-                    <h3><a href="{{ path('app_evenement_show', {'id': evenement.id}) }}">{{ evenement.titre }}</a></h3>
-                    <p>{{ evenement.date|date('d/m/Y') }} - {{ evenement.lieu }}</p>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    {% if evenement.image %}
+                    <div class="card-img-top"
+                        style="height: 200px; background: url('{{ asset('uploads/evenements/' ~ evenement.image) }}') center/cover;">
+                        {% else %}
+                        <div class="card-img-top bg-primary"
+                            style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                            <i class="icon-calendar text-white" style="font-size: 3rem;"></i>
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-2">
+                                <span class="badge badge-primary mr-2">{{ evenement.categorie|default('Général')
+                                    }}</span>
+                                <small class="text-muted">
+                                    <i class="icon-clock mr-1"></i>{{ evenement.date ? evenement.date|date('d M Y') :
+                                    'Date à définir' }}
+                                </small>
+                            </div>
+                            <h5 class="card-title">{{ evenement.titre }}</h5>
+                            <p class="card-text text-muted small">{{ evenement.description|slice(0, 100) }}...</p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                {% if evenement.lieu %}
+                                <small class="text-muted">
+                                    <i class="icon-map-marker mr-1"></i>{{ evenement.lieu }}
+                                </small>
+                                {% endif %}
+                                <a href="{{ path('app_evenement_show', {'id': evenement.id}) }}"
+                                    class="btn btn-sm btn-outline-primary">
+                                    Voir détails
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card bg-light text-center">
+                        <div class="card-body p-5">
+                            <div class="icon-wrapper bg-primary rounded-circle mx-auto mb-3"
+                                style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                                <i class="icon-calendar text-white" style="font-size: 2rem;"></i>
+                            </div>
+                            <h4 class="mb-3">Aucun Événement Prévu</h4>
+                            <p class="text-muted mb-4">Nous préparons actuellement notre calendrier d'événements.
+                                Revenez bientôt pour découvrir nos prochaines sessions d'orientation.</p>
+                            <div class="d-inline-flex gap-2">
+                                <a href="{{ path('app_contact') }}" class="btn btn-primary">
+                                    <i class="icon-envelope mr-2"></i>Nous contacter
+                                </a>
+                                <a href="{{ path('app_quiz_orientation') }}" class="btn btn-outline-primary">
+                                    <i class="icon-rocket mr-2"></i>Test d'orientation
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            {% endfor %}
+            {% endif %}
+
+            <!-- Types d'événements -->
+            <div class="row mb-5 mt-5">
+                <div class="col-lg-12">
+                    <h3 class="mb-4">Types d'Événements</h3>
+                    <div class="row">
+                        <div class="col-md-3 mb-4">
+                            <div class="card text-center h-100">
+                                <div class="card-body">
+                                    <div class="icon-wrapper bg-primary rounded-circle mx-auto mb-3"
+                                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-video text-white" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <h6>Webinaires</h6>
+                                    <p class="small text-muted">Sessions en ligne interactives</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card text-center h-100">
+                                <div class="card-body">
+                                    <div class="icon-wrapper bg-success rounded-circle mx-auto mb-3"
+                                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-users text-white" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <h6>Ateliers</h6>
+                                    <p class="small text-muted">Travaux pratiques en petit groupe</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card text-center h-100">
+                                <div class="card-body">
+                                    <div class="icon-wrapper bg-info rounded-circle mx-auto mb-3"
+                                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-briefcase text-white" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <h6>Salons Virtuels</h6>
+                                    <p class="small text-muted">Rencontres avec les établissements</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card text-center h-100">
+                                <div class="card-body">
+                                    <div class="icon-wrapper bg-warning rounded-circle mx-auto mb-3"
+                                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-graduation text-white" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <h6>Conférences</h6>
+                                    <p class="small text-muted">Présentations par des experts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- S'inscrire à la newsletter -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body p-5">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h4 class="mb-3">Restez Informé</h4>
+                                    <p class="mb-0">Inscrivez-vous à notre newsletter pour recevoir les annonces de nos
+                                        prochains événements.</p>
+                                </div>
+                                <div class="col-md-4 text-right">
+                                    <a href="{{ path('app_contact') }}" class="btn btn-light btn-lg">
+                                        <i class="icon-envelope mr-2"></i>S'inscrire
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</section>
-{% endblock %}
+    {% endblock %}

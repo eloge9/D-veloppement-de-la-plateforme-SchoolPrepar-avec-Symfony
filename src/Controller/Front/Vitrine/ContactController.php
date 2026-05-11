@@ -13,19 +13,19 @@ class ContactController extends AbstractController
     #[Route('/contact', name: 'app_contact')]
     public function index(): Response
     {
-        return $this->render('front/vitrine/contact/index.html.twig');
+        return $this->render('vitrine/contact/index.html.twig');
     }
 
     #[Route('/contact/nous', name: 'app_contact_nous')]
     public function nous(): Response
     {
-        return $this->render('front/vitrine/contact/nous.html.twig');
+        return $this->render('vitrine/contact/nous.html.twig');
     }
 
     #[Route('/contact/formulaire', name: 'app_contact_formulaire')]
     public function formulaire(): Response
     {
-        return $this->render('front/vitrine/contact/formulaire.html.twig');
+        return $this->render('vitrine/contact/formulaire.html.twig');
     }
 
     #[Route('/contact/send', name: 'app_contact_send', methods: ['POST'])]
@@ -42,7 +42,7 @@ class ContactController extends AbstractController
     #[Route('/contact/rendez-vous', name: 'app_contact_rdv')]
     public function rendezVous(): Response
     {
-        return $this->render('front/vitrine/contact/rendez_vous.html.twig');
+        return $this->render('vitrine/contact/rendez_vous.html.twig');
     }
 
     #[Route('/contact/rendez-vous/submit', name: 'app_contact_rdv_submit', methods: ['POST'])]
@@ -56,12 +56,12 @@ class ContactController extends AbstractController
     #[Route('/contact/urgence', name: 'app_contact_urgence')]
     public function urgence(): Response
     {
-        return $this->render('front/vitrine/contact/urgence.html.twig');
+        return $this->render('vitrine/contact/urgence.html.twig');
     }
 
     #[Route('/contact/faq', name: 'app_contact_faq')]
     public function faq(): Response
     {
-        return $this->render('front/vitrine/contact/faq.html.twig');
+        return $this->render('vitrine/contact/faq.html.twig');
     }
 }

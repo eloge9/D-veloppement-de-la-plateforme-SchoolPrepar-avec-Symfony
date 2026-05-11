@@ -81,16 +81,18 @@ class RegistrationFormType extends AbstractType
                 'invalid_message' => 'Les mots de passe ne correspondent pas.',
                 'mapped' => false,
             ])
-            ->add('role', ChoiceType::class, [
+            ->add('roles', ChoiceType::class, [
                 'label' => 'Je suis un :',
                 'attr' => [
                     'class' => 'form-control'
                 ],
                 'choices' => [
-                    'Élève' => 'eleve',
-                    'Conseiller / Mentor' => 'conseiller',
+                    'Élève' => 'ROLE_USER',
+                    'Conseiller / Mentor' => 'ROLE_CONSEILLER',
                     'Établissement' => 'ROLE_ETABLISSEMENT'
                 ],
+                'multiple' => false,
+                'expanded' => false,
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez choisir votre rôle',

@@ -22,7 +22,7 @@ security:
             logout:
                 path: app_logout
                 # where to redirect after logout
-                target: app_vitrine_home
+                target: app_home
                 # Enable CSRF protection for logout
                 csrf_parameter: _csrf_token
                 csrf_token_id: logout
@@ -40,6 +40,12 @@ security:
         - { path: ^/login$, roles: PUBLIC_ACCESS }  # Page de connexion
         - { path: ^/register$, roles: PUBLIC_ACCESS }  # Page d'inscription
         - { path: ^/etablissements, roles: PUBLIC_ACCESS }  # Liste des établissements publique
+        - { path: ^/conseillers, roles: PUBLIC_ACCESS }  # Pages publiques des conseillers
+        - { path: ^/quiz, roles: PUBLIC_ACCESS }  # Tests d'orientation
+        - { path: ^/orientation, roles: PUBLIC_ACCESS }  # Pages d'orientation
+        - { path: ^/evenements, roles: PUBLIC_ACCESS }  # Événements
+        - { path: ^/contact, roles: PUBLIC_ACCESS }  # Contact
+        - { path: ^/ressources, roles: PUBLIC_ACCESS }  # Ressources
         
         # Pages privées par rôle
         - { path: ^/admin, roles: ROLE_ADMIN }

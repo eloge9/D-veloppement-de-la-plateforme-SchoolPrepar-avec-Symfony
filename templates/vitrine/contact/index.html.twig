@@ -2,47 +2,96 @@
 
 {% block title %}Contact - SchoolPrepar{% endblock %}
 
-{% block body %}
-<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
+{% block content %}
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4"
+    style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}')">
     <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-3 bread">Contact</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span>Contact</span></p>
+        <div class="row align-items-end">
+            <div class="col-lg-7">
+                <h2 class="mb-0">Contactez-Nous</h2>
+                <p>Nous sommes là pour vous accompagner dans votre projet d'orientation</p>
             </div>
         </div>
     </div>
 </div>
 
-<section class="ftco-section">
+<div class="site-section">
     <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center heading-section ftco-animate">
-                <h2 class="mb-4">Contactez-nous</h2>
-                <p>Nous sommes à votre disposition</p>
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h2 class="mb-4">Restons en Contact</h2>
+                <p class="lead text-muted">Notre équipe est à votre disposition pour répondre à toutes vos questions sur
+                    l'orientation scolaire et professionnelle.</p>
             </div>
         </div>
+
         <div class="row">
-            <div class="col-md-4">
-                <div class="services-wrap ftco-animate">
-                    <h3><a href="{{ path('app_contact_nous') }}">Qui sommes-nous</a></h3>
-                    <p>Découvrez notre équipe</p>
+            <div class="col-lg-8 mb-5">
+                <div class="card shadow-sm">
+                    <div class="card-body p-5">
+                        <h4 class="mb-4">Envoyez-nous un Message</h4>
+                        <form method="post" action="{{ path('app_contact_send') }}">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="nom" class="form-label">Nom complet</label>
+                                    <input type="text" class="form-control" id="nom" name="nom" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="sujet" class="form-label">Sujet</label>
+                                    <input type="text" class="form-control" id="sujet" name="sujet" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5"
+                                        required></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="icon-paper-plane mr-2"></i>Envoyer le message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="services-wrap ftco-animate">
-                    <h3><a href="{{ path('app_contact_formulaire') }}">Formulaire</a></h3>
-                    <p>Envoyez-nous un message</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="services-wrap ftco-animate">
-                    <h3><a href="{{ path('app_contact_rdv') }}">Rendez-vous</a></h3>
-                    <p>Prendre rendez-vous</p>
+
+            <div class="col-lg-4 mb-5">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Informations de Contact</h5>
+                        <div class="mb-3">
+                            <h6 class="text-muted"><i class="icon-map-marker mr-2"></i>Adresse</h6>
+                            <p>IPNE Institut de Technologie<br>
+                                Lomé, TOGO</p>
+                        </div>
+                        <div class="mb-3">
+                            <h6 class="text-muted"><i class="icon-phone mr-2"></i>Téléphone</h6>
+                            <p>+228 91 27 10 04</p>
+                        </div>
+                        <div class="mb-3">
+                            <h6 class="text-muted"><i class="icon-envelope mr-2"></i>Email</h6>
+                            <p>gominaeloge@gmail.com</p>
+                        </div>
+                        <div>
+                            <h6 class="text-muted"><i class="icon-clock mr-2"></i>Horaires d'ouverture</h6>
+                            <p class="mb-0">Lundi - Vendredi : 9h - 18h<br>
+                                Samedi : 10h - 16h</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 {% endblock %}

@@ -1,45 +1,236 @@
 {% extends 'vitrine/base.html.twig' %}
 
-{% block title %}Question {{ step }} - SchoolPrepar{% endblock %}
+{% block title %}Question {{ step }} - Test d'Orientation{% endblock %}
 
-{% block body %}
-<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
+{% block content %}
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4"
+    style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}')">
     <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-3 bread">Question {{ step }}</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span><a href="{{ path('app_quiz') }}">Tests</a></span> <span><a href="{{ path('app_quiz_orientation') }}">Orientation</a></span> <span>Question {{ step }}</span></p>
+        <div class="row align-items-end">
+            <div class="col-lg-7">
+                <h2 class="mb-0">Test d'Orientation - Question {{ step }}</h2>
+                <p>Découvrez la filière qui vous correspond le mieux</p>
             </div>
         </div>
     </div>
 </div>
 
-<section class="ftco-section">
+<div class="site-section">
     <div class="container">
         <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center heading-section ftco-animate">
-                <h2 class="mb-4">Question {{ step }}</h2>
-                <p>Progression: {{ step }}/10</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <form method="post" action="{{ path('app_quiz_orientation_result') }}">
-                    <div class="form-group">
-                        <label for="question">Quelle est votre matière préférée ?</label>
-                        <select name="answer" class="form-control">
-                            <option value="">Choisissez...</option>
-                            <option value="maths">Mathématiques</option>
-                            <option value="sciences">Sciences</option>
-                            <option value="lettres">Lettres</option>
-                            <option value="arts">Arts</option>
-                        </select>
+            <div class="col-lg-8">
+                <!-- Barre de progression -->
+                <div class="progress mb-4" style="height: 25px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: {{ (step / 10) * 100 }}%"
+                        aria-valuenow="{{ step }}" aria-valuemin="0" aria-valuemax="10">
+                        Question {{ step }}/10
                     </div>
-                    <button type="submit" class="btn btn-primary">Suivant</button>
-                </form>
+                </div>
+
+                <!-- Question -->
+                <div class="card shadow-sm">
+                    <div class="card-body p-5">
+                        {% if step == 1 %}
+                        <h3 class="card-title mb-4">Quelle est votre matière préférée au lycée ?</h3>
+                        <form method="post" action="{{ path('app_quiz_orientation_questions', {'step': step + 1}) }}">
+                            <div class="form-group mb-4">
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1_maths" value="maths">
+                                    <label class="form-check-label" for="q1_maths">
+                                        <i class="icon-calculator mr-2"></i>Mathématiques
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1_physique"
+                                        value="physique">
+                                    <label class="form-check-label" for="q1_physique">
+                                        <i class="icon-flask mr-2"></i>Physique-Chimie
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1_svt" value="svt">
+                                    <label class="form-check-label" for="q1_svt">
+                                        <i class="icon-leaf mr-2"></i>SVT
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1_francais"
+                                        value="francais">
+                                    <label class="form-check-label" for="q1_francais">
+                                        <i class="icon-book mr-2"></i>Français
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1_histoire"
+                                        value="histoire">
+                                    <label class="form-check-label" for="q1_histoire">
+                                        <i class="icon-globe mr-2"></i>Histoire-Géographie
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1_anglais"
+                                        value="anglais">
+                                    <label class="form-check-label" for="q1_anglais">
+                                        <i class="icon-language mr-2"></i>Langues
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">Question suivante <i
+                                    class="icon-arrow-right"></i></button>
+                        </form>
+
+                        {% elseif step == 2 %}
+                        <h3 class="card-title mb-4">Quel type d'activités vous attire le plus ?</h3>
+                        <form method="post" action="{{ path('app_quiz_orientation_questions', {'step': step + 1}) }}">
+                            <div class="form-group mb-4">
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2_recherche"
+                                        value="recherche">
+                                    <label class="form-check-label" for="q2_recherche">
+                                        <i class="icon-search mr-2"></i>Recherche et découverte
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2_creation"
+                                        value="creation">
+                                    <label class="form-check-label" for="q2_creation">
+                                        <i class="icon-paint-brush mr-2"></i>Création et innovation
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2_gestion"
+                                        value="gestion">
+                                    <label class="form-check-label" for="q2_gestion">
+                                        <i class="icon-briefcase mr-2"></i>Gestion et organisation
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2_aide" value="aide">
+                                    <label class="form-check-label" for="q2_aide">
+                                        <i class="icon-heart mr-2"></i>Aider les autres
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2_technique"
+                                        value="technique">
+                                    <label class="form-check-label" for="q2_technique">
+                                        <i class="icon-settings mr-2"></i>Travail technique et manuel
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="{{ path('app_quiz_orientation_questions', {'step': step - 1}) }}"
+                                    class="btn btn-outline-secondary">
+                                    <i class="icon-arrow-left"></i> Précédent
+                                </a>
+                                <button type="submit" class="btn btn-primary btn-lg">Question suivante <i
+                                        class="icon-arrow-right"></i></button>
+                            </div>
+                        </form>
+
+                        {% elseif step == 3 %}
+                        <h3 class="card-title mb-4">Dans quel environnement préférez-vous travailler ?</h3>
+                        <form method="post" action="{{ path('app_quiz_orientation_questions', {'step': step + 1}) }}">
+                            <div class="form-group mb-4">
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3_bureau"
+                                        value="bureau">
+                                    <label class="form-check-label" for="q3_bureau">
+                                        <i class="icon-office mr-2"></i>Bureau/Environnement d'entreprise
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3_labo" value="labo">
+                                    <label class="form-check-label" for="q3_labo">
+                                        <i class="icon-flask mr-2"></i>Laboratoire/Recherche
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3_exterieur"
+                                        value="exterieur">
+                                    <label class="form-check-label" for="q3_exterieur">
+                                        <i class="icon-plane mr-2"></i>En extérieur/Déplacements
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3_distant"
+                                        value="distant">
+                                    <label class="form-check-label" for="q3_distant">
+                                        <i class="icon-home mr-2"></i>Télétravail/Distance
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-radio">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3_atelier"
+                                        value="atelier">
+                                    <label class="form-check-label" for="q3_atelier">
+                                        <i class="icon-tools mr-2"></i>Atelier/Usine
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="{{ path('app_quiz_orientation_questions', {'step': step - 1}) }}"
+                                    class="btn btn-outline-secondary">
+                                    <i class="icon-arrow-left"></i> Précédent
+                                </a>
+                                <button type="submit" class="btn btn-primary btn-lg">Question suivante <i
+                                        class="icon-arrow-right"></i></button>
+                            </div>
+                        </form>
+
+                        {% else %}
+                        <h3 class="card-title mb-4">Autres questions en développement...</h3>
+                        <p class="text-muted">Les questions {{ step }} à 10 seront bientôt disponibles.</p>
+                        <div class="d-flex gap-2">
+                            <a href="{{ path('app_quiz_orientation_questions', {'step': step - 1}) }}"
+                                class="btn btn-outline-secondary">
+                                <i class="icon-arrow-left"></i> Précédent
+                            </a>
+                            <a href="{{ path('app_quiz_orientation') }}" class="btn btn-primary">
+                                <i class="icon-home"></i> Retour au test
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Informations complémentaires -->
+                <div class="row mt-5">
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <div class="icon-wrapper bg-primary rounded-circle mx-auto mb-3"
+                                style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                <span class="flaticon-mortarboard text-white" style="font-size: 1.5rem;"></span>
+                            </div>
+                            <h5>Test personnalisé</h5>
+                            <p class="text-muted">Nos questions sont conçues pour identifier vos véritables centres
+                                d'intérêt.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <div class="icon-wrapper bg-success rounded-circle mx-auto mb-3"
+                                style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                <span class="flaticon-chart text-white" style="font-size: 1.5rem;"></span>
+                            </div>
+                            <h5>Résultats précis</h5>
+                            <p class="text-muted">Obtenez des recommandations basées sur vos réponses et nos analyses.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="text-center">
+                            <div class="icon-wrapper bg-info rounded-circle mx-auto mb-3"
+                                style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                <span class="flaticon-support text-white" style="font-size: 1.5rem;"></span>
+                            </div>
+                            <h5>Accompagnement</h5>
+                            <p class="text-muted">Nos conseillers sont disponibles pour vous aider à interpréter vos
+                                résultats.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 {% endblock %}

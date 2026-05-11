@@ -1,37 +1,215 @@
 {% extends 'vitrine/base.html.twig' %}
 
-{% block title %}Résultats du test - SchoolPrepar{% endblock %}
+{% block title %}Résultats du Test d'Orientation{% endblock %}
 
-{% block body %}
-<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
+{% block content %}
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4"
+    style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}')">
     <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-3 bread">Résultats du test</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span><a href="{{ path('app_quiz') }}">Tests</a></span> <span><a href="{{ path('app_quiz_orientation') }}">Orientation</a></span> <span>Résultats</span></p>
+        <div class="row align-items-end">
+            <div class="col-lg-7">
+                <h2 class="mb-0">Vos Résultats d'Orientation</h2>
+                <p>Découvrez les filières qui correspondent à votre profil</p>
             </div>
         </div>
     </div>
 </div>
 
-<section class="ftco-section">
+<div class="site-section">
     <div class="container">
         <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center heading-section ftco-animate">
-                <h2 class="mb-4">Vos résultats</h2>
-                <p>Voici les filières qui correspondent à votre profil</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="alert alert-success">
-                    <h4>Test terminé avec succès !</h4>
-                    <p>Vos réponses ont été analysées.</p>
+            <div class="col-lg-8">
+                <!-- Message de succès -->
+                <div class="alert alert-success mb-4" role="alert">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-wrapper bg-success rounded-circle mr-3"
+                            style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                            <i class="icon-check text-white" style="font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h5 class="alert-heading mb-1">Test terminé avec succès !</h5>
+                            <p class="mb-0">Félicitations ! Vos réponses ont été analysées et nous vous proposons les
+                                recommandations suivantes.</p>
+                        </div>
+                    </div>
                 </div>
-                <a href="{{ path('app_filieres') }}" class="btn btn-primary">Voir les filières recommandées</a>
+
+                <!-- Résultats principaux -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0"><i class="icon-star mr-2"></i>Filières Recommandées pour Vous</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="card border-primary">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-primary">
+                                            <i class="icon-laptop mr-2"></i>Informatique
+                                        </h5>
+                                        <p class="card-text">Excellent choix ! Votre profil correspond parfaitement aux
+                                            métiers du numérique.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge badge-primary">95% de compatibilité</span>
+                                            <a href="{{ path('app_filiere_show', {'id': 1}) }}"
+                                                class="btn btn-sm btn-outline-primary">En savoir plus</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card border-success">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-success">
+                                            <i class="icon-cog mr-2"></i>Génie Industriel
+                                        </h5>
+                                        <p class="card-text">Vos aptitudes techniques et organisationnelles sont très
+                                            appréciées.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge badge-success">88% de compatibilité</span>
+                                            <a href="{{ path('app_filiere_show', {'id': 2}) }}"
+                                                class="btn btn-sm btn-outline-success">En savoir plus</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card border-info">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-info">
+                                            <i class="icon-chart-line mr-2"></i>Sciences Économiques
+                                        </h5>
+                                        <p class="card-text">Votre sens de l'analyse et de la gestion vous ouvre de
+                                            belles perspectives.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge badge-info">82% de compatibilité</span>
+                                            <a href="{{ path('app_filiere_show', {'id': 3}) }}"
+                                                class="btn btn-sm btn-outline-info">En savoir plus</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card border-warning">
+                                    <div class="card-body">
+                                        <h5 class="card-title text-warning">
+                                            <i class="icon-leaf mr-2"></i>Biotechnologies
+                                        </h5>
+                                        <p class="card-text">Votre intérêt pour les sciences et l'innovation est un
+                                            atout majeur.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="badge badge-warning">75% de compatibilité</span>
+                                            <a href="{{ path('app_filiere_show', {'id': 4}) }}"
+                                                class="btn btn-sm btn-outline-warning">En savoir plus</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analyse détaillée -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-info text-white">
+                        <h4 class="mb-0"><i class="icon-chart-bar mr-2"></i>Analyse de Votre Profil</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="text-muted mb-3">Vos points forts</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="icon-check-circle text-success mr-2"></i>Logique et
+                                        raisonnement</li>
+                                    <li class="mb-2"><i class="icon-check-circle text-success mr-2"></i>Capacité
+                                        d'analyse</li>
+                                    <li class="mb-2"><i class="icon-check-circle text-success mr-2"></i>Esprit
+                                        d'innovation</li>
+                                    <li class="mb-2"><i class="icon-check-circle text-success mr-2"></i>Autonomie et
+                                        organisation</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-muted mb-3">Secteurs recommandés</h6>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="icon-laptop text-primary mr-2"></i>Technologies et
+                                        Numérique</li>
+                                    <li class="mb-2"><i class="icon-cog text-primary mr-2"></i>Ingénierie et Industrie
+                                    </li>
+                                    <li class="mb-2"><i class="icon-chart-line text-primary mr-2"></i>Finance et
+                                        Économie</li>
+                                    <li class="mb-2"><i class="icon-flask text-primary mr-2"></i>Recherche et
+                                        Développement</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions recommandées -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0"><i class="icon-lightbulb mr-2"></i>Prochaines Étapes Recommandées</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <div class="text-center">
+                                    <div class="icon-wrapper bg-primary rounded-circle mx-auto mb-3"
+                                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-search text-white" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <h6>Explorer les filières</h6>
+                                    <p class="text-muted small">Approfondissez vos recherches sur les filières
+                                        recommandées</p>
+                                    <a href="{{ path('app_orientation_filieres') }}"
+                                        class="btn btn-sm btn-primary">Explorer</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="text-center">
+                                    <div class="icon-wrapper bg-success rounded-circle mx-auto mb-3"
+                                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-users text-white" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <h6>Contacter un conseiller</h6>
+                                    <p class="text-muted small">Bénéficiez d'un accompagnement personnalisé</p>
+                                    <a href="{{ path('app_conseillers') }}" class="btn btn-sm btn-success">Contacter</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="text-center">
+                                    <div class="icon-wrapper bg-info rounded-circle mx-auto mb-3"
+                                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-calendar text-white" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <h6>Assister à un événement</h6>
+                                    <p class="text-muted small">Participez à nos webinaires et salons virtuels</p>
+                                    <a href="{{ path('app_evenements') }}" class="btn btn-sm btn-info">Voir les
+                                        événements</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions finales -->
+                <div class="text-center">
+                    <div class="d-inline-flex gap-2">
+                        <a href="{{ path('app_orientation_filieres') }}" class="btn btn-primary btn-lg">
+                            <i class="icon-list mr-2"></i>Voir toutes les filières
+                        </a>
+                        <a href="{{ path('app_quiz') }}" class="btn btn-outline-secondary btn-lg">
+                            <i class="icon-refresh mr-2"></i>Passer un autre test
+                        </a>
+                    </div>
+                    <p class="text-muted mt-3">
+                        <small>Nous vous recommandons de sauvegarder ces résultats pour pouvoir les consulter plus
+                            tard.</small>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 {% endblock %}

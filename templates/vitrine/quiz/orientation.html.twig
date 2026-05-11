@@ -1,33 +1,297 @@
 {% extends 'vitrine/base.html.twig' %}
 
-{% block title %}Test d'orientation - SchoolPrepar{% endblock %}
+{% block title %}Test d'Orientation - SchoolPrepar{% endblock %}
 
-{% block body %}
-<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
+{% block content %}
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4"
+    style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}')">
     <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-3 bread">Test d'orientation</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span><a href="{{ path('app_quiz') }}">Tests</a></span> <span>Orientation</span></p>
+        <div class="row align-items-end">
+            <div class="col-lg-7">
+                <h2 class="mb-0">Test d'Orientation</h2>
+                <p>Découvrez la filière qui vous correspond le mieux</p>
             </div>
         </div>
     </div>
 </div>
 
-<section class="ftco-section">
+<div class="site-section">
     <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center heading-section ftco-animate">
-                <h2 class="mb-4">Test d'orientation</h2>
-                <p>Découvrez les filières qui correspondent à votre profil</p>
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h2 class="mb-4">Trouvez Votre Voie</h2>
+                <p class="lead text-muted">Notre test d'orientation personnalisé vous aide à identifier les filières qui
+                    correspondent à votre profil, vos passions et vos compétences.</p>
             </div>
         </div>
+
+        <!-- Présentation du test -->
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <div class="card shadow-sm">
+                    <div class="card-body p-5">
+                        <div class="row mb-4">
+                            <div class="col-md-3 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper bg-primary rounded-circle mr-3 flex-shrink-0"
+                                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <span class="flaticon-mortarboard text-white" style="font-size: 1.5rem;"></span>
+                                    </div>
+                                    <div>
+                                        <h5>10 Questions</h5>
+                                        <p class="text-muted small">Un questionnaire complet et varié pour analyser
+                                            votre profil en profondeur</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper bg-success rounded-circle mr-3 flex-shrink-0"
+                                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <span class="flaticon-clock text-white" style="font-size: 1.5rem;"></span>
+                                    </div>
+                                    <div>
+                                        <h5>15 Minutes</h5>
+                                        <p class="text-muted small">Durée optimale pour obtenir des résultats précis et
+                                            fiables</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper bg-info rounded-circle mr-3 flex-shrink-0"
+                                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <span class="flaticon-chart text-white" style="font-size: 1.5rem;"></span>
+                                    </div>
+                                    <div>
+                                        <h5>Résultats Instantanés</h5>
+                                        <p class="text-muted small">Analyse immédiate de votre profil avec
+                                            recommandations personnalisées</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper bg-warning rounded-circle mr-3 flex-shrink-0"
+                                        style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                        <span class="flaticon-support text-white" style="font-size: 1.5rem;"></span>
+                                    </div>
+                                    <div>
+                                        <h5>Accompagnement</h5>
+                                        <p class="text-muted small">Conseillers disponibles pour vous guider dans votre
+                                            choix</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="mb-3">Prêt à découvrir votre future carrière ?</h4>
+                                <p class="text-muted mb-0">Répondez honnêtement aux questions pour obtenir les
+                                    recommandations les plus pertinentes basées sur votre personnalité, vos intérêts et
+                                    vos compétences.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <a href="{{ path('app_quiz_orientation_questions', {'step': 1}) }}"
+                                    class="btn btn-primary btn-lg px-4">
+                                    <i class="icon-rocket mr-2"></i>Commencer le test
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Avantages du test -->
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h3 class="mb-4">Pourquoi Notre Test d'Orientation ?</h3>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper bg-primary rounded-circle mr-3 flex-shrink-0"
+                                        style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-check text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h6>Test Scientifiquement Validé</h6>
+                                        <p class="text-muted small">Basé sur les recherches les plus récentes en
+                                            orientation scolaire et professionnelle, développé par des experts en
+                                            éducation.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper bg-success rounded-circle mr-3 flex-shrink-0"
+                                        style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-star text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h6>Personnalisé pour Vous</h6>
+                                        <p class="text-muted small">Chaque réponse est analysée par notre algorithme
+                                            pour vous proposer des recommandations uniques et adaptées à votre profil.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper bg-info rounded-circle mr-3 flex-shrink-0"
+                                        style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-graduation text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h6>Accès à Toutes les Filières</h6>
+                                        <p class="text-muted small">Découvrez des centaines de filières et
+                                            établissements partenaires avec des informations détaillées sur les
+                                            débouchés.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper bg-warning rounded-circle mr-3 flex-shrink-0"
+                                        style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-users text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h6>Communauté Active</h6>
+                                        <p class="text-muted small">Rejoignez des milliers d'étudiants qui ont déjà
+                                            trouvé leur voie et partagez vos expériences.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Témoignages -->
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h3 class="mb-4">Ce Que Disent Nos Étudiants</h3>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start mb-3">
+                                    <img src="https://via.placeholder.com/60x60/4A90E2/FFFFFF?text=M"
+                                        class="rounded-circle mr-3" alt="Marie">
+                                    <div>
+                                        <h6 class="mb-1">Marie L.</h6>
+                                        <p class="text-muted small mb-0">Étudiante en Informatique</p>
+                                    </div>
+                                </div>
+                                <p class="small mb-3">"Le test m'a vraiment aidée à confirmer mon choix pour
+                                    l'informatique. Les recommandations étaient très pertinentes et correspondaient
+                                    parfaitement à mes attentes !"</p>
+                                <div class="text-warning">
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start mb-3">
+                                    <img src="https://via.placeholder.com/60x60/50C878/FFFFFF?text=T"
+                                        class="rounded-circle mr-3" alt="Thomas">
+                                    <div>
+                                        <h6 class="mb-1">Thomas K.</h6>
+                                        <p class="text-muted small mb-0">Étudiant en Génie Industriel</p>
+                                    </div>
+                                </div>
+                                <p class="small mb-3">"Je ne savais pas quoi faire après le bac. Ce test m'a ouvert des
+                                    perspectives que je n'avais jamais envisagées. Merci beaucoup !"</p>
+                                <div class="text-warning">
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start mb-3">
+                                    <img src="https://via.placeholder.com/60x60/F39C12/FFFFFF?text=S"
+                                        class="rounded-circle mr-3" alt="Sophie">
+                                    <div>
+                                        <h6 class="mb-1">Sophie M.</h6>
+                                        <p class="text-muted small mb-0">Étudiante en Sciences Économiques</p>
+                                    </div>
+                                </div>
+                                <p class="small mb-3">"Simple, rapide et efficace. Les résultats m'ont permis de
+                                    découvrir des filières que je ne connaissais pas et qui me correspondent
+                                    parfaitement."</p>
+                                <div class="text-warning">
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                    <i class="icon-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to action final -->
         <div class="row">
-            <div class="col-md-12 text-center">
-                <a href="{{ path('app_quiz_orientation_start') }}" class="btn btn-primary btn-lg">Commencer le test</a>
+            <div class="col-lg-12">
+                <div class="card bg-primary text-white">
+                    <div class="card-body p-5">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="mb-3">Votre Avenir Commence Ici</h4>
+                                <p class="mb-0">Ne laissez pas le doute vous paralyser. Prenez 15 minutes pour découvrir
+                                    les opportunités qui s'offrent à vous et faites le premier pas vers votre future
+                                    carrière.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <div class="d-inline-flex gap-2">
+                                    <a href="{{ path('app_quiz_orientation_questions', {'step': 1}) }}"
+                                        class="btn btn-light btn-lg">
+                                        <i class="icon-play mr-2"></i>Commencer maintenant
+                                    </a>
+                                    <a href="{{ path('app_quiz') }}" class="btn btn-outline-light btn-lg">
+                                        <i class="icon-list mr-2"></i>Autres tests
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 {% endblock %}

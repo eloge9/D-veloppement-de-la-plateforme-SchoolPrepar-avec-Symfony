@@ -1,36 +1,285 @@
 {% extends 'vitrine/base.html.twig' %}
 
-{% block title %}Blog - SchoolPrepar{% endblock %}
+{% block title %}Blog d'Orientation - SchoolPrepar{% endblock %}
 
-{% block body %}
-<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
+{% block content %}
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4"
+    style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}')">
     <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-3 bread">Blog</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span><a href="{{ path('app_ressources') }}">Ressources</a></span> <span>Blog</span></p>
+        <div class="row align-items-end">
+            <div class="col-lg-7">
+                <h2 class="mb-0">Blog d'Orientation</h2>
+                <p>Découvrez nos articles et conseils pour votre avenir scolaire et professionnel</p>
             </div>
         </div>
     </div>
 </div>
 
-<section class="ftco-section">
+<div class="site-section">
     <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center heading-section ftco-animate">
-                <h2 class="mb-4">Articles d'orientation</h2>
-                <p>Découvrez nos derniers articles</p>
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h2 class="mb-4">Articles Récents</h2>
+                <p class="lead text-muted">Notre équipe d'experts partage ses conseils et actualités sur l'orientation
+                    scolaire, les métiers d'avenir et les opportunités de formation.</p>
             </div>
         </div>
+
         <div class="row">
-            <div class="col-md-4">
-                <div class="blog-entry ftco-animate">
-                    <h3><a href="{{ path('app_ressources_blog_show', {'slug': 'orientation-scolaire'}) }}">Comment choisir son orientation</a></h3>
-                    <p>Découvrez nos conseils pour bien choisir...</p>
+            <!-- Article 1 -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-primary"
+                        style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                        <i class="icon-book text-white" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge badge-success mr-2">Conseils</span>
+                            <small class="text-muted">
+                                <i class="icon-calendar mr-1"></i>15 Mars 2024
+                            </small>
+                        </div>
+                        <h5 class="card-title">Comment Choisir sa Filière après le Bac ?</h5>
+                        <p class="card-text text-muted small">Le choix de la filière est une étape cruciale dans votre
+                            parcours. Découvrez notre méthode en 5 étapes pour faire le bon choix...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-muted">
+                                <i class="icon-user mr-1"></i>Marie Laurent
+                            </small>
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-outline-primary">
+                                <i class="icon-lock mr-1"></i>Lire plus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-info"
+                        style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                        <i class="icon-laptop text-white" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge badge-info mr-2">Métiers</span>
+                            <small class="text-muted">
+                                <i class="icon-calendar mr-1"></i>12 Mars 2024
+                            </small>
+                        </div>
+                        <h5 class="card-title">Les Métiers Porteurs en 2024</h5>
+                        <p class="card-text text-muted small">Intelligence artificielle, cybersécurité, énergies
+                            renouvelables... Découvrez les secteurs qui recrutent massivement...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-muted">
+                                <i class="icon-user mr-1"></i>Jean Dubois
+                            </small>
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-outline-primary">
+                                <i class="icon-lock mr-1"></i>Lire plus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 3 -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-warning"
+                        style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                        <i class="icon-graduation text-white" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge badge-warning mr-2">Parcours</span>
+                            <small class="text-muted">
+                                <i class="icon-calendar mr-1"></i>10 Mars 2024
+                            </small>
+                        </div>
+                        <h5 class="card-title">Réussir ses Études Supérieures</h5>
+                        <p class="card-text text-muted small">Méthodologie, organisation, gestion du temps... Nos
+                            conseils pour exceller dans vos études supérieures...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-muted">
+                                <i class="icon-user mr-1"></i>Sophie Martin
+                            </small>
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-outline-primary">
+                                <i class="icon-lock mr-1"></i>Lire plus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 4 -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-danger"
+                        style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                        <i class="icon-heart text-white" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge badge-danger mr-2">Santé</span>
+                            <small class="text-muted">
+                                <i class="icon-calendar mr-1"></i>8 Mars 2024
+                            </small>
+                        </div>
+                        <h5 class="card-title">Orientation vers les Métiers de la Santé</h5>
+                        <p class="card-text text-muted small">Médecine, pharmacie, kinésithérapie... Guide complet pour
+                            intégrer les filières de santé...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-muted">
+                                <i class="icon-user mr-1"></i>Sophie Martin
+                            </small>
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-outline-primary">
+                                <i class="icon-lock mr-1"></i>Lire plus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 5 -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-secondary"
+                        style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                        <i class="icon-globe text-white" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge badge-secondary mr-2">International</span>
+                            <small class="text-muted">
+                                <i class="icon-calendar mr-1"></i>5 Mars 2024
+                            </small>
+                        </div>
+                        <h5 class="card-title">Étudier à l'Étranger : Le Guide Complet</h5>
+                        <p class="card-text text-muted small">Programmes Erasmus, bourses, destinations populaires...
+                            Tout ce qu'il faut savoir pour étudier à l'étranger...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-muted">
+                                <i class="icon-user mr-1"></i>Marie Laurent
+                            </small>
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-outline-primary">
+                                <i class="icon-lock mr-1"></i>Lire plus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 6 -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-primary"
+                        style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                        <i class="icon-briefcase text-white" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge badge-primary mr-2">Alternance</span>
+                            <small class="text-muted">
+                                <i class="icon-calendar mr-1"></i>2 Mars 2024
+                            </small>
+                        </div>
+                        <h5 class="card-title">L'Alternance : Une Voie d'Avenir</h5>
+                        <p class="card-text text-muted small">Formation, salaire, expérience... Découvrez les avantages
+                            de l'alternance et comment trouver votre contrat...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-muted">
+                                <i class="icon-user mr-1"></i>Jean Dubois
+                            </small>
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-outline-primary">
+                                <i class="icon-lock mr-1"></i>Lire plus
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catégories -->
+        <div class="row mb-5 mt-5">
+            <div class="col-lg-12">
+                <h3 class="mb-4">Explorer par Catégorie</h3>
+                <div class="row">
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-center h-100">
+                            <div class="card-body">
+                                <div class="icon-wrapper bg-success rounded-circle mx-auto mb-3"
+                                    style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="icon-lightbulb text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <h6>Conseils d'Orientation</h6>
+                                <p class="small text-muted">15 articles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-center h-100">
+                            <div class="card-body">
+                                <div class="icon-wrapper bg-info rounded-circle mx-auto mb-3"
+                                    style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="icon-laptop text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <h6>Métiers et Carrières</h6>
+                                <p class="small text-muted">23 articles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-center h-100">
+                            <div class="card-body">
+                                <div class="icon-wrapper bg-warning rounded-circle mx-auto mb-3"
+                                    style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="icon-graduation text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <h6>Études et Formation</h6>
+                                <p class="small text-muted">18 articles</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-center h-100">
+                            <div class="card-body">
+                                <div class="icon-wrapper bg-primary rounded-circle mx-auto mb-3"
+                                    style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="icon-users text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <h6>Témoignages</h6>
+                                <p class="small text-muted">12 articles</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card bg-primary text-white">
+                    <div class="card-body p-5">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h4 class="mb-3">Recevez nos Nouveaux Articles</h4>
+                                <p class="mb-0">Inscrivez-vous à notre newsletter pour recevoir nos derniers conseils
+                                    d'orientation directement dans votre boîte mail.</p>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <a href="{{ path('app_contact') }}" class="btn btn-light btn-lg">
+                                    <i class="icon-envelope mr-2"></i>S'inscrire
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </section>
 {% endblock %}

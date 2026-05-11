@@ -1,38 +1,116 @@
 {% extends 'vitrine/base.html.twig' %}
 
-{% block title %}Forum - SchoolPrepar{% endblock %}
+{% block title %}Forum de Discussion - SchoolPrepar{% endblock %}
 
-{% block body %}
-<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
+{% block content %}
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4"
+    style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}')">
     <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-3 bread">Forum</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span><a href="{{ path('app_ressources') }}">Ressources</a></span> <span>Forum</span></p>
+        <div class="row align-items-end">
+            <div class="col-lg-7">
+                <h2 class="mb-0">Forum de Discussion</h2>
+                <p>Échangez avec d'autres étudiants et partagez vos expériences sur l'orientation</p>
             </div>
         </div>
     </div>
 </div>
 
-<section class="ftco-section">
+<div class="site-section">
     <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center heading-section ftco-animate">
-                <h2 class="mb-4">Forum de discussion</h2>
-                <p>Échangez avec la communauté</p>
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h2 class="mb-4">Communauté d'Orientation</h2>
+                <p class="lead text-muted">Rejoignez notre communauté active pour discuter de vos projets, poser des
+                    questions et partager vos expériences avec d'autres étudiants en orientation.</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="services-wrap ftco-animate">
-                    <h3><a href="{{ path('app_ressources_forum_categorie', {'categorie': 'orientation'}) }}">Orientation</a></h3>
-                    <p>Discussions sur l'orientation</p>
+
+        <!-- Statistiques du forum -->
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <div class="card bg-light">
+                    <div class="card-body p-4">
+                        <div class="row text-center">
+                            <div class="col-md-3 mb-3">
+                                <div class="counter font-weight-bold text-primary">2,847</div>
+                                <p class="text-muted">Membres Actifs</p>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="counter font-weight-bold text-success">456</div>
+                                <p class="text-muted">Discussions</p>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="counter font-weight-bold text-info">3,291</div>
+                                <p class="text-muted">Messages</p>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="counter font-weight-bold text-warning">89</div>
+                                <p class="text-muted">En Ligne</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="services-wrap ftco-animate">
-                    <h3><a href="{{ path('app_ressources_forum_categorie', {'categorie': 'metiers'}) }}">Métiers</a></h3>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <h3 class="mb-4">Discussions Récentes</h3>
+
+                <!-- Discussion 1 -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div class="d-flex align-items-start">
+                                <img src="https://via.placeholder.com/40x40/4A90E2/FFFFFF?text=K"
+                                    class="rounded-circle mr-3" alt="Kevin">
+                                <div>
+                                    <h6 class="mb-1">Comment choisir entre informatique et électronique ?</h6>
+                                    <p class="text-muted small mb-0">Posté par Kevin T. • Il y a 2 heures</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="badge badge-primary">12 réponses</span>
+                                <span class="badge badge-success">Résolu</span>
+                            </div>
+                        </div>
+                        <p class="card-text">Bonjour à tous, je suis en terminale et j'hésite entre l'informatique et
+                            l'électronique. J'aime bien les deux matières mais je ne sais pas laquelle choisir pour mes
+                            études supérieures...</p>
+                        <div class="mt-3">
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-outline-primary">
+                                <i class="icon-lock mr-1"></i>Voir la discussion
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Discussion 2 -->
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div class="d-flex align-items-start">
+                                <img src="https://via.placeholder.com/40x40/50C878/FFFFFF?text=L"
+                                    class="rounded-circle mr-3" alt="Laura">
+                                <div>
+                                    <h6 class="mb-1">Concours PACES : vos expériences ?</h6>
+                                    <p class="text-muted small mb-0">Posté par Laura M. • Il y a 5 heures</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="badge badge-warning">8 réponses</span>
+                                <span class="badge badge-secondary">En cours</span>
+                            </div>
+                        </div>
+                        <p class="card-text">Je prépare le concours PACES pour médecine et j'aimerais connaître vos
+                            expériences. Quelles ont été vos méthodes de révision ? Quels livres avez-vous utilisés...
+                        </p>
+                        <div class="mt-3">
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-outline-primary">
+                                <i class="icon-lock mr-1"></i>Voir la discussion
+                            </a>
+                        </div>
+                    </div>
                     <p>Découvrez les métiers</p>
                 </div>
             </div>
@@ -44,5 +122,5 @@
             </div>
         </div>
     </div>
-</section>
-{% endblock %}
+    </section>
+    {% endblock %}

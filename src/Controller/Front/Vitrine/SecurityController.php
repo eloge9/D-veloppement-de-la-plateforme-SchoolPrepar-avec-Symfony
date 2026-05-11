@@ -32,20 +32,27 @@ class SecurityController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
-        $user = new Utilisateur();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // Hasher le mot de passe
+            $user = new Utilisateur();
+            
+            // Récupérer les données du formulaire
+            $formData = $form->getData();
+            
+            // Définir les propriétés de base
+            $user->setNom($formData['nom']);
+            $user->setEmail($formData['email']);
             $user->setMotDePasse(
                 $userPasswordHasher->hashPassword(
                     $user,
-                    $form->get('mot_de_passe')->first->getData()
+                    $formData['motDePasse']
                 )
             );
-
-            // Le rôle est maintenant défini par le formulaire
+            
+            // Définir le rôle
+            $user->setRole([$formData['roles']]);
             
             // Définir la date d'inscription
             $user->setDateInscription(new \DateTime());

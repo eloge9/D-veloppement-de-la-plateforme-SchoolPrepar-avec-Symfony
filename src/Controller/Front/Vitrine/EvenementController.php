@@ -17,7 +17,7 @@ class EvenementController extends AbstractController
     {
         $evenements = $evenementRepository->findAll();
 
-        return $this->render('front/vitrine/evenements/index.html.twig', [
+        return $this->render('vitrine/evenements/index.html.twig', [
             'evenements' => $evenements
         ]);
     }
@@ -27,7 +27,7 @@ class EvenementController extends AbstractController
     {
         $evenements = $evenementRepository->findUpcoming();
 
-        return $this->render('front/vitrine/evenements/avenir.html.twig', [
+        return $this->render('vitrine/evenements/avenir.html.twig', [
             'evenements' => $evenements
         ]);
     }
@@ -37,7 +37,7 @@ class EvenementController extends AbstractController
     {
         $evenements = $evenementRepository->findPast();
 
-        return $this->render('front/vitrine/evenements/passes.html.twig', [
+        return $this->render('vitrine/evenements/passes.html.twig', [
             'evenements' => $evenements
         ]);
     }
@@ -45,7 +45,7 @@ class EvenementController extends AbstractController
     #[Route('/evenements/{id}', name: 'app_evenement_show', requirements: ['id' => '\d+'])]
     public function show(Evenement $evenement): Response
     {
-        return $this->render('front/vitrine/evenements/show.html.twig', [
+        return $this->render('vitrine/evenements/show.html.twig', [
             'evenement' => $evenement
         ]);
     }
@@ -55,7 +55,7 @@ class EvenementController extends AbstractController
     {
         $evenements = $evenementRepository->findByCategory($categorie);
 
-        return $this->render('front/vitrine/evenements/categorie.html.twig', [
+        return $this->render('vitrine/evenements/categorie.html.twig', [
             'categorie' => $categorie,
             'evenements' => $evenements
         ]);
@@ -65,7 +65,7 @@ class EvenementController extends AbstractController
     #[IsGranted('ROLE_USER')]
     public function inscription(Evenement $evenement): Response
     {
-        return $this->render('front/vitrine/evenements/inscription.html.twig', [
+        return $this->render('vitrine/evenements/inscription.html.twig', [
             'evenement' => $evenement
         ]);
     }

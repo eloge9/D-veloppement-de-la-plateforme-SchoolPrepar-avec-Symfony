@@ -1,17 +1,17 @@
 <div class="mr-auto">
     <nav class="site-navigation position-relative text-right" role="navigation">
         <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-            <li class="{% if app.request.attributes.get('_route') == 'app_vitrine_home' %}active{% endif %}">
-                <a href="{{ path('app_vitrine_home') }}" class="nav-link text-left">Accueil</a>
+            <li class="{% if app.request.attributes.get('_route') == 'app_home' %}active{% endif %}">
+                <a href="{{ path('app_home') }}" class="nav-link text-left">Accueil</a>
             </li>
             <li
                 class="has-children {% if app.request.attributes.get('_route') starts with 'app_orientation' %}active{% endif %}">
                 <a href="#" class="nav-link text-left">Orientation</a>
                 <ul class="dropdown">
-                    <li><a href="{{ path('app_vitrine_filieres') }}">Filières</a></li>
-                    <li><a href="{{ path('app_vitrine_etablissements') }}">Établissements</a></li>
-                    <li><a href="#">Tests d'orientation</a></li>
-                    <li><a href="#">Conseillers</a></li>
+                    <li><a href="{{ path('app_orientation_filieres') }}">Filières</a></li>
+                    <li><a href="{{ path('app_orientation_etablissements') }}">Établissements</a></li>
+                    <li><a href="{{ path('app_quiz_orientation') }}">Tests d'orientation</a></li>
+                    <li><a href="{{ path('app_conseillers') }}">Conseillers</a></li>
                 </ul>
             </li>
             <li
@@ -24,19 +24,19 @@
                 </ul>
             </li>
             <li>
-                <a href="#" class="nav-link text-left">Événements</a>
+                <a href="{{ path('app_evenements') }}" class="nav-link text-left">Événements</a>
             </li>
             <li
                 class="has-children {% if app.request.attributes.get('_route') starts with 'app_ressources' %}active{% endif %}">
                 <a href="#" class="nav-link text-left">Ressources</a>
                 <ul class="dropdown">
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Guides</a></li>
-                    <li><a href="#">Forum</a></li>
+                    <li><a href="{{ path('app_ressources_blog') }}">Blog</a></li>
+                    <li><a href="{{ path('app_ressources_guides') }}">Guides</a></li>
+                    <li><a href="{{ path('app_ressources_forum') }}">Forum</a></li>
                 </ul>
             </li>
             <li class="{% if app.request.attributes.get('_route') == 'app_contact' %}active{% endif %}">
-                <a href="#" class="nav-link text-left">Contact</a>
+                <a href="{{ path('app_contact') }}" class="nav-link text-left">Contact</a>
             </li>
         </ul>
     </nav>

@@ -1,28 +1,290 @@
 {% extends 'vitrine/base.html.twig' %}
 
-{% block title %}Guides - SchoolPrepar{% endblock %}
+{% block title %}Guides Pratiques - SchoolPrepar{% endblock %}
 
-{% block body %}
-<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
+{% block content %}
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4"
+    style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}')">
     <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-3 bread">Guides</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span><a href="{{ path('app_ressources') }}">Ressources</a></span> <span>Guides</span></p>
+        <div class="row align-items-end">
+            <div class="col-lg-7">
+                <h2 class="mb-0">Guides Pratiques</h2>
+                <p>Documents complets pour vous guider dans votre parcours d'orientation</p>
             </div>
         </div>
     </div>
 </div>
 
-<section class="ftco-section">
+<div class="site-section">
     <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center heading-section ftco-animate">
-                <h2 class="mb-4">Guides pratiques</h2>
-                <p>Tous nos guides pour vous aider</p>
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h2 class="mb-4">Nos Guides d'Orientation</h2>
+                <p class="lead text-muted">Téléchargez gratuitement nos guides pratiques pour vous aider à chaque étape
+                    de votre parcours d'orientation scolaire et professionnelle.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Guide 1 -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-success"
+                        style="height: 150px; display: flex; align-items: center; justify-content: center;">
+                        <i class="icon-book text-white" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge badge-success mr-2">PDF</span>
+                            <small class="text-muted">
+                                <i class="icon-download mr-1"></i>2.3 MB
+                            </small>
+                        </div>
+                        <h5 class="card-title">Guide du Bac Général</h5>
+                        <p class="card-text text-muted small">Le guide complet pour réussir son bac général :
+                            spécialités, méthodologie, préparation aux épreuves...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-muted">
+                                <i class="icon-eye mr-1"></i>1542 vues
+                            </small>
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-success">
+                                <i class="icon-lock mr-1"></i>Télécharger
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guide 2 -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-info"
+                        style="height: 150px; display: flex; align-items: center; justify-content: center;">
+                        <i class="icon-laptop text-white" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge badge-info mr-2">PDF</span>
+                            <small class="text-muted">
+                                <i class="icon-download mr-1"></i>1.8 MB
+                            </small>
+                        </div>
+                        <h5 class="card-title">Métiers du Numérique</h5>
+                        <p class="card-text text-muted small">Découvrez les métiers de l'informatique, les formations
+                            requises et les débouchés actuels...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-muted">
+                                <i class="icon-eye mr-1"></i>892 vues
+                            </small>
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-info">
+                                <i class="icon-lock mr-1"></i>Télécharger
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guide 3 -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-warning"
+                        style="height: 150px; display: flex; align-items: center; justify-content: center;">
+                        <i class="icon-graduation text-white" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge badge-warning mr-2">PDF</span>
+                            <small class="text-muted">
+                                <i class="icon-download mr-1"></i>3.1 MB
+                            </small>
+                        </div>
+                        <h5 class="card-title">Parcoursupaces</h5>
+                        <p class="card-text text-muted small">Comprendre le fonctionnement de Parcoursup, les vœux, les
+                            conseils de classe et l'affectation...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-muted">
+                                <i class="icon-eye mr-1"></i>2103 vues
+                            </small>
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-warning">
+                                <i class="icon-lock mr-1"></i>Télécharger
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guide 4 -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-primary"
+                        style="height: 150px; display: flex; align-items: center; justify-content: center;">
+                        <i class="icon-briefcase text-white" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge badge-primary mr-2">PDF</span>
+                            <small class="text-muted">
+                                <i class="icon-download mr-1"></i>2.5 MB
+                            </small>
+                        </div>
+                        <h5 class="card-title">Guide de l'Alternance</h5>
+                        <p class="card-text text-muted small">Comment trouver une entreprise, préparer son CV, réussir
+                            son entretien et signer son contrat...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-muted">
+                                <i class="icon-eye mr-1"></i>1567 vues
+                            </small>
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-primary">
+                                <i class="icon-lock mr-1"></i>Télécharger
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guide 5 -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-danger"
+                        style="height: 150px; display: flex; align-items: center; justify-content: center;">
+                        <i class="icon-heart text-white" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge badge-danger mr-2">PDF</span>
+                            <small class="text-muted">
+                                <i class="icon-download mr-1"></i>4.2 MB
+                            </small>
+                        </div>
+                        <h5 class="card-title">Métiers de la Santé</h5>
+                        <p class="card-text text-muted small">Médecine, pharmacie, kinésithérapie... Les formations, les
+                            concours, les débouchés et témoignages...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-muted">
+                                <i class="icon-eye mr-1"></i>1892 vues
+                            </small>
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-danger">
+                                <i class="icon-lock mr-1"></i>Télécharger
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guide 6 -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-top bg-secondary"
+                        style="height: 150px; display: flex; align-items: center; justify-content: center;">
+                        <i class="icon-globe text-white" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge badge-secondary mr-2">PDF</span>
+                            <small class="text-muted">
+                                <i class="icon-download mr-1"></i>2.9 MB
+                            </small>
+                        </div>
+                        <h5 class="card-title">Études à l'Étranger</h5>
+                        <p class="card-text text-muted small">Erasmus, bourses, destinations, visas... Tout pour réussir
+                            ses études à l'international...</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <small class="text-muted">
+                                <i class="icon-eye mr-1"></i>1234 vues
+                            </small>
+                            <a href="{{ path('app_login') }}" class="btn btn-sm btn-secondary">
+                                <i class="icon-lock mr-1"></i>Télécharger
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Catégories -->
+        <div class="row mb-5 mt-5">
+            <div class="col-lg-12">
+                <h3 class="mb-4">Guides par Catégorie</h3>
+                <div class="row">
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-center h-100">
+                            <div class="card-body">
+                                <div class="icon-wrapper bg-success rounded-circle mx-auto mb-3"
+                                    style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="icon-graduation text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <h6>Éducation</h6>
+                                <p class="small text-muted">8 guides</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-center h-100">
+                            <div class="card-body">
+                                <div class="icon-wrapper bg-info rounded-circle mx-auto mb-3"
+                                    style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="icon-laptop text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <h6>Métiers</h6>
+                                <p class="small text-muted">12 guides</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-center h-100">
+                            <div class="card-body">
+                                <div class="icon-wrapper bg-warning rounded-circle mx-auto mb-3"
+                                    style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="icon-briefcase text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <h6>Carrière</h6>
+                                <p class="small text-muted">6 guides</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="card text-center h-100">
+                            <div class="card-body">
+                                <div class="icon-wrapper bg-primary rounded-circle mx-auto mb-3"
+                                    style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="icon-globe text-white" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <h6>International</h6>
+                                <p class="small text-muted">4 guides</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistiques -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card bg-light">
+                    <div class="card-body p-5">
+                        <div class="row text-center">
+                            <div class="col-md-3 mb-4">
+                                <div class="counter font-weight-bold text-success">30+</div>
+                                <p class="text-muted">Guides Disponibles</p>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="counter font-weight-bold text-info">15K+</div>
+                                <p class="text-muted">Téléchargements</p>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="counter font-weight-bold text-warning">4.8</div>
+                                <p class="text-muted">Note Moyenne</p>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="counter font-weight-bold text-primary">100%</div>
+                                <p class="text-muted">Gratuits</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 {% endblock %}

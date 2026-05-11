@@ -1,48 +1,262 @@
 {% extends 'vitrine/base.html.twig' %}
 
-{% block title %}Conseillers d'orientation - SchoolPrepar{% endblock %}
+{% block title %}Conseillers d'Orientation - SchoolPrepar{% endblock %}
 
-{% block body %}
-<div class="hero-wrap" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
+{% block content %}
+<div class="site-section ftco-subscribe-1 site-blocks-cover pb-4"
+    style="background-image: url('{{ asset('assets/images/bg_1.jpg') }}')">
     <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-index="0">
-            <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-3 bread">Conseillers d'orientation</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="{{ path('app_home') }}">Accueil</a></span> <span>Conseillers</span></p>
+        <div class="row align-items-end">
+            <div class="col-lg-7">
+                <h2 class="mb-0">Nos Conseillers d'Orientation</h2>
+                <p>Des experts dédiés à votre réussite scolaire et professionnelle</p>
             </div>
         </div>
     </div>
 </div>
 
-<section class="ftco-section">
+<div class="site-section">
     <div class="container">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-7 text-center heading-section ftco-animate">
-                <h2 class="mb-4">Nos conseillers</h2>
-                <p>Des professionnels à votre écoute</p>
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h2 class="mb-4">L'Équipe d'Orientation SchoolPrepar</h2>
+                <p class="lead text-muted">Nos conseillers sont des professionnels expérimentés dédiés à vous aider à
+                    trouver la voie qui vous correspond le mieux.</p>
             </div>
         </div>
+
+        <!-- Présentation des conseillers -->
+        <div class="row mb-5">
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <img src="https://via.placeholder.com/150x150/4A90E2/FFFFFF?text=ML" class="rounded-circle"
+                                alt="Marie Laurent">
+                        </div>
+                        <h5 class="mb-1">Marie Laurent</h5>
+                        <p class="text-muted small mb-3">Conseillère Principale</p>
+                        <p class="small">Spécialiste en orientation post-bac avec 15 ans d'expérience dans
+                            l'accompagnement personnalisé.</p>
+                        <div class="mt-3">
+                            <span class="badge badge-primary mr-1">Bac Général</span>
+                            <span class="badge badge-success mr-1">Bac Technologique</span>
+                            <span class="badge badge-info">Études Supérieures</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <img src="https://via.placeholder.com/150x150/50C878/FFFFFF?text=JD" class="rounded-circle"
+                                alt="Jean Dubois">
+                        </div>
+                        <h5 class="mb-1">Jean Dubois</h5>
+                        <p class="text-muted small mb-3">Expert Carrières Tech</p>
+                        <p class="small">Ancien ingénieur, il accompagne les étudiants vers les carrières du numérique
+                            et de l'innovation.</p>
+                        <div class="mt-3">
+                            <span class="badge badge-primary mr-1">Informatique</span>
+                            <span class="badge badge-success mr-1">Ingénierie</span>
+                            <span class="badge badge-warning">Startup</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <img src="https://via.placeholder.com/150x150/F39C12/FFFFFF?text=SM" class="rounded-circle"
+                                alt="Sophie Martin">
+                        </div>
+                        <h5 class="mb-1">Sophie Martin</h5>
+                        <p class="text-muted small mb-3">Conseillère Santé & Social</p>
+                        <p class="small">Spécialisée dans les filières médicales, paramédicales et sociales, elle guide
+                            les étudiants vers ces métiers d'avenir.</p>
+                        <div class="mt-3">
+                            <span class="badge badge-danger mr-1">Médecine</span>
+                            <span class="badge badge-info mr-1">Paramédical</span>
+                            <span class="badge badge-secondary mr-1">Social</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services proposés -->
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h3 class="mb-4">Nos Services d'Orientation</h3>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper bg-primary rounded-circle mr-3 flex-shrink-0"
+                                        style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-user text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h6>Entretien Individualisé</h6>
+                                        <p class="text-muted small">Session personnalisée de 1h pour analyser votre
+                                            profil et définir vos objectifs.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper bg-success rounded-circle mr-3 flex-shrink-0"
+                                        style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-group text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h6>Ateliers Collectifs</h6>
+                                        <p class="text-muted small">Sessions en petits groupes sur des thématiques
+                                            spécifiques (méthodologie, choix de filières, etc.).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper bg-info rounded-circle mr-3 flex-shrink-0"
+                                        style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-video text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h6>Orientation en Ligne</h6>
+                                        <p class="text-muted small">Consultations par visioconférence pour plus de
+                                            flexibilité et d'accessibilité.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper bg-warning rounded-circle mr-3 flex-shrink-0"
+                                        style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                                        <i class="icon-calendar text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h6>Suivi Personnalisé</h6>
+                                        <p class="text-muted small">Accompagnement sur la durée avec des points
+                                            réguliers pour ajuster votre projet.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Témoignages de réussite -->
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <h3 class="mb-4">Ils Ont Trouvé Leur Voie Avec Nous</h3>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start mb-3">
+                                    <img src="https://via.placeholder.com/50x50/4A90E2/FFFFFF?text=K"
+                                        class="rounded-circle mr-3" alt="Kevin">
+                                    <div>
+                                        <h6 class="mb-1">Kevin T.</h6>
+                                        <p class="text-muted small mb-0">Étudiant en Informatique</p>
+                                    </div>
+                                </div>
+                                <p class="small mb-2">"Grâce au conseiller Marie, j'ai découvert une passion pour
+                                    l'intelligence artificielle que je ne soupçonnais pas. Aujourd'hui en école
+                                    d'ingénieur, je suis épanoui."</p>
+                                <div class="small text-muted">
+                                    <i class="icon-calendar mr-1"></i>Orientation en 2023
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start mb-3">
+                                    <img src="https://via.placeholder.com/50x50/50C878/FFFFFF?text=L"
+                                        class="rounded-circle mr-3" alt="Laura">
+                                    <div>
+                                        <h6 class="mb-1">Laura M.</h6>
+                                        <p class="text-muted small mb-0">Étudiante en Médecine</p>
+                                    </div>
+                                </div>
+                                <p class="small mb-2">"Jean m'a aidée à préparer mon dossier pour les études de
+                                    médecine. Ses conseils sur la méthodologie et les entretiens ont été décisifs."</p>
+                                <div class="small text-muted">
+                                    <i class="icon-calendar mr-1"></i>Orientation en 2022
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-start mb-3">
+                                    <img src="https://via.placeholder.com/50x50/F39C12/FFFFFF?text=T"
+                                        class="rounded-circle mr-3" alt="Thomas">
+                                    <div>
+                                        <h6 class="mb-1">Thomas B.</h6>
+                                        <p class="text-muted small mb-0">Étudiant en Design</p>
+                                    </div>
+                                </div>
+                                <p class="small mb-2">"Sophie m'a ouvert les portes du design industriel. Je ne pensais
+                                    pas pouvoir transformer ma passion en carrière professionnelle."</p>
+                                <div class="small text-muted">
+                                    <i class="icon-calendar mr-1"></i>Orientation en 2023
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistiques -->
         <div class="row">
-            <div class="col-md-4">
-                <div class="services-wrap ftco-animate">
-                    <h3><a href="{{ path('app_conseillers_presentation') }}">Présentation</a></h3>
-                    <p>Découvrez notre équipe</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="services-wrap ftco-animate">
-                    <h3><a href="{{ path('app_conseillers_equipe') }}">Équipe</a></h3>
-                    <p>Rencontrez nos conseillers</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="services-wrap ftco-animate">
-                    <h3><a href="{{ path('app_conseillers_rdv') }}">Prendre rendez-vous</a></h3>
-                    <p>Contactez un conseiller</p>
+            <div class="col-lg-12">
+                <div class="card bg-light">
+                    <div class="card-body p-5">
+                        <div class="row text-center">
+                            <div class="col-md-3 mb-4">
+                                <div class="counter font-weight-bold text-primary">1500+</div>
+                                <p class="text-muted">Étudiants Orientés</p>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="counter font-weight-bold text-success">95%</div>
+                                <p class="text-muted">Taux de Réussite</p>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="counter font-weight-bold text-info">200+</div>
+                                <p class="text-muted">Établissements Partenaires</p>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <div class="counter font-weight-bold text-warning">15</div>
+                                <p class="text-muted">Années d'Expérience</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 {% endblock %}
